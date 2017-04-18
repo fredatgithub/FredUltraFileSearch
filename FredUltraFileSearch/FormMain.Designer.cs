@@ -67,10 +67,13 @@
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tabControlMain = new System.Windows.Forms.TabControl();
       this.tabPageFilesAndFolders = new System.Windows.Forms.TabPage();
+      this.listView1 = new System.Windows.Forms.ListView();
       this.buttonReset = new System.Windows.Forms.Button();
       this.buttonStop = new System.Windows.Forms.Button();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.labelSelect = new System.Windows.Forms.Label();
+      this.labelMode = new System.Windows.Forms.Label();
       this.comboBoxMode = new System.Windows.Forms.ComboBox();
       this.checkBoxSearchForFolders = new System.Windows.Forms.CheckBox();
       this.checkBoxSearchForFiles = new System.Windows.Forms.CheckBox();
@@ -85,9 +88,6 @@
       this.tabPageContaining = new System.Windows.Forms.TabPage();
       this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
-      this.listView1 = new System.Windows.Forms.ListView();
-      this.labelMode = new System.Windows.Forms.Label();
-      this.labelSelect = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
@@ -107,7 +107,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(943, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -392,37 +392,47 @@
       // 
       // tabControlMain
       // 
+      this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.tabControlMain.Controls.Add(this.tabPageFilesAndFolders);
       this.tabControlMain.Controls.Add(this.tabPageContaining);
       this.tabControlMain.Controls.Add(this.tabPageDateAndSize);
-      this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tabControlMain.Location = new System.Drawing.Point(0, 24);
-      this.tabControlMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(943, 503);
+      this.tabControlMain.Size = new System.Drawing.Size(1004, 242);
       this.tabControlMain.TabIndex = 2;
       // 
       // tabPageFilesAndFolders
       // 
-      this.tabPageFilesAndFolders.Controls.Add(this.listView1);
-      this.tabPageFilesAndFolders.Controls.Add(this.buttonReset);
-      this.tabPageFilesAndFolders.Controls.Add(this.buttonStop);
-      this.tabPageFilesAndFolders.Controls.Add(this.buttonSearch);
       this.tabPageFilesAndFolders.Controls.Add(this.panel1);
       this.tabPageFilesAndFolders.Location = new System.Drawing.Point(4, 22);
-      this.tabPageFilesAndFolders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.tabPageFilesAndFolders.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageFilesAndFolders.Name = "tabPageFilesAndFolders";
-      this.tabPageFilesAndFolders.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.tabPageFilesAndFolders.Size = new System.Drawing.Size(935, 477);
+      this.tabPageFilesAndFolders.Padding = new System.Windows.Forms.Padding(2);
+      this.tabPageFilesAndFolders.Size = new System.Drawing.Size(996, 216);
       this.tabPageFilesAndFolders.TabIndex = 1;
       this.tabPageFilesAndFolders.Text = "Files and Folders";
       this.tabPageFilesAndFolders.UseVisualStyleBackColor = true;
       // 
+      // listView1
+      // 
+      this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.listView1.Location = new System.Drawing.Point(0, 267);
+      this.listView1.Name = "listView1";
+      this.listView1.Size = new System.Drawing.Size(1109, 350);
+      this.listView1.TabIndex = 15;
+      this.listView1.UseCompatibleStateImageBehavior = false;
+      // 
       // buttonReset
       // 
-      this.buttonReset.Location = new System.Drawing.Point(839, 184);
-      this.buttonReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.buttonReset.Location = new System.Drawing.Point(1017, 229);
+      this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
       this.buttonReset.Name = "buttonReset";
       this.buttonReset.Size = new System.Drawing.Size(81, 26);
       this.buttonReset.TabIndex = 14;
@@ -431,9 +441,11 @@
       // 
       // buttonStop
       // 
+      this.buttonStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.buttonStop.Enabled = false;
-      this.buttonStop.Location = new System.Drawing.Point(839, 50);
-      this.buttonStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonStop.Location = new System.Drawing.Point(1017, 89);
+      this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
       this.buttonStop.Name = "buttonStop";
       this.buttonStop.Size = new System.Drawing.Size(81, 26);
       this.buttonStop.TabIndex = 13;
@@ -442,8 +454,10 @@
       // 
       // buttonSearch
       // 
-      this.buttonSearch.Location = new System.Drawing.Point(839, 19);
-      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.buttonSearch.Location = new System.Drawing.Point(1017, 46);
+      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
       this.buttonSearch.Name = "buttonSearch";
       this.buttonSearch.Size = new System.Drawing.Size(81, 26);
       this.buttonSearch.TabIndex = 12;
@@ -466,10 +480,30 @@
       this.panel1.Controls.Add(this.textBox1);
       this.panel1.Controls.Add(this.labelFileNames);
       this.panel1.Location = new System.Drawing.Point(2, 2);
-      this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.panel1.Margin = new System.Windows.Forms.Padding(2);
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(822, 207);
       this.panel1.TabIndex = 4;
+      // 
+      // labelSelect
+      // 
+      this.labelSelect.AutoSize = true;
+      this.labelSelect.Location = new System.Drawing.Point(484, 79);
+      this.labelSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.labelSelect.Name = "labelSelect";
+      this.labelSelect.Size = new System.Drawing.Size(37, 13);
+      this.labelSelect.TabIndex = 14;
+      this.labelSelect.Text = "Select";
+      // 
+      // labelMode
+      // 
+      this.labelMode.AutoSize = true;
+      this.labelMode.Location = new System.Drawing.Point(484, 24);
+      this.labelMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.labelMode.Name = "labelMode";
+      this.labelMode.Size = new System.Drawing.Size(34, 13);
+      this.labelMode.TabIndex = 13;
+      this.labelMode.Text = "Mode";
       // 
       // comboBoxMode
       // 
@@ -479,7 +513,7 @@
             "Simple",
             "Wildcards"});
       this.comboBoxMode.Location = new System.Drawing.Point(487, 45);
-      this.comboBoxMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.comboBoxMode.Margin = new System.Windows.Forms.Padding(2);
       this.comboBoxMode.Name = "comboBoxMode";
       this.comboBoxMode.Size = new System.Drawing.Size(92, 21);
       this.comboBoxMode.TabIndex = 12;
@@ -489,7 +523,7 @@
       // 
       this.checkBoxSearchForFolders.AutoSize = true;
       this.checkBoxSearchForFolders.Location = new System.Drawing.Point(174, 169);
-      this.checkBoxSearchForFolders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxSearchForFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSearchForFolders.Name = "checkBoxSearchForFolders";
       this.checkBoxSearchForFolders.Size = new System.Drawing.Size(112, 17);
       this.checkBoxSearchForFolders.TabIndex = 11;
@@ -500,7 +534,7 @@
       // 
       this.checkBoxSearchForFiles.AutoSize = true;
       this.checkBoxSearchForFiles.Location = new System.Drawing.Point(16, 169);
-      this.checkBoxSearchForFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxSearchForFiles.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSearchForFiles.Name = "checkBoxSearchForFiles";
       this.checkBoxSearchForFiles.Size = new System.Drawing.Size(96, 17);
       this.checkBoxSearchForFiles.TabIndex = 10;
@@ -511,7 +545,7 @@
       // 
       this.checkBoxAppendResults.AutoSize = true;
       this.checkBoxAppendResults.Location = new System.Drawing.Point(337, 169);
-      this.checkBoxAppendResults.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxAppendResults.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxAppendResults.Name = "checkBoxAppendResults";
       this.checkBoxAppendResults.Size = new System.Drawing.Size(101, 17);
       this.checkBoxAppendResults.TabIndex = 9;
@@ -522,7 +556,7 @@
       // 
       this.checkBoxIncludeHiddenFolders.AutoSize = true;
       this.checkBoxIncludeHiddenFolders.Location = new System.Drawing.Point(174, 135);
-      this.checkBoxIncludeHiddenFolders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxIncludeHiddenFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxIncludeHiddenFolders.Name = "checkBoxIncludeHiddenFolders";
       this.checkBoxIncludeHiddenFolders.Size = new System.Drawing.Size(135, 17);
       this.checkBoxIncludeHiddenFolders.TabIndex = 8;
@@ -532,7 +566,7 @@
       // textBox2
       // 
       this.textBox2.Location = new System.Drawing.Point(16, 100);
-      this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBox2.Margin = new System.Windows.Forms.Padding(2);
       this.textBox2.Name = "textBox2";
       this.textBox2.Size = new System.Drawing.Size(448, 20);
       this.textBox2.TabIndex = 5;
@@ -540,7 +574,7 @@
       // buttonBrowsePath
       // 
       this.buttonBrowsePath.Location = new System.Drawing.Point(487, 98);
-      this.buttonBrowsePath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonBrowsePath.Margin = new System.Windows.Forms.Padding(2);
       this.buttonBrowsePath.Name = "buttonBrowsePath";
       this.buttonBrowsePath.Size = new System.Drawing.Size(91, 20);
       this.buttonBrowsePath.TabIndex = 7;
@@ -563,7 +597,7 @@
       this.checkBoxScanInsubFolders.Checked = true;
       this.checkBoxScanInsubFolders.CheckState = System.Windows.Forms.CheckState.Checked;
       this.checkBoxScanInsubFolders.Location = new System.Drawing.Point(16, 135);
-      this.checkBoxScanInsubFolders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxScanInsubFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxScanInsubFolders.Name = "checkBoxScanInsubFolders";
       this.checkBoxScanInsubFolders.Size = new System.Drawing.Size(115, 17);
       this.checkBoxScanInsubFolders.TabIndex = 6;
@@ -573,7 +607,7 @@
       // textBox1
       // 
       this.textBox1.Location = new System.Drawing.Point(16, 45);
-      this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBox1.Margin = new System.Windows.Forms.Padding(2);
       this.textBox1.Name = "textBox1";
       this.textBox1.Size = new System.Drawing.Size(448, 20);
       this.textBox1.TabIndex = 1;
@@ -591,9 +625,9 @@
       // tabPageContaining
       // 
       this.tabPageContaining.Location = new System.Drawing.Point(4, 22);
-      this.tabPageContaining.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.tabPageContaining.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageContaining.Name = "tabPageContaining";
-      this.tabPageContaining.Size = new System.Drawing.Size(935, 479);
+      this.tabPageContaining.Size = new System.Drawing.Size(935, 477);
       this.tabPageContaining.TabIndex = 2;
       this.tabPageContaining.Text = "Containing";
       this.tabPageContaining.UseVisualStyleBackColor = true;
@@ -601,9 +635,9 @@
       // tabPageDateAndSize
       // 
       this.tabPageDateAndSize.Location = new System.Drawing.Point(4, 22);
-      this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageDateAndSize.Name = "tabPageDateAndSize";
-      this.tabPageDateAndSize.Size = new System.Drawing.Size(935, 479);
+      this.tabPageDateAndSize.Size = new System.Drawing.Size(935, 477);
       this.tabPageDateAndSize.TabIndex = 3;
       this.tabPageDateAndSize.Text = "Date and Size";
       this.tabPageDateAndSize.UseVisualStyleBackColor = true;
@@ -611,52 +645,27 @@
       // statusStripMain
       // 
       this.statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-      this.statusStripMain.Location = new System.Drawing.Point(0, 505);
+      this.statusStripMain.Location = new System.Drawing.Point(0, 620);
       this.statusStripMain.Name = "statusStripMain";
       this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-      this.statusStripMain.Size = new System.Drawing.Size(943, 22);
+      this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
-      // 
-      // listView1
-      // 
-      this.listView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.listView1.Location = new System.Drawing.Point(2, 214);
-      this.listView1.Name = "listView1";
-      this.listView1.Size = new System.Drawing.Size(931, 261);
-      this.listView1.TabIndex = 15;
-      this.listView1.UseCompatibleStateImageBehavior = false;
-      // 
-      // labelMode
-      // 
-      this.labelMode.AutoSize = true;
-      this.labelMode.Location = new System.Drawing.Point(484, 24);
-      this.labelMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.labelMode.Name = "labelMode";
-      this.labelMode.Size = new System.Drawing.Size(34, 13);
-      this.labelMode.TabIndex = 13;
-      this.labelMode.Text = "Mode";
-      // 
-      // labelSelect
-      // 
-      this.labelSelect.AutoSize = true;
-      this.labelSelect.Location = new System.Drawing.Point(484, 79);
-      this.labelSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.labelSelect.Name = "labelSelect";
-      this.labelSelect.Size = new System.Drawing.Size(37, 13);
-      this.labelSelect.TabIndex = 14;
-      this.labelSelect.Text = "Select";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(943, 527);
+      this.ClientSize = new System.Drawing.Size(1109, 642);
+      this.Controls.Add(this.listView1);
       this.Controls.Add(this.statusStripMain);
+      this.Controls.Add(this.buttonReset);
       this.Controls.Add(this.tabControlMain);
+      this.Controls.Add(this.buttonStop);
       this.Controls.Add(this.menuStrip1);
+      this.Controls.Add(this.buttonSearch);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.Text = "Fred Ultra File Search";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
