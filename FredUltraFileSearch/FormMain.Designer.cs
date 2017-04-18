@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("N°");
-      System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Name");
-      System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Folder");
-      System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Size");
-      System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Modified Date");
-      System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Creation Date");
-      System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ext");
-      System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Type");
-      System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Attributes");
-      System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Last Access Date");
+      System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("N°");
+      System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Name");
+      System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Folder");
+      System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Size");
+      System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Modified Date");
+      System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Creation Date");
+      System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Ext");
+      System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Type");
+      System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Attributes");
+      System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Last Access Date");
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -664,16 +664,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
       this.listViewResult.Location = new System.Drawing.Point(0, 267);
       this.listViewResult.Name = "listViewResult";
       this.listViewResult.Size = new System.Drawing.Size(1109, 350);
@@ -1021,7 +1021,7 @@
       // labelAndDateModified
       // 
       this.labelAndDateModified.AutoSize = true;
-      this.labelAndDateModified.Location = new System.Drawing.Point(649, 47);
+      this.labelAndDateModified.Location = new System.Drawing.Point(649, 52);
       this.labelAndDateModified.Name = "labelAndDateModified";
       this.labelAndDateModified.Size = new System.Drawing.Size(25, 13);
       this.labelAndDateModified.TabIndex = 29;
@@ -1039,7 +1039,7 @@
       // labelAndDateLastAccess
       // 
       this.labelAndDateLastAccess.AutoSize = true;
-      this.labelAndDateLastAccess.Location = new System.Drawing.Point(649, 111);
+      this.labelAndDateLastAccess.Location = new System.Drawing.Point(649, 115);
       this.labelAndDateLastAccess.Name = "labelAndDateLastAccess";
       this.labelAndDateLastAccess.Size = new System.Drawing.Size(25, 13);
       this.labelAndDateLastAccess.TabIndex = 31;
