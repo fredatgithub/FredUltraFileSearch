@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("N°");
-      System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Name");
-      System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Folder");
-      System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Size");
-      System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Modified Date");
-      System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Creation Date");
-      System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Ext");
-      System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Type");
-      System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Attributes");
-      System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Last Access Date");
+      System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("N°");
+      System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Name");
+      System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Folder");
+      System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Size");
+      System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Modified Date");
+      System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Creation Date");
+      System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ext");
+      System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Type");
+      System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Attributes");
+      System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Last Access Date");
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,11 +112,29 @@
       this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
       this.checkBoxwholeWords = new System.Windows.Forms.CheckBox();
       this.checkBoxWithout = new System.Windows.Forms.CheckBox();
+      this.checkBoxDate = new System.Windows.Forms.CheckBox();
+      this.checkBoxDateModified = new System.Windows.Forms.CheckBox();
+      this.checkBoxDateCreation = new System.Windows.Forms.CheckBox();
+      this.checkBoxDateLastAccess = new System.Windows.Forms.CheckBox();
+      this.comboBoxDateModifiedBetween = new System.Windows.Forms.ComboBox();
+      this.comboBoxDateCreationBetween = new System.Windows.Forms.ComboBox();
+      this.comboBoxDateLastAccessBetween = new System.Windows.Forms.ComboBox();
+      this.dateTimePickerDateModifiedStart = new System.Windows.Forms.DateTimePicker();
+      this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+      this.dateTimePickerDateCreationStart = new System.Windows.Forms.DateTimePicker();
+      this.dateTimePickerDateLastAccessStart = new System.Windows.Forms.DateTimePicker();
+      this.labelAndDateModified = new System.Windows.Forms.Label();
+      this.labelAndDateCreation = new System.Windows.Forms.Label();
+      this.labelAndDateLastAccess = new System.Windows.Forms.Label();
+      this.dateTimePickerDateLastAccessEnd = new System.Windows.Forms.DateTimePicker();
+      this.dateTimePickerDateCreationEnd = new System.Windows.Forms.DateTimePicker();
+      this.dateTimePickerDateModifiedEnd = new System.Windows.Forms.DateTimePicker();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
       this.panel1.SuspendLayout();
       this.tabPageContaining.SuspendLayout();
+      this.tabPageDateAndSize.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -305,13 +323,13 @@
       // personalizeToolStripMenuItem
       // 
       this.personalizeToolStripMenuItem.Name = "personalizeToolStripMenuItem";
-      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.personalizeToolStripMenuItem.Text = "&Personnaliser";
       // 
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
       // 
@@ -329,14 +347,14 @@
       this.frenchToolStripMenuItem.Checked = true;
       this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.frenchToolStripMenuItem.Text = "Français";
       this.frenchToolStripMenuItem.Click += new System.EventHandler(this.frenchToolStripMenuItem_Click);
       // 
       // englishToolStripMenuItem
       // 
       this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-      this.englishToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+      this.englishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.englishToolStripMenuItem.Text = "Anglais";
       this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
       // 
@@ -355,21 +373,21 @@
       this.SmallToolStripMenuItem.Checked = true;
       this.SmallToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.SmallToolStripMenuItem.Name = "SmallToolStripMenuItem";
-      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.SmallToolStripMenuItem.Text = "Petit";
       this.SmallToolStripMenuItem.Click += new System.EventHandler(this.SmallToolStripMenuItem_Click);
       // 
       // MediumToolStripMenuItem
       // 
       this.MediumToolStripMenuItem.Name = "MediumToolStripMenuItem";
-      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.MediumToolStripMenuItem.Text = "Moyen";
       this.MediumToolStripMenuItem.Click += new System.EventHandler(this.MediumToolStripMenuItem_Click);
       // 
       // LargeToolStripMenuItem
       // 
       this.LargeToolStripMenuItem.Name = "LargeToolStripMenuItem";
-      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.LargeToolStripMenuItem.Text = "Grand";
       this.LargeToolStripMenuItem.Click += new System.EventHandler(this.LargeToolStripMenuItem_Click);
       // 
@@ -388,30 +406,30 @@
       // summaryToolStripMenuItem
       // 
       this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.summaryToolStripMenuItem.Text = "&Sommaire";
       // 
       // indexToolStripMenuItem
       // 
       this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-      this.indexToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+      this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.indexToolStripMenuItem.Text = "&Index";
       // 
       // searchToolStripMenuItem
       // 
       this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-      this.searchToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+      this.searchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.searchToolStripMenuItem.Text = "&Rechercher";
       // 
       // toolStripSeparator5
       // 
       this.toolStripSeparator5.Name = "toolStripSeparator5";
-      this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
+      this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
       // 
       // aboutToolStripMenuItem
       // 
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
@@ -615,6 +633,23 @@
       // 
       // tabPageDateAndSize
       // 
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessEnd);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationEnd);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedEnd);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateLastAccess);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateCreation);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateModified);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessStart);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationStart);
+      this.tabPageDateAndSize.Controls.Add(this.domainUpDown1);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedStart);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateLastAccessBetween);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateCreationBetween);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateModifiedBetween);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateLastAccess);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateCreation);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateModified);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDate);
       this.tabPageDateAndSize.Location = new System.Drawing.Point(4, 22);
       this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageDateAndSize.Name = "tabPageDateAndSize";
@@ -629,16 +664,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
       this.listViewResult.Location = new System.Drawing.Point(0, 267);
       this.listViewResult.Name = "listViewResult";
       this.listViewResult.Size = new System.Drawing.Size(1109, 350);
@@ -815,7 +850,6 @@
       this.radioButtonContainingTextMatchAny.Name = "radioButtonContainingTextMatchAny";
       this.radioButtonContainingTextMatchAny.Size = new System.Drawing.Size(76, 17);
       this.radioButtonContainingTextMatchAny.TabIndex = 25;
-      this.radioButtonContainingTextMatchAny.TabStop = true;
       this.radioButtonContainingTextMatchAny.Text = "Match Any";
       this.radioButtonContainingTextMatchAny.UseVisualStyleBackColor = true;
       // 
@@ -868,6 +902,173 @@
       this.checkBoxWithout.Text = "Without";
       this.checkBoxWithout.UseVisualStyleBackColor = true;
       // 
+      // checkBoxDate
+      // 
+      this.checkBoxDate.AutoSize = true;
+      this.checkBoxDate.Enabled = false;
+      this.checkBoxDate.Location = new System.Drawing.Point(22, 19);
+      this.checkBoxDate.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDate.Name = "checkBoxDate";
+      this.checkBoxDate.Size = new System.Drawing.Size(49, 17);
+      this.checkBoxDate.TabIndex = 18;
+      this.checkBoxDate.Text = "Date";
+      this.checkBoxDate.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxDateModified
+      // 
+      this.checkBoxDateModified.AutoSize = true;
+      this.checkBoxDateModified.Enabled = false;
+      this.checkBoxDateModified.Location = new System.Drawing.Point(22, 52);
+      this.checkBoxDateModified.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDateModified.Name = "checkBoxDateModified";
+      this.checkBoxDateModified.Size = new System.Drawing.Size(92, 17);
+      this.checkBoxDateModified.TabIndex = 19;
+      this.checkBoxDateModified.Text = "Date Modified";
+      this.checkBoxDateModified.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxDateCreation
+      // 
+      this.checkBoxDateCreation.AutoSize = true;
+      this.checkBoxDateCreation.Enabled = false;
+      this.checkBoxDateCreation.Location = new System.Drawing.Point(22, 78);
+      this.checkBoxDateCreation.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDateCreation.Name = "checkBoxDateCreation";
+      this.checkBoxDateCreation.Size = new System.Drawing.Size(91, 17);
+      this.checkBoxDateCreation.TabIndex = 20;
+      this.checkBoxDateCreation.Text = "Date Creation";
+      this.checkBoxDateCreation.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxDateLastAccess
+      // 
+      this.checkBoxDateLastAccess.AutoSize = true;
+      this.checkBoxDateLastAccess.Enabled = false;
+      this.checkBoxDateLastAccess.Location = new System.Drawing.Point(22, 110);
+      this.checkBoxDateLastAccess.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDateLastAccess.Name = "checkBoxDateLastAccess";
+      this.checkBoxDateLastAccess.Size = new System.Drawing.Size(110, 17);
+      this.checkBoxDateLastAccess.TabIndex = 21;
+      this.checkBoxDateLastAccess.Text = "Date Last Access";
+      this.checkBoxDateLastAccess.UseVisualStyleBackColor = true;
+      // 
+      // comboBoxDateModifiedBetween
+      // 
+      this.comboBoxDateModifiedBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateModifiedBetween.FormattingEnabled = true;
+      this.comboBoxDateModifiedBetween.Location = new System.Drawing.Point(156, 47);
+      this.comboBoxDateModifiedBetween.Name = "comboBoxDateModifiedBetween";
+      this.comboBoxDateModifiedBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateModifiedBetween.TabIndex = 22;
+      this.comboBoxDateModifiedBetween.Text = "Between";
+      // 
+      // comboBoxDateCreationBetween
+      // 
+      this.comboBoxDateCreationBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateCreationBetween.FormattingEnabled = true;
+      this.comboBoxDateCreationBetween.Location = new System.Drawing.Point(156, 78);
+      this.comboBoxDateCreationBetween.Name = "comboBoxDateCreationBetween";
+      this.comboBoxDateCreationBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateCreationBetween.TabIndex = 23;
+      this.comboBoxDateCreationBetween.Text = "Between";
+      // 
+      // comboBoxDateLastAccessBetween
+      // 
+      this.comboBoxDateLastAccessBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateLastAccessBetween.FormattingEnabled = true;
+      this.comboBoxDateLastAccessBetween.Location = new System.Drawing.Point(156, 111);
+      this.comboBoxDateLastAccessBetween.Name = "comboBoxDateLastAccessBetween";
+      this.comboBoxDateLastAccessBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateLastAccessBetween.TabIndex = 24;
+      this.comboBoxDateLastAccessBetween.Text = "Between";
+      // 
+      // dateTimePickerDateModifiedStart
+      // 
+      this.dateTimePickerDateModifiedStart.Location = new System.Drawing.Point(308, 47);
+      this.dateTimePickerDateModifiedStart.Name = "dateTimePickerDateModifiedStart";
+      this.dateTimePickerDateModifiedStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateModifiedStart.TabIndex = 25;
+      this.dateTimePickerDateModifiedStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // domainUpDown1
+      // 
+      this.domainUpDown1.Items.Add("00");
+      this.domainUpDown1.Items.Add("01");
+      this.domainUpDown1.Items.Add("02");
+      this.domainUpDown1.Items.Add("03");
+      this.domainUpDown1.Items.Add("04");
+      this.domainUpDown1.Items.Add("05");
+      this.domainUpDown1.Location = new System.Drawing.Point(511, 47);
+      this.domainUpDown1.Name = "domainUpDown1";
+      this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
+      this.domainUpDown1.TabIndex = 26;
+      this.domainUpDown1.Text = "00:00:00";
+      // 
+      // dateTimePickerDateCreationStart
+      // 
+      this.dateTimePickerDateCreationStart.Location = new System.Drawing.Point(308, 79);
+      this.dateTimePickerDateCreationStart.Name = "dateTimePickerDateCreationStart";
+      this.dateTimePickerDateCreationStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateCreationStart.TabIndex = 27;
+      this.dateTimePickerDateCreationStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateLastAccessStart
+      // 
+      this.dateTimePickerDateLastAccessStart.Location = new System.Drawing.Point(308, 110);
+      this.dateTimePickerDateLastAccessStart.Name = "dateTimePickerDateLastAccessStart";
+      this.dateTimePickerDateLastAccessStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateLastAccessStart.TabIndex = 28;
+      this.dateTimePickerDateLastAccessStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // labelAndDateModified
+      // 
+      this.labelAndDateModified.AutoSize = true;
+      this.labelAndDateModified.Location = new System.Drawing.Point(649, 47);
+      this.labelAndDateModified.Name = "labelAndDateModified";
+      this.labelAndDateModified.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateModified.TabIndex = 29;
+      this.labelAndDateModified.Text = "and";
+      // 
+      // labelAndDateCreation
+      // 
+      this.labelAndDateCreation.AutoSize = true;
+      this.labelAndDateCreation.Location = new System.Drawing.Point(649, 86);
+      this.labelAndDateCreation.Name = "labelAndDateCreation";
+      this.labelAndDateCreation.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateCreation.TabIndex = 30;
+      this.labelAndDateCreation.Text = "and";
+      // 
+      // labelAndDateLastAccess
+      // 
+      this.labelAndDateLastAccess.AutoSize = true;
+      this.labelAndDateLastAccess.Location = new System.Drawing.Point(649, 111);
+      this.labelAndDateLastAccess.Name = "labelAndDateLastAccess";
+      this.labelAndDateLastAccess.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateLastAccess.TabIndex = 31;
+      this.labelAndDateLastAccess.Text = "and";
+      // 
+      // dateTimePickerDateLastAccessEnd
+      // 
+      this.dateTimePickerDateLastAccessEnd.Location = new System.Drawing.Point(696, 112);
+      this.dateTimePickerDateLastAccessEnd.Name = "dateTimePickerDateLastAccessEnd";
+      this.dateTimePickerDateLastAccessEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateLastAccessEnd.TabIndex = 34;
+      this.dateTimePickerDateLastAccessEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateCreationEnd
+      // 
+      this.dateTimePickerDateCreationEnd.Location = new System.Drawing.Point(696, 81);
+      this.dateTimePickerDateCreationEnd.Name = "dateTimePickerDateCreationEnd";
+      this.dateTimePickerDateCreationEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateCreationEnd.TabIndex = 33;
+      this.dateTimePickerDateCreationEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateModifiedEnd
+      // 
+      this.dateTimePickerDateModifiedEnd.Location = new System.Drawing.Point(696, 49);
+      this.dateTimePickerDateModifiedEnd.Name = "dateTimePickerDateModifiedEnd";
+      this.dateTimePickerDateModifiedEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateModifiedEnd.TabIndex = 32;
+      this.dateTimePickerDateModifiedEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -895,6 +1096,8 @@
       this.panel1.PerformLayout();
       this.tabPageContaining.ResumeLayout(false);
       this.tabPageContaining.PerformLayout();
+      this.tabPageDateAndSize.ResumeLayout(false);
+      this.tabPageDateAndSize.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -976,5 +1179,22 @@
     private System.Windows.Forms.CheckBox checkBoxSkipSystemFiles;
     private System.Windows.Forms.CheckBox checkBoxSkipHiddenFiles;
     private System.Windows.Forms.Label labelSearchText;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateModifiedStart;
+    private System.Windows.Forms.ComboBox comboBoxDateLastAccessBetween;
+    private System.Windows.Forms.ComboBox comboBoxDateCreationBetween;
+    private System.Windows.Forms.ComboBox comboBoxDateModifiedBetween;
+    private System.Windows.Forms.CheckBox checkBoxDateLastAccess;
+    private System.Windows.Forms.CheckBox checkBoxDateCreation;
+    private System.Windows.Forms.CheckBox checkBoxDateModified;
+    private System.Windows.Forms.CheckBox checkBoxDate;
+    private System.Windows.Forms.DomainUpDown domainUpDown1;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateLastAccessStart;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateCreationStart;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateLastAccessEnd;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateCreationEnd;
+    private System.Windows.Forms.DateTimePicker dateTimePickerDateModifiedEnd;
+    private System.Windows.Forms.Label labelAndDateLastAccess;
+    private System.Windows.Forms.Label labelAndDateCreation;
+    private System.Windows.Forms.Label labelAndDateModified;
   }
 }
