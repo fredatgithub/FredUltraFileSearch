@@ -67,10 +67,6 @@
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tabControlMain = new System.Windows.Forms.TabControl();
       this.tabPageFilesAndFolders = new System.Windows.Forms.TabPage();
-      this.listView1 = new System.Windows.Forms.ListView();
-      this.buttonReset = new System.Windows.Forms.Button();
-      this.buttonStop = new System.Windows.Forms.Button();
-      this.buttonSearch = new System.Windows.Forms.Button();
       this.panel1 = new System.Windows.Forms.Panel();
       this.labelSelect = new System.Windows.Forms.Label();
       this.labelMode = new System.Windows.Forms.Label();
@@ -87,6 +83,10 @@
       this.labelFileNames = new System.Windows.Forms.Label();
       this.tabPageContaining = new System.Windows.Forms.TabPage();
       this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
+      this.listView1 = new System.Windows.Forms.ListView();
+      this.buttonReset = new System.Windows.Forms.Button();
+      this.buttonStop = new System.Windows.Forms.Button();
+      this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
@@ -416,54 +416,6 @@
       this.tabPageFilesAndFolders.Text = "Files and Folders";
       this.tabPageFilesAndFolders.UseVisualStyleBackColor = true;
       // 
-      // listView1
-      // 
-      this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.listView1.Location = new System.Drawing.Point(0, 267);
-      this.listView1.Name = "listView1";
-      this.listView1.Size = new System.Drawing.Size(1109, 350);
-      this.listView1.TabIndex = 15;
-      this.listView1.UseCompatibleStateImageBehavior = false;
-      // 
-      // buttonReset
-      // 
-      this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.buttonReset.Location = new System.Drawing.Point(1017, 229);
-      this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonReset.Name = "buttonReset";
-      this.buttonReset.Size = new System.Drawing.Size(81, 26);
-      this.buttonReset.TabIndex = 14;
-      this.buttonReset.Text = "Reset";
-      this.buttonReset.UseVisualStyleBackColor = true;
-      // 
-      // buttonStop
-      // 
-      this.buttonStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.buttonStop.Enabled = false;
-      this.buttonStop.Location = new System.Drawing.Point(1017, 89);
-      this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonStop.Name = "buttonStop";
-      this.buttonStop.Size = new System.Drawing.Size(81, 26);
-      this.buttonStop.TabIndex = 13;
-      this.buttonStop.Text = "Stop";
-      this.buttonStop.UseVisualStyleBackColor = true;
-      // 
-      // buttonSearch
-      // 
-      this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.buttonSearch.Location = new System.Drawing.Point(1017, 46);
-      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonSearch.Name = "buttonSearch";
-      this.buttonSearch.Size = new System.Drawing.Size(81, 26);
-      this.buttonSearch.TabIndex = 12;
-      this.buttonSearch.Text = "Search";
-      this.buttonSearch.UseVisualStyleBackColor = true;
-      // 
       // panel1
       // 
       this.panel1.Controls.Add(this.labelSelect);
@@ -627,7 +579,7 @@
       this.tabPageContaining.Location = new System.Drawing.Point(4, 22);
       this.tabPageContaining.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageContaining.Name = "tabPageContaining";
-      this.tabPageContaining.Size = new System.Drawing.Size(935, 477);
+      this.tabPageContaining.Size = new System.Drawing.Size(996, 216);
       this.tabPageContaining.TabIndex = 2;
       this.tabPageContaining.Text = "Containing";
       this.tabPageContaining.UseVisualStyleBackColor = true;
@@ -637,10 +589,52 @@
       this.tabPageDateAndSize.Location = new System.Drawing.Point(4, 22);
       this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageDateAndSize.Name = "tabPageDateAndSize";
-      this.tabPageDateAndSize.Size = new System.Drawing.Size(935, 477);
+      this.tabPageDateAndSize.Size = new System.Drawing.Size(996, 216);
       this.tabPageDateAndSize.TabIndex = 3;
       this.tabPageDateAndSize.Text = "Date and Size";
       this.tabPageDateAndSize.UseVisualStyleBackColor = true;
+      // 
+      // listView1
+      // 
+      this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.listView1.Location = new System.Drawing.Point(0, 267);
+      this.listView1.Name = "listView1";
+      this.listView1.Size = new System.Drawing.Size(1109, 350);
+      this.listView1.TabIndex = 15;
+      this.listView1.UseCompatibleStateImageBehavior = false;
+      // 
+      // buttonReset
+      // 
+      this.buttonReset.Location = new System.Drawing.Point(1017, 229);
+      this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonReset.Name = "buttonReset";
+      this.buttonReset.Size = new System.Drawing.Size(81, 26);
+      this.buttonReset.TabIndex = 14;
+      this.buttonReset.Text = "Reset";
+      this.buttonReset.UseVisualStyleBackColor = true;
+      // 
+      // buttonStop
+      // 
+      this.buttonStop.Enabled = false;
+      this.buttonStop.Location = new System.Drawing.Point(1017, 89);
+      this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonStop.Name = "buttonStop";
+      this.buttonStop.Size = new System.Drawing.Size(81, 26);
+      this.buttonStop.TabIndex = 13;
+      this.buttonStop.Text = "Stop";
+      this.buttonStop.UseVisualStyleBackColor = true;
+      // 
+      // buttonSearch
+      // 
+      this.buttonSearch.Location = new System.Drawing.Point(1017, 46);
+      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonSearch.Name = "buttonSearch";
+      this.buttonSearch.Size = new System.Drawing.Size(81, 26);
+      this.buttonSearch.TabIndex = 12;
+      this.buttonSearch.Text = "Search";
+      this.buttonSearch.UseVisualStyleBackColor = true;
       // 
       // statusStripMain
       // 
@@ -670,6 +664,7 @@
       this.Text = "Fred Ultra File Search";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMain_Load);
+      this.ClientSizeChanged += new System.EventHandler(this.FormMain_ClientSizeChanged);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.tabControlMain.ResumeLayout(false);

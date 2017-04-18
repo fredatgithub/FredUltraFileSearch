@@ -41,6 +41,7 @@ namespace FredUltraFileSearch
     public readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+    private byte padding = 25;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -723,6 +724,23 @@ namespace FredUltraFileSearch
       {
         // do something
       }
+    }
+
+    private void FormMain_ClientSizeChanged(object sender, EventArgs e)
+    {
+      if (this.Width < 750)
+      {
+        this.Width = 750;
+      }
+
+      if (this.Height < 500)
+      {
+        this.Height = 500;
+      }
+
+      buttonSearch.Left = this.Width - buttonSearch.Width - padding;
+      buttonReset.Left = this.Width - buttonReset.Width - padding;
+      buttonStop.Left = this.Width - buttonStop.Width - padding;
     }
   }
 }
