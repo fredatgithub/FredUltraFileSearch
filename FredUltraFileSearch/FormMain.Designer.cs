@@ -28,6 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("N°");
+      System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Name");
+      System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Folder");
+      System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Size");
+      System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Modified Date");
+      System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Creation Date");
+      System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Ext");
+      System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Type");
+      System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Attributes");
+      System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Last Access Date");
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,23 +85,38 @@
       this.checkBoxSearchForFiles = new System.Windows.Forms.CheckBox();
       this.checkBoxAppendResults = new System.Windows.Forms.CheckBox();
       this.checkBoxIncludeHiddenFolders = new System.Windows.Forms.CheckBox();
-      this.textBox2 = new System.Windows.Forms.TextBox();
       this.buttonBrowsePath = new System.Windows.Forms.Button();
       this.labelStartingFolders = new System.Windows.Forms.Label();
       this.checkBoxScanInsubFolders = new System.Windows.Forms.CheckBox();
-      this.textBox1 = new System.Windows.Forms.TextBox();
       this.labelFileNames = new System.Windows.Forms.Label();
       this.tabPageContaining = new System.Windows.Forms.TabPage();
       this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
-      this.listView1 = new System.Windows.Forms.ListView();
+      this.listViewResult = new System.Windows.Forms.ListView();
       this.buttonReset = new System.Windows.Forms.Button();
       this.buttonStop = new System.Windows.Forms.Button();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
+      this.comboBoxFileName = new System.Windows.Forms.ComboBox();
+      this.comboBoxStartingFolder = new System.Windows.Forms.ComboBox();
+      this.comboBoxSearchText = new System.Windows.Forms.ComboBox();
+      this.labelContainingTextMode = new System.Windows.Forms.Label();
+      this.comboBoxContainingTextMode = new System.Windows.Forms.ComboBox();
+      this.checkBoxSkipAudioFiles = new System.Windows.Forms.CheckBox();
+      this.checkBoxSkipImageFiles = new System.Windows.Forms.CheckBox();
+      this.checkBoxSkipVideoFiles = new System.Windows.Forms.CheckBox();
+      this.checkBoxSkipSystemFiles = new System.Windows.Forms.CheckBox();
+      this.checkBoxSkipHiddenFiles = new System.Windows.Forms.CheckBox();
+      this.labelSearchText = new System.Windows.Forms.Label();
+      this.radioButtonContainingTextMatchAny = new System.Windows.Forms.RadioButton();
+      this.radioButtonContainingTextMatchAll = new System.Windows.Forms.RadioButton();
+      this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
+      this.checkBoxwholeWords = new System.Windows.Forms.CheckBox();
+      this.checkBoxWithout = new System.Windows.Forms.CheckBox();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
       this.panel1.SuspendLayout();
+      this.tabPageContaining.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -418,6 +443,8 @@
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.comboBoxStartingFolder);
+      this.panel1.Controls.Add(this.comboBoxFileName);
       this.panel1.Controls.Add(this.labelSelect);
       this.panel1.Controls.Add(this.labelMode);
       this.panel1.Controls.Add(this.comboBoxMode);
@@ -425,11 +452,9 @@
       this.panel1.Controls.Add(this.checkBoxSearchForFiles);
       this.panel1.Controls.Add(this.checkBoxAppendResults);
       this.panel1.Controls.Add(this.checkBoxIncludeHiddenFolders);
-      this.panel1.Controls.Add(this.textBox2);
       this.panel1.Controls.Add(this.buttonBrowsePath);
       this.panel1.Controls.Add(this.labelStartingFolders);
       this.panel1.Controls.Add(this.checkBoxScanInsubFolders);
-      this.panel1.Controls.Add(this.textBox1);
       this.panel1.Controls.Add(this.labelFileNames);
       this.panel1.Location = new System.Drawing.Point(2, 2);
       this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -474,6 +499,8 @@
       // checkBoxSearchForFolders
       // 
       this.checkBoxSearchForFolders.AutoSize = true;
+      this.checkBoxSearchForFolders.Checked = true;
+      this.checkBoxSearchForFolders.CheckState = System.Windows.Forms.CheckState.Checked;
       this.checkBoxSearchForFolders.Location = new System.Drawing.Point(174, 169);
       this.checkBoxSearchForFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSearchForFolders.Name = "checkBoxSearchForFolders";
@@ -485,6 +512,8 @@
       // checkBoxSearchForFiles
       // 
       this.checkBoxSearchForFiles.AutoSize = true;
+      this.checkBoxSearchForFiles.Checked = true;
+      this.checkBoxSearchForFiles.CheckState = System.Windows.Forms.CheckState.Checked;
       this.checkBoxSearchForFiles.Location = new System.Drawing.Point(16, 169);
       this.checkBoxSearchForFiles.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSearchForFiles.Name = "checkBoxSearchForFiles";
@@ -507,6 +536,8 @@
       // checkBoxIncludeHiddenFolders
       // 
       this.checkBoxIncludeHiddenFolders.AutoSize = true;
+      this.checkBoxIncludeHiddenFolders.Checked = true;
+      this.checkBoxIncludeHiddenFolders.CheckState = System.Windows.Forms.CheckState.Checked;
       this.checkBoxIncludeHiddenFolders.Location = new System.Drawing.Point(174, 135);
       this.checkBoxIncludeHiddenFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxIncludeHiddenFolders.Name = "checkBoxIncludeHiddenFolders";
@@ -514,14 +545,6 @@
       this.checkBoxIncludeHiddenFolders.TabIndex = 8;
       this.checkBoxIncludeHiddenFolders.Text = "Include Hidden Folders";
       this.checkBoxIncludeHiddenFolders.UseVisualStyleBackColor = true;
-      // 
-      // textBox2
-      // 
-      this.textBox2.Location = new System.Drawing.Point(16, 100);
-      this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(448, 20);
-      this.textBox2.TabIndex = 5;
       // 
       // buttonBrowsePath
       // 
@@ -556,14 +579,6 @@
       this.checkBoxScanInsubFolders.Text = "Scan in Subfolders";
       this.checkBoxScanInsubFolders.UseVisualStyleBackColor = true;
       // 
-      // textBox1
-      // 
-      this.textBox1.Location = new System.Drawing.Point(16, 45);
-      this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(448, 20);
-      this.textBox1.TabIndex = 1;
-      // 
       // labelFileNames
       // 
       this.labelFileNames.AutoSize = true;
@@ -576,12 +591,26 @@
       // 
       // tabPageContaining
       // 
+      this.tabPageContaining.Controls.Add(this.checkBoxCaseSensitive);
+      this.tabPageContaining.Controls.Add(this.checkBoxwholeWords);
+      this.tabPageContaining.Controls.Add(this.checkBoxWithout);
+      this.tabPageContaining.Controls.Add(this.radioButtonContainingTextMatchAll);
+      this.tabPageContaining.Controls.Add(this.radioButtonContainingTextMatchAny);
+      this.tabPageContaining.Controls.Add(this.comboBoxSearchText);
+      this.tabPageContaining.Controls.Add(this.labelContainingTextMode);
+      this.tabPageContaining.Controls.Add(this.comboBoxContainingTextMode);
+      this.tabPageContaining.Controls.Add(this.checkBoxSkipAudioFiles);
+      this.tabPageContaining.Controls.Add(this.checkBoxSkipImageFiles);
+      this.tabPageContaining.Controls.Add(this.checkBoxSkipVideoFiles);
+      this.tabPageContaining.Controls.Add(this.checkBoxSkipSystemFiles);
+      this.tabPageContaining.Controls.Add(this.checkBoxSkipHiddenFiles);
+      this.tabPageContaining.Controls.Add(this.labelSearchText);
       this.tabPageContaining.Location = new System.Drawing.Point(4, 22);
       this.tabPageContaining.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageContaining.Name = "tabPageContaining";
       this.tabPageContaining.Size = new System.Drawing.Size(996, 216);
       this.tabPageContaining.TabIndex = 2;
-      this.tabPageContaining.Text = "Containing";
+      this.tabPageContaining.Text = "Containing Text";
       this.tabPageContaining.UseVisualStyleBackColor = true;
       // 
       // tabPageDateAndSize
@@ -594,16 +623,28 @@
       this.tabPageDateAndSize.Text = "Date and Size";
       this.tabPageDateAndSize.UseVisualStyleBackColor = true;
       // 
-      // listView1
+      // listViewResult
       // 
-      this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.listView1.Location = new System.Drawing.Point(0, 267);
-      this.listView1.Name = "listView1";
-      this.listView1.Size = new System.Drawing.Size(1109, 350);
-      this.listView1.TabIndex = 15;
-      this.listView1.UseCompatibleStateImageBehavior = false;
+      this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
+      this.listViewResult.Location = new System.Drawing.Point(0, 267);
+      this.listViewResult.Name = "listViewResult";
+      this.listViewResult.Size = new System.Drawing.Size(1109, 350);
+      this.listViewResult.TabIndex = 15;
+      this.listViewResult.UseCompatibleStateImageBehavior = false;
+      this.listViewResult.View = System.Windows.Forms.View.SmallIcon;
       // 
       // buttonReset
       // 
@@ -646,12 +687,193 @@
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
       // 
+      // comboBoxFileName
+      // 
+      this.comboBoxFileName.FormattingEnabled = true;
+      this.comboBoxFileName.Location = new System.Drawing.Point(16, 45);
+      this.comboBoxFileName.Name = "comboBoxFileName";
+      this.comboBoxFileName.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxFileName.TabIndex = 15;
+      // 
+      // comboBoxStartingFolder
+      // 
+      this.comboBoxStartingFolder.FormattingEnabled = true;
+      this.comboBoxStartingFolder.Location = new System.Drawing.Point(16, 97);
+      this.comboBoxStartingFolder.Name = "comboBoxStartingFolder";
+      this.comboBoxStartingFolder.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxStartingFolder.TabIndex = 16;
+      // 
+      // comboBoxSearchText
+      // 
+      this.comboBoxSearchText.FormattingEnabled = true;
+      this.comboBoxSearchText.Location = new System.Drawing.Point(31, 52);
+      this.comboBoxSearchText.Name = "comboBoxSearchText";
+      this.comboBoxSearchText.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxSearchText.TabIndex = 24;
+      // 
+      // labelContainingTextMode
+      // 
+      this.labelContainingTextMode.AutoSize = true;
+      this.labelContainingTextMode.Location = new System.Drawing.Point(499, 31);
+      this.labelContainingTextMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.labelContainingTextMode.Name = "labelContainingTextMode";
+      this.labelContainingTextMode.Size = new System.Drawing.Size(34, 13);
+      this.labelContainingTextMode.TabIndex = 23;
+      this.labelContainingTextMode.Text = "Mode";
+      // 
+      // comboBoxContainingTextMode
+      // 
+      this.comboBoxContainingTextMode.BackColor = System.Drawing.SystemColors.ControlDark;
+      this.comboBoxContainingTextMode.FormattingEnabled = true;
+      this.comboBoxContainingTextMode.Items.AddRange(new object[] {
+            "Words",
+            "Phrases"});
+      this.comboBoxContainingTextMode.Location = new System.Drawing.Point(502, 52);
+      this.comboBoxContainingTextMode.Margin = new System.Windows.Forms.Padding(2);
+      this.comboBoxContainingTextMode.Name = "comboBoxContainingTextMode";
+      this.comboBoxContainingTextMode.Size = new System.Drawing.Size(92, 21);
+      this.comboBoxContainingTextMode.TabIndex = 22;
+      this.comboBoxContainingTextMode.Text = "Words";
+      // 
+      // checkBoxSkipAudioFiles
+      // 
+      this.checkBoxSkipAudioFiles.AutoSize = true;
+      this.checkBoxSkipAudioFiles.Checked = true;
+      this.checkBoxSkipAudioFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxSkipAudioFiles.Location = new System.Drawing.Point(187, 156);
+      this.checkBoxSkipAudioFiles.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSkipAudioFiles.Name = "checkBoxSkipAudioFiles";
+      this.checkBoxSkipAudioFiles.Size = new System.Drawing.Size(98, 17);
+      this.checkBoxSkipAudioFiles.TabIndex = 21;
+      this.checkBoxSkipAudioFiles.Text = "Skip Audio files";
+      this.checkBoxSkipAudioFiles.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxSkipImageFiles
+      // 
+      this.checkBoxSkipImageFiles.AutoSize = true;
+      this.checkBoxSkipImageFiles.Checked = true;
+      this.checkBoxSkipImageFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxSkipImageFiles.Location = new System.Drawing.Point(29, 156);
+      this.checkBoxSkipImageFiles.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSkipImageFiles.Name = "checkBoxSkipImageFiles";
+      this.checkBoxSkipImageFiles.Size = new System.Drawing.Size(103, 17);
+      this.checkBoxSkipImageFiles.TabIndex = 20;
+      this.checkBoxSkipImageFiles.Text = "Skip Image Files";
+      this.checkBoxSkipImageFiles.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxSkipVideoFiles
+      // 
+      this.checkBoxSkipVideoFiles.AutoSize = true;
+      this.checkBoxSkipVideoFiles.Location = new System.Drawing.Point(350, 156);
+      this.checkBoxSkipVideoFiles.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSkipVideoFiles.Name = "checkBoxSkipVideoFiles";
+      this.checkBoxSkipVideoFiles.Size = new System.Drawing.Size(101, 17);
+      this.checkBoxSkipVideoFiles.TabIndex = 19;
+      this.checkBoxSkipVideoFiles.Text = "Skip Video Files";
+      this.checkBoxSkipVideoFiles.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxSkipSystemFiles
+      // 
+      this.checkBoxSkipSystemFiles.AutoSize = true;
+      this.checkBoxSkipSystemFiles.Checked = true;
+      this.checkBoxSkipSystemFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxSkipSystemFiles.Location = new System.Drawing.Point(187, 122);
+      this.checkBoxSkipSystemFiles.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSkipSystemFiles.Name = "checkBoxSkipSystemFiles";
+      this.checkBoxSkipSystemFiles.Size = new System.Drawing.Size(108, 17);
+      this.checkBoxSkipSystemFiles.TabIndex = 18;
+      this.checkBoxSkipSystemFiles.Text = "Skip System Files";
+      this.checkBoxSkipSystemFiles.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxSkipHiddenFiles
+      // 
+      this.checkBoxSkipHiddenFiles.AutoSize = true;
+      this.checkBoxSkipHiddenFiles.Checked = true;
+      this.checkBoxSkipHiddenFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxSkipHiddenFiles.Location = new System.Drawing.Point(29, 122);
+      this.checkBoxSkipHiddenFiles.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSkipHiddenFiles.Name = "checkBoxSkipHiddenFiles";
+      this.checkBoxSkipHiddenFiles.Size = new System.Drawing.Size(108, 17);
+      this.checkBoxSkipHiddenFiles.TabIndex = 17;
+      this.checkBoxSkipHiddenFiles.Text = "Skip Hidden Files";
+      this.checkBoxSkipHiddenFiles.UseVisualStyleBackColor = true;
+      // 
+      // labelSearchText
+      // 
+      this.labelSearchText.AutoSize = true;
+      this.labelSearchText.Location = new System.Drawing.Point(28, 24);
+      this.labelSearchText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.labelSearchText.Name = "labelSearchText";
+      this.labelSearchText.Size = new System.Drawing.Size(76, 13);
+      this.labelSearchText.TabIndex = 16;
+      this.labelSearchText.Text = "Search Text(s)";
+      // 
+      // radioButtonContainingTextMatchAny
+      // 
+      this.radioButtonContainingTextMatchAny.AutoSize = true;
+      this.radioButtonContainingTextMatchAny.Location = new System.Drawing.Point(31, 89);
+      this.radioButtonContainingTextMatchAny.Name = "radioButtonContainingTextMatchAny";
+      this.radioButtonContainingTextMatchAny.Size = new System.Drawing.Size(76, 17);
+      this.radioButtonContainingTextMatchAny.TabIndex = 25;
+      this.radioButtonContainingTextMatchAny.TabStop = true;
+      this.radioButtonContainingTextMatchAny.Text = "Match Any";
+      this.radioButtonContainingTextMatchAny.UseVisualStyleBackColor = true;
+      // 
+      // radioButtonContainingTextMatchAll
+      // 
+      this.radioButtonContainingTextMatchAll.AutoSize = true;
+      this.radioButtonContainingTextMatchAll.Checked = true;
+      this.radioButtonContainingTextMatchAll.Location = new System.Drawing.Point(113, 89);
+      this.radioButtonContainingTextMatchAll.Name = "radioButtonContainingTextMatchAll";
+      this.radioButtonContainingTextMatchAll.Size = new System.Drawing.Size(69, 17);
+      this.radioButtonContainingTextMatchAll.TabIndex = 26;
+      this.radioButtonContainingTextMatchAll.TabStop = true;
+      this.radioButtonContainingTextMatchAll.Text = "Match All";
+      this.radioButtonContainingTextMatchAll.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxCaseSensitive
+      // 
+      this.checkBoxCaseSensitive.AutoSize = true;
+      this.checkBoxCaseSensitive.Checked = true;
+      this.checkBoxCaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxCaseSensitive.Location = new System.Drawing.Point(352, 90);
+      this.checkBoxCaseSensitive.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxCaseSensitive.Name = "checkBoxCaseSensitive";
+      this.checkBoxCaseSensitive.Size = new System.Drawing.Size(96, 17);
+      this.checkBoxCaseSensitive.TabIndex = 29;
+      this.checkBoxCaseSensitive.Text = "Case Sensitive";
+      this.checkBoxCaseSensitive.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxwholeWords
+      // 
+      this.checkBoxwholeWords.AutoSize = true;
+      this.checkBoxwholeWords.Checked = true;
+      this.checkBoxwholeWords.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxwholeWords.Location = new System.Drawing.Point(194, 90);
+      this.checkBoxwholeWords.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxwholeWords.Name = "checkBoxwholeWords";
+      this.checkBoxwholeWords.Size = new System.Drawing.Size(91, 17);
+      this.checkBoxwholeWords.TabIndex = 28;
+      this.checkBoxwholeWords.Text = "Whole Words";
+      this.checkBoxwholeWords.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxWithout
+      // 
+      this.checkBoxWithout.AutoSize = true;
+      this.checkBoxWithout.Location = new System.Drawing.Point(515, 90);
+      this.checkBoxWithout.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxWithout.Name = "checkBoxWithout";
+      this.checkBoxWithout.Size = new System.Drawing.Size(63, 17);
+      this.checkBoxWithout.TabIndex = 27;
+      this.checkBoxWithout.Text = "Without";
+      this.checkBoxWithout.UseVisualStyleBackColor = true;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1109, 642);
-      this.Controls.Add(this.listView1);
+      this.Controls.Add(this.listViewResult);
       this.Controls.Add(this.statusStripMain);
       this.Controls.Add(this.buttonReset);
       this.Controls.Add(this.tabControlMain);
@@ -671,6 +893,8 @@
       this.tabPageFilesAndFolders.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
+      this.tabPageContaining.ResumeLayout(false);
+      this.tabPageContaining.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -729,14 +953,28 @@
     private System.Windows.Forms.CheckBox checkBoxSearchForFiles;
     private System.Windows.Forms.CheckBox checkBoxAppendResults;
     private System.Windows.Forms.CheckBox checkBoxIncludeHiddenFolders;
-    private System.Windows.Forms.TextBox textBox2;
     private System.Windows.Forms.Button buttonBrowsePath;
     private System.Windows.Forms.Label labelStartingFolders;
     private System.Windows.Forms.CheckBox checkBoxScanInsubFolders;
-    private System.Windows.Forms.TextBox textBox1;
     private System.Windows.Forms.Label labelFileNames;
-    private System.Windows.Forms.ListView listView1;
+    private System.Windows.Forms.ListView listViewResult;
     private System.Windows.Forms.Label labelSelect;
     private System.Windows.Forms.Label labelMode;
+    private System.Windows.Forms.ComboBox comboBoxStartingFolder;
+    private System.Windows.Forms.ComboBox comboBoxFileName;
+    private System.Windows.Forms.CheckBox checkBoxCaseSensitive;
+    private System.Windows.Forms.CheckBox checkBoxwholeWords;
+    private System.Windows.Forms.CheckBox checkBoxWithout;
+    private System.Windows.Forms.RadioButton radioButtonContainingTextMatchAll;
+    private System.Windows.Forms.RadioButton radioButtonContainingTextMatchAny;
+    private System.Windows.Forms.ComboBox comboBoxSearchText;
+    private System.Windows.Forms.Label labelContainingTextMode;
+    private System.Windows.Forms.ComboBox comboBoxContainingTextMode;
+    private System.Windows.Forms.CheckBox checkBoxSkipAudioFiles;
+    private System.Windows.Forms.CheckBox checkBoxSkipImageFiles;
+    private System.Windows.Forms.CheckBox checkBoxSkipVideoFiles;
+    private System.Windows.Forms.CheckBox checkBoxSkipSystemFiles;
+    private System.Windows.Forms.CheckBox checkBoxSkipHiddenFiles;
+    private System.Windows.Forms.Label labelSearchText;
   }
 }
