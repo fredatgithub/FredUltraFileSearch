@@ -78,6 +78,8 @@
       this.tabControlMain = new System.Windows.Forms.TabControl();
       this.tabPageFilesAndFolders = new System.Windows.Forms.TabPage();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.comboBoxStartingFolder = new System.Windows.Forms.ComboBox();
+      this.comboBoxFileName = new System.Windows.Forms.ComboBox();
       this.labelSelect = new System.Windows.Forms.Label();
       this.labelMode = new System.Windows.Forms.Label();
       this.comboBoxMode = new System.Windows.Forms.ComboBox();
@@ -90,14 +92,11 @@
       this.checkBoxScanInsubFolders = new System.Windows.Forms.CheckBox();
       this.labelFileNames = new System.Windows.Forms.Label();
       this.tabPageContaining = new System.Windows.Forms.TabPage();
-      this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
-      this.listViewResult = new System.Windows.Forms.ListView();
-      this.buttonReset = new System.Windows.Forms.Button();
-      this.buttonStop = new System.Windows.Forms.Button();
-      this.buttonSearch = new System.Windows.Forms.Button();
-      this.statusStripMain = new System.Windows.Forms.StatusStrip();
-      this.comboBoxFileName = new System.Windows.Forms.ComboBox();
-      this.comboBoxStartingFolder = new System.Windows.Forms.ComboBox();
+      this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
+      this.checkBoxwholeWords = new System.Windows.Forms.CheckBox();
+      this.checkBoxWithout = new System.Windows.Forms.CheckBox();
+      this.radioButtonContainingTextMatchAll = new System.Windows.Forms.RadioButton();
+      this.radioButtonContainingTextMatchAny = new System.Windows.Forms.RadioButton();
       this.comboBoxSearchText = new System.Windows.Forms.ComboBox();
       this.labelContainingTextMode = new System.Windows.Forms.Label();
       this.comboBoxContainingTextMode = new System.Windows.Forms.ComboBox();
@@ -107,34 +106,71 @@
       this.checkBoxSkipSystemFiles = new System.Windows.Forms.CheckBox();
       this.checkBoxSkipHiddenFiles = new System.Windows.Forms.CheckBox();
       this.labelSearchText = new System.Windows.Forms.Label();
-      this.radioButtonContainingTextMatchAny = new System.Windows.Forms.RadioButton();
-      this.radioButtonContainingTextMatchAll = new System.Windows.Forms.RadioButton();
-      this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
-      this.checkBoxwholeWords = new System.Windows.Forms.CheckBox();
-      this.checkBoxWithout = new System.Windows.Forms.CheckBox();
-      this.checkBoxDate = new System.Windows.Forms.CheckBox();
-      this.checkBoxDateModified = new System.Windows.Forms.CheckBox();
-      this.checkBoxDateCreation = new System.Windows.Forms.CheckBox();
-      this.checkBoxDateLastAccess = new System.Windows.Forms.CheckBox();
-      this.comboBoxDateModifiedBetween = new System.Windows.Forms.ComboBox();
-      this.comboBoxDateCreationBetween = new System.Windows.Forms.ComboBox();
-      this.comboBoxDateLastAccessBetween = new System.Windows.Forms.ComboBox();
-      this.dateTimePickerDateModifiedStart = new System.Windows.Forms.DateTimePicker();
-      this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
-      this.dateTimePickerDateCreationStart = new System.Windows.Forms.DateTimePicker();
-      this.dateTimePickerDateLastAccessStart = new System.Windows.Forms.DateTimePicker();
-      this.labelAndDateModified = new System.Windows.Forms.Label();
-      this.labelAndDateCreation = new System.Windows.Forms.Label();
-      this.labelAndDateLastAccess = new System.Windows.Forms.Label();
+      this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
+      this.checkBoxSize = new System.Windows.Forms.CheckBox();
+      this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedEndSecond = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedEndMinute = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedEndHour = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedStartSecond = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedStartMinute = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateModifiedStartHour = new System.Windows.Forms.NumericUpDown();
       this.dateTimePickerDateLastAccessEnd = new System.Windows.Forms.DateTimePicker();
       this.dateTimePickerDateCreationEnd = new System.Windows.Forms.DateTimePicker();
       this.dateTimePickerDateModifiedEnd = new System.Windows.Forms.DateTimePicker();
+      this.labelAndDateLastAccess = new System.Windows.Forms.Label();
+      this.labelAndDateCreation = new System.Windows.Forms.Label();
+      this.labelAndDateModified = new System.Windows.Forms.Label();
+      this.dateTimePickerDateLastAccessStart = new System.Windows.Forms.DateTimePicker();
+      this.dateTimePickerDateCreationStart = new System.Windows.Forms.DateTimePicker();
+      this.dateTimePickerDateModifiedStart = new System.Windows.Forms.DateTimePicker();
+      this.comboBoxDateLastAccessBetween = new System.Windows.Forms.ComboBox();
+      this.comboBoxDateCreationBetween = new System.Windows.Forms.ComboBox();
+      this.comboBoxDateModifiedBetween = new System.Windows.Forms.ComboBox();
+      this.checkBoxDateLastAccess = new System.Windows.Forms.CheckBox();
+      this.checkBoxDateCreation = new System.Windows.Forms.CheckBox();
+      this.checkBoxDateModified = new System.Windows.Forms.CheckBox();
+      this.checkBoxDate = new System.Windows.Forms.CheckBox();
+      this.listViewResult = new System.Windows.Forms.ListView();
+      this.buttonReset = new System.Windows.Forms.Button();
+      this.buttonStop = new System.Windows.Forms.Button();
+      this.buttonSearch = new System.Windows.Forms.Button();
+      this.statusStripMain = new System.Windows.Forms.StatusStrip();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
       this.panel1.SuspendLayout();
       this.tabPageContaining.SuspendLayout();
       this.tabPageDateAndSize.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndSecond)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndMinute)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndHour)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -323,13 +359,13 @@
       // personalizeToolStripMenuItem
       // 
       this.personalizeToolStripMenuItem.Name = "personalizeToolStripMenuItem";
-      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
       this.personalizeToolStripMenuItem.Text = "&Personnaliser";
       // 
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
       // 
@@ -347,14 +383,14 @@
       this.frenchToolStripMenuItem.Checked = true;
       this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
       this.frenchToolStripMenuItem.Text = "Français";
       this.frenchToolStripMenuItem.Click += new System.EventHandler(this.frenchToolStripMenuItem_Click);
       // 
       // englishToolStripMenuItem
       // 
       this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-      this.englishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.englishToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
       this.englishToolStripMenuItem.Text = "Anglais";
       this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
       // 
@@ -373,21 +409,21 @@
       this.SmallToolStripMenuItem.Checked = true;
       this.SmallToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.SmallToolStripMenuItem.Name = "SmallToolStripMenuItem";
-      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
       this.SmallToolStripMenuItem.Text = "Petit";
       this.SmallToolStripMenuItem.Click += new System.EventHandler(this.SmallToolStripMenuItem_Click);
       // 
       // MediumToolStripMenuItem
       // 
       this.MediumToolStripMenuItem.Name = "MediumToolStripMenuItem";
-      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
       this.MediumToolStripMenuItem.Text = "Moyen";
       this.MediumToolStripMenuItem.Click += new System.EventHandler(this.MediumToolStripMenuItem_Click);
       // 
       // LargeToolStripMenuItem
       // 
       this.LargeToolStripMenuItem.Name = "LargeToolStripMenuItem";
-      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
       this.LargeToolStripMenuItem.Text = "Grand";
       this.LargeToolStripMenuItem.Click += new System.EventHandler(this.LargeToolStripMenuItem_Click);
       // 
@@ -406,30 +442,30 @@
       // summaryToolStripMenuItem
       // 
       this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.summaryToolStripMenuItem.Text = "&Sommaire";
       // 
       // indexToolStripMenuItem
       // 
       this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-      this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.indexToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.indexToolStripMenuItem.Text = "&Index";
       // 
       // searchToolStripMenuItem
       // 
       this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-      this.searchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.searchToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.searchToolStripMenuItem.Text = "&Rechercher";
       // 
       // toolStripSeparator5
       // 
       this.toolStripSeparator5.Name = "toolStripSeparator5";
-      this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+      this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
       // 
       // aboutToolStripMenuItem
       // 
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
@@ -479,6 +515,22 @@
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(822, 207);
       this.panel1.TabIndex = 4;
+      // 
+      // comboBoxStartingFolder
+      // 
+      this.comboBoxStartingFolder.FormattingEnabled = true;
+      this.comboBoxStartingFolder.Location = new System.Drawing.Point(16, 97);
+      this.comboBoxStartingFolder.Name = "comboBoxStartingFolder";
+      this.comboBoxStartingFolder.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxStartingFolder.TabIndex = 16;
+      // 
+      // comboBoxFileName
+      // 
+      this.comboBoxFileName.FormattingEnabled = true;
+      this.comboBoxFileName.Location = new System.Drawing.Point(16, 45);
+      this.comboBoxFileName.Name = "comboBoxFileName";
+      this.comboBoxFileName.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxFileName.TabIndex = 15;
       // 
       // labelSelect
       // 
@@ -631,112 +683,64 @@
       this.tabPageContaining.Text = "Containing Text";
       this.tabPageContaining.UseVisualStyleBackColor = true;
       // 
-      // tabPageDateAndSize
+      // checkBoxCaseSensitive
       // 
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessEnd);
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationEnd);
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedEnd);
-      this.tabPageDateAndSize.Controls.Add(this.labelAndDateLastAccess);
-      this.tabPageDateAndSize.Controls.Add(this.labelAndDateCreation);
-      this.tabPageDateAndSize.Controls.Add(this.labelAndDateModified);
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessStart);
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationStart);
-      this.tabPageDateAndSize.Controls.Add(this.domainUpDown1);
-      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedStart);
-      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateLastAccessBetween);
-      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateCreationBetween);
-      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateModifiedBetween);
-      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateLastAccess);
-      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateCreation);
-      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateModified);
-      this.tabPageDateAndSize.Controls.Add(this.checkBoxDate);
-      this.tabPageDateAndSize.Location = new System.Drawing.Point(4, 22);
-      this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2);
-      this.tabPageDateAndSize.Name = "tabPageDateAndSize";
-      this.tabPageDateAndSize.Size = new System.Drawing.Size(996, 216);
-      this.tabPageDateAndSize.TabIndex = 3;
-      this.tabPageDateAndSize.Text = "Date and Size";
-      this.tabPageDateAndSize.UseVisualStyleBackColor = true;
+      this.checkBoxCaseSensitive.AutoSize = true;
+      this.checkBoxCaseSensitive.Checked = true;
+      this.checkBoxCaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxCaseSensitive.Location = new System.Drawing.Point(352, 90);
+      this.checkBoxCaseSensitive.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxCaseSensitive.Name = "checkBoxCaseSensitive";
+      this.checkBoxCaseSensitive.Size = new System.Drawing.Size(96, 17);
+      this.checkBoxCaseSensitive.TabIndex = 29;
+      this.checkBoxCaseSensitive.Text = "Case Sensitive";
+      this.checkBoxCaseSensitive.UseVisualStyleBackColor = true;
       // 
-      // listViewResult
+      // checkBoxwholeWords
       // 
-      this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
-      this.listViewResult.Location = new System.Drawing.Point(0, 267);
-      this.listViewResult.Name = "listViewResult";
-      this.listViewResult.Size = new System.Drawing.Size(1109, 350);
-      this.listViewResult.TabIndex = 15;
-      this.listViewResult.UseCompatibleStateImageBehavior = false;
-      this.listViewResult.View = System.Windows.Forms.View.SmallIcon;
+      this.checkBoxwholeWords.AutoSize = true;
+      this.checkBoxwholeWords.Checked = true;
+      this.checkBoxwholeWords.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxwholeWords.Location = new System.Drawing.Point(194, 90);
+      this.checkBoxwholeWords.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxwholeWords.Name = "checkBoxwholeWords";
+      this.checkBoxwholeWords.Size = new System.Drawing.Size(91, 17);
+      this.checkBoxwholeWords.TabIndex = 28;
+      this.checkBoxwholeWords.Text = "Whole Words";
+      this.checkBoxwholeWords.UseVisualStyleBackColor = true;
       // 
-      // buttonReset
+      // checkBoxWithout
       // 
-      this.buttonReset.Location = new System.Drawing.Point(1017, 229);
-      this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonReset.Name = "buttonReset";
-      this.buttonReset.Size = new System.Drawing.Size(81, 26);
-      this.buttonReset.TabIndex = 14;
-      this.buttonReset.Text = "Reset";
-      this.buttonReset.UseVisualStyleBackColor = true;
+      this.checkBoxWithout.AutoSize = true;
+      this.checkBoxWithout.Location = new System.Drawing.Point(515, 90);
+      this.checkBoxWithout.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxWithout.Name = "checkBoxWithout";
+      this.checkBoxWithout.Size = new System.Drawing.Size(63, 17);
+      this.checkBoxWithout.TabIndex = 27;
+      this.checkBoxWithout.Text = "Without";
+      this.checkBoxWithout.UseVisualStyleBackColor = true;
       // 
-      // buttonStop
+      // radioButtonContainingTextMatchAll
       // 
-      this.buttonStop.Enabled = false;
-      this.buttonStop.Location = new System.Drawing.Point(1017, 89);
-      this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonStop.Name = "buttonStop";
-      this.buttonStop.Size = new System.Drawing.Size(81, 26);
-      this.buttonStop.TabIndex = 13;
-      this.buttonStop.Text = "Stop";
-      this.buttonStop.UseVisualStyleBackColor = true;
+      this.radioButtonContainingTextMatchAll.AutoSize = true;
+      this.radioButtonContainingTextMatchAll.Checked = true;
+      this.radioButtonContainingTextMatchAll.Location = new System.Drawing.Point(113, 89);
+      this.radioButtonContainingTextMatchAll.Name = "radioButtonContainingTextMatchAll";
+      this.radioButtonContainingTextMatchAll.Size = new System.Drawing.Size(69, 17);
+      this.radioButtonContainingTextMatchAll.TabIndex = 26;
+      this.radioButtonContainingTextMatchAll.TabStop = true;
+      this.radioButtonContainingTextMatchAll.Text = "Match All";
+      this.radioButtonContainingTextMatchAll.UseVisualStyleBackColor = true;
       // 
-      // buttonSearch
+      // radioButtonContainingTextMatchAny
       // 
-      this.buttonSearch.Location = new System.Drawing.Point(1017, 46);
-      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
-      this.buttonSearch.Name = "buttonSearch";
-      this.buttonSearch.Size = new System.Drawing.Size(81, 26);
-      this.buttonSearch.TabIndex = 12;
-      this.buttonSearch.Text = "Search";
-      this.buttonSearch.UseVisualStyleBackColor = true;
-      // 
-      // statusStripMain
-      // 
-      this.statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-      this.statusStripMain.Location = new System.Drawing.Point(0, 620);
-      this.statusStripMain.Name = "statusStripMain";
-      this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-      this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
-      this.statusStripMain.TabIndex = 3;
-      this.statusStripMain.Text = "statusStrip1";
-      // 
-      // comboBoxFileName
-      // 
-      this.comboBoxFileName.FormattingEnabled = true;
-      this.comboBoxFileName.Location = new System.Drawing.Point(16, 45);
-      this.comboBoxFileName.Name = "comboBoxFileName";
-      this.comboBoxFileName.Size = new System.Drawing.Size(448, 21);
-      this.comboBoxFileName.TabIndex = 15;
-      // 
-      // comboBoxStartingFolder
-      // 
-      this.comboBoxStartingFolder.FormattingEnabled = true;
-      this.comboBoxStartingFolder.Location = new System.Drawing.Point(16, 97);
-      this.comboBoxStartingFolder.Name = "comboBoxStartingFolder";
-      this.comboBoxStartingFolder.Size = new System.Drawing.Size(448, 21);
-      this.comboBoxStartingFolder.TabIndex = 16;
+      this.radioButtonContainingTextMatchAny.AutoSize = true;
+      this.radioButtonContainingTextMatchAny.Location = new System.Drawing.Point(31, 89);
+      this.radioButtonContainingTextMatchAny.Name = "radioButtonContainingTextMatchAny";
+      this.radioButtonContainingTextMatchAny.Size = new System.Drawing.Size(76, 17);
+      this.radioButtonContainingTextMatchAny.TabIndex = 25;
+      this.radioButtonContainingTextMatchAny.Text = "Match Any";
+      this.radioButtonContainingTextMatchAny.UseVisualStyleBackColor = true;
       // 
       // comboBoxSearchText
       // 
@@ -843,76 +847,451 @@
       this.labelSearchText.TabIndex = 16;
       this.labelSearchText.Text = "Search Text(s)";
       // 
-      // radioButtonContainingTextMatchAny
+      // tabPageDateAndSize
       // 
-      this.radioButtonContainingTextMatchAny.AutoSize = true;
-      this.radioButtonContainingTextMatchAny.Location = new System.Drawing.Point(31, 89);
-      this.radioButtonContainingTextMatchAny.Name = "radioButtonContainingTextMatchAny";
-      this.radioButtonContainingTextMatchAny.Size = new System.Drawing.Size(76, 17);
-      this.radioButtonContainingTextMatchAny.TabIndex = 25;
-      this.radioButtonContainingTextMatchAny.Text = "Match Any";
-      this.radioButtonContainingTextMatchAny.UseVisualStyleBackColor = true;
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxSize);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown13);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown14);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown15);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown10);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown11);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown12);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedEndSecond);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedEndMinute);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedEndHour);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown4);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown5);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown6);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown1);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown2);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDown3);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartSecond);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartMinute);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartHour);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessEnd);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationEnd);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedEnd);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateLastAccess);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateCreation);
+      this.tabPageDateAndSize.Controls.Add(this.labelAndDateModified);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateLastAccessStart);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateCreationStart);
+      this.tabPageDateAndSize.Controls.Add(this.dateTimePickerDateModifiedStart);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateLastAccessBetween);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateCreationBetween);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxDateModifiedBetween);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateLastAccess);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateCreation);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDateModified);
+      this.tabPageDateAndSize.Controls.Add(this.checkBoxDate);
+      this.tabPageDateAndSize.Location = new System.Drawing.Point(4, 22);
+      this.tabPageDateAndSize.Margin = new System.Windows.Forms.Padding(2);
+      this.tabPageDateAndSize.Name = "tabPageDateAndSize";
+      this.tabPageDateAndSize.Size = new System.Drawing.Size(996, 216);
+      this.tabPageDateAndSize.TabIndex = 3;
+      this.tabPageDateAndSize.Text = "Date and Size";
+      this.tabPageDateAndSize.UseVisualStyleBackColor = true;
       // 
-      // radioButtonContainingTextMatchAll
+      // checkBoxSize
       // 
-      this.radioButtonContainingTextMatchAll.AutoSize = true;
-      this.radioButtonContainingTextMatchAll.Checked = true;
-      this.radioButtonContainingTextMatchAll.Location = new System.Drawing.Point(113, 89);
-      this.radioButtonContainingTextMatchAll.Name = "radioButtonContainingTextMatchAll";
-      this.radioButtonContainingTextMatchAll.Size = new System.Drawing.Size(69, 17);
-      this.radioButtonContainingTextMatchAll.TabIndex = 26;
-      this.radioButtonContainingTextMatchAll.TabStop = true;
-      this.radioButtonContainingTextMatchAll.Text = "Match All";
-      this.radioButtonContainingTextMatchAll.UseVisualStyleBackColor = true;
+      this.checkBoxSize.AutoSize = true;
+      this.checkBoxSize.Location = new System.Drawing.Point(22, 183);
+      this.checkBoxSize.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxSize.Name = "checkBoxSize";
+      this.checkBoxSize.Size = new System.Drawing.Size(46, 17);
+      this.checkBoxSize.TabIndex = 53;
+      this.checkBoxSize.Text = "Size";
+      this.checkBoxSize.UseVisualStyleBackColor = true;
       // 
-      // checkBoxCaseSensitive
+      // numericUpDown13
       // 
-      this.checkBoxCaseSensitive.AutoSize = true;
-      this.checkBoxCaseSensitive.Checked = true;
-      this.checkBoxCaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxCaseSensitive.Location = new System.Drawing.Point(352, 90);
-      this.checkBoxCaseSensitive.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxCaseSensitive.Name = "checkBoxCaseSensitive";
-      this.checkBoxCaseSensitive.Size = new System.Drawing.Size(96, 17);
-      this.checkBoxCaseSensitive.TabIndex = 29;
-      this.checkBoxCaseSensitive.Text = "Case Sensitive";
-      this.checkBoxCaseSensitive.UseVisualStyleBackColor = true;
+      this.numericUpDown13.Enabled = false;
+      this.numericUpDown13.Location = new System.Drawing.Point(913, 116);
+      this.numericUpDown13.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown13.Name = "numericUpDown13";
+      this.numericUpDown13.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown13.TabIndex = 52;
       // 
-      // checkBoxwholeWords
+      // numericUpDown14
       // 
-      this.checkBoxwholeWords.AutoSize = true;
-      this.checkBoxwholeWords.Checked = true;
-      this.checkBoxwholeWords.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxwholeWords.Location = new System.Drawing.Point(194, 90);
-      this.checkBoxwholeWords.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxwholeWords.Name = "checkBoxwholeWords";
-      this.checkBoxwholeWords.Size = new System.Drawing.Size(91, 17);
-      this.checkBoxwholeWords.TabIndex = 28;
-      this.checkBoxwholeWords.Text = "Whole Words";
-      this.checkBoxwholeWords.UseVisualStyleBackColor = true;
+      this.numericUpDown14.Enabled = false;
+      this.numericUpDown14.Location = new System.Drawing.Point(872, 116);
+      this.numericUpDown14.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown14.Name = "numericUpDown14";
+      this.numericUpDown14.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown14.TabIndex = 51;
       // 
-      // checkBoxWithout
+      // numericUpDown15
       // 
-      this.checkBoxWithout.AutoSize = true;
-      this.checkBoxWithout.Location = new System.Drawing.Point(515, 90);
-      this.checkBoxWithout.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxWithout.Name = "checkBoxWithout";
-      this.checkBoxWithout.Size = new System.Drawing.Size(63, 17);
-      this.checkBoxWithout.TabIndex = 27;
-      this.checkBoxWithout.Text = "Without";
-      this.checkBoxWithout.UseVisualStyleBackColor = true;
+      this.numericUpDown15.Enabled = false;
+      this.numericUpDown15.Location = new System.Drawing.Point(831, 116);
+      this.numericUpDown15.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDown15.Name = "numericUpDown15";
+      this.numericUpDown15.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown15.TabIndex = 50;
       // 
-      // checkBoxDate
+      // numericUpDown10
       // 
-      this.checkBoxDate.AutoSize = true;
-      this.checkBoxDate.Enabled = false;
-      this.checkBoxDate.Location = new System.Drawing.Point(22, 19);
-      this.checkBoxDate.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxDate.Name = "checkBoxDate";
-      this.checkBoxDate.Size = new System.Drawing.Size(49, 17);
-      this.checkBoxDate.TabIndex = 18;
-      this.checkBoxDate.Text = "Date";
-      this.checkBoxDate.UseVisualStyleBackColor = true;
+      this.numericUpDown10.Enabled = false;
+      this.numericUpDown10.Location = new System.Drawing.Point(913, 84);
+      this.numericUpDown10.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown10.Name = "numericUpDown10";
+      this.numericUpDown10.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown10.TabIndex = 49;
+      // 
+      // numericUpDown11
+      // 
+      this.numericUpDown11.Enabled = false;
+      this.numericUpDown11.Location = new System.Drawing.Point(872, 84);
+      this.numericUpDown11.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown11.Name = "numericUpDown11";
+      this.numericUpDown11.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown11.TabIndex = 48;
+      // 
+      // numericUpDown12
+      // 
+      this.numericUpDown12.Enabled = false;
+      this.numericUpDown12.Location = new System.Drawing.Point(831, 84);
+      this.numericUpDown12.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDown12.Name = "numericUpDown12";
+      this.numericUpDown12.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown12.TabIndex = 47;
+      // 
+      // numericUpDownDateModifiedEndSecond
+      // 
+      this.numericUpDownDateModifiedEndSecond.Enabled = false;
+      this.numericUpDownDateModifiedEndSecond.Location = new System.Drawing.Point(913, 50);
+      this.numericUpDownDateModifiedEndSecond.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedEndSecond.Name = "numericUpDownDateModifiedEndSecond";
+      this.numericUpDownDateModifiedEndSecond.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedEndSecond.TabIndex = 46;
+      // 
+      // numericUpDownDateModifiedEndMinute
+      // 
+      this.numericUpDownDateModifiedEndMinute.Enabled = false;
+      this.numericUpDownDateModifiedEndMinute.Location = new System.Drawing.Point(872, 50);
+      this.numericUpDownDateModifiedEndMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedEndMinute.Name = "numericUpDownDateModifiedEndMinute";
+      this.numericUpDownDateModifiedEndMinute.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedEndMinute.TabIndex = 45;
+      // 
+      // numericUpDownDateModifiedEndHour
+      // 
+      this.numericUpDownDateModifiedEndHour.Enabled = false;
+      this.numericUpDownDateModifiedEndHour.Location = new System.Drawing.Point(831, 50);
+      this.numericUpDownDateModifiedEndHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedEndHour.Name = "numericUpDownDateModifiedEndHour";
+      this.numericUpDownDateModifiedEndHour.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedEndHour.TabIndex = 44;
+      // 
+      // numericUpDown4
+      // 
+      this.numericUpDown4.Enabled = false;
+      this.numericUpDown4.Location = new System.Drawing.Point(565, 116);
+      this.numericUpDown4.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown4.Name = "numericUpDown4";
+      this.numericUpDown4.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown4.TabIndex = 43;
+      // 
+      // numericUpDown5
+      // 
+      this.numericUpDown5.Enabled = false;
+      this.numericUpDown5.Location = new System.Drawing.Point(524, 116);
+      this.numericUpDown5.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown5.Name = "numericUpDown5";
+      this.numericUpDown5.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown5.TabIndex = 42;
+      // 
+      // numericUpDown6
+      // 
+      this.numericUpDown6.Enabled = false;
+      this.numericUpDown6.Location = new System.Drawing.Point(483, 116);
+      this.numericUpDown6.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDown6.Name = "numericUpDown6";
+      this.numericUpDown6.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown6.TabIndex = 41;
+      // 
+      // numericUpDown1
+      // 
+      this.numericUpDown1.Enabled = false;
+      this.numericUpDown1.Location = new System.Drawing.Point(565, 83);
+      this.numericUpDown1.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown1.Name = "numericUpDown1";
+      this.numericUpDown1.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown1.TabIndex = 40;
+      // 
+      // numericUpDown2
+      // 
+      this.numericUpDown2.Enabled = false;
+      this.numericUpDown2.Location = new System.Drawing.Point(524, 83);
+      this.numericUpDown2.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDown2.Name = "numericUpDown2";
+      this.numericUpDown2.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown2.TabIndex = 39;
+      // 
+      // numericUpDown3
+      // 
+      this.numericUpDown3.Enabled = false;
+      this.numericUpDown3.Location = new System.Drawing.Point(483, 83);
+      this.numericUpDown3.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDown3.Name = "numericUpDown3";
+      this.numericUpDown3.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDown3.TabIndex = 38;
+      // 
+      // numericUpDownDateModifiedStartSecond
+      // 
+      this.numericUpDownDateModifiedStartSecond.Enabled = false;
+      this.numericUpDownDateModifiedStartSecond.Location = new System.Drawing.Point(565, 49);
+      this.numericUpDownDateModifiedStartSecond.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedStartSecond.Name = "numericUpDownDateModifiedStartSecond";
+      this.numericUpDownDateModifiedStartSecond.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedStartSecond.TabIndex = 37;
+      // 
+      // numericUpDownDateModifiedStartMinute
+      // 
+      this.numericUpDownDateModifiedStartMinute.Enabled = false;
+      this.numericUpDownDateModifiedStartMinute.Location = new System.Drawing.Point(524, 49);
+      this.numericUpDownDateModifiedStartMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedStartMinute.Name = "numericUpDownDateModifiedStartMinute";
+      this.numericUpDownDateModifiedStartMinute.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedStartMinute.TabIndex = 36;
+      // 
+      // numericUpDownDateModifiedStartHour
+      // 
+      this.numericUpDownDateModifiedStartHour.Enabled = false;
+      this.numericUpDownDateModifiedStartHour.Location = new System.Drawing.Point(483, 49);
+      this.numericUpDownDateModifiedStartHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDownDateModifiedStartHour.Name = "numericUpDownDateModifiedStartHour";
+      this.numericUpDownDateModifiedStartHour.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateModifiedStartHour.TabIndex = 35;
+      // 
+      // dateTimePickerDateLastAccessEnd
+      // 
+      this.dateTimePickerDateLastAccessEnd.Enabled = false;
+      this.dateTimePickerDateLastAccessEnd.Location = new System.Drawing.Point(638, 117);
+      this.dateTimePickerDateLastAccessEnd.Name = "dateTimePickerDateLastAccessEnd";
+      this.dateTimePickerDateLastAccessEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateLastAccessEnd.TabIndex = 34;
+      this.dateTimePickerDateLastAccessEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateCreationEnd
+      // 
+      this.dateTimePickerDateCreationEnd.Enabled = false;
+      this.dateTimePickerDateCreationEnd.Location = new System.Drawing.Point(638, 81);
+      this.dateTimePickerDateCreationEnd.Name = "dateTimePickerDateCreationEnd";
+      this.dateTimePickerDateCreationEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateCreationEnd.TabIndex = 33;
+      this.dateTimePickerDateCreationEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateModifiedEnd
+      // 
+      this.dateTimePickerDateModifiedEnd.Enabled = false;
+      this.dateTimePickerDateModifiedEnd.Location = new System.Drawing.Point(638, 49);
+      this.dateTimePickerDateModifiedEnd.Name = "dateTimePickerDateModifiedEnd";
+      this.dateTimePickerDateModifiedEnd.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateModifiedEnd.TabIndex = 32;
+      this.dateTimePickerDateModifiedEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // labelAndDateLastAccess
+      // 
+      this.labelAndDateLastAccess.AutoSize = true;
+      this.labelAndDateLastAccess.Enabled = false;
+      this.labelAndDateLastAccess.Location = new System.Drawing.Point(609, 120);
+      this.labelAndDateLastAccess.Name = "labelAndDateLastAccess";
+      this.labelAndDateLastAccess.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateLastAccess.TabIndex = 31;
+      this.labelAndDateLastAccess.Text = "and";
+      // 
+      // labelAndDateCreation
+      // 
+      this.labelAndDateCreation.AutoSize = true;
+      this.labelAndDateCreation.Enabled = false;
+      this.labelAndDateCreation.Location = new System.Drawing.Point(609, 86);
+      this.labelAndDateCreation.Name = "labelAndDateCreation";
+      this.labelAndDateCreation.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateCreation.TabIndex = 30;
+      this.labelAndDateCreation.Text = "and";
+      // 
+      // labelAndDateModified
+      // 
+      this.labelAndDateModified.AutoSize = true;
+      this.labelAndDateModified.Enabled = false;
+      this.labelAndDateModified.Location = new System.Drawing.Point(609, 52);
+      this.labelAndDateModified.Name = "labelAndDateModified";
+      this.labelAndDateModified.Size = new System.Drawing.Size(25, 13);
+      this.labelAndDateModified.TabIndex = 29;
+      this.labelAndDateModified.Text = "and";
+      // 
+      // dateTimePickerDateLastAccessStart
+      // 
+      this.dateTimePickerDateLastAccessStart.Enabled = false;
+      this.dateTimePickerDateLastAccessStart.Location = new System.Drawing.Point(296, 115);
+      this.dateTimePickerDateLastAccessStart.Name = "dateTimePickerDateLastAccessStart";
+      this.dateTimePickerDateLastAccessStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateLastAccessStart.TabIndex = 28;
+      this.dateTimePickerDateLastAccessStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateCreationStart
+      // 
+      this.dateTimePickerDateCreationStart.Enabled = false;
+      this.dateTimePickerDateCreationStart.Location = new System.Drawing.Point(296, 79);
+      this.dateTimePickerDateCreationStart.Name = "dateTimePickerDateCreationStart";
+      this.dateTimePickerDateCreationStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateCreationStart.TabIndex = 27;
+      this.dateTimePickerDateCreationStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // dateTimePickerDateModifiedStart
+      // 
+      this.dateTimePickerDateModifiedStart.Enabled = false;
+      this.dateTimePickerDateModifiedStart.Location = new System.Drawing.Point(296, 47);
+      this.dateTimePickerDateModifiedStart.Name = "dateTimePickerDateModifiedStart";
+      this.dateTimePickerDateModifiedStart.Size = new System.Drawing.Size(178, 20);
+      this.dateTimePickerDateModifiedStart.TabIndex = 25;
+      this.dateTimePickerDateModifiedStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      // 
+      // comboBoxDateLastAccessBetween
+      // 
+      this.comboBoxDateLastAccessBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateLastAccessBetween.Enabled = false;
+      this.comboBoxDateLastAccessBetween.FormattingEnabled = true;
+      this.comboBoxDateLastAccessBetween.Items.AddRange(new object[] {
+            "Between",
+            "Not Between",
+            "Newer than",
+            "Older than"});
+      this.comboBoxDateLastAccessBetween.Location = new System.Drawing.Point(156, 116);
+      this.comboBoxDateLastAccessBetween.Name = "comboBoxDateLastAccessBetween";
+      this.comboBoxDateLastAccessBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateLastAccessBetween.TabIndex = 24;
+      this.comboBoxDateLastAccessBetween.Text = "Between";
+      // 
+      // comboBoxDateCreationBetween
+      // 
+      this.comboBoxDateCreationBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateCreationBetween.Enabled = false;
+      this.comboBoxDateCreationBetween.FormattingEnabled = true;
+      this.comboBoxDateCreationBetween.Items.AddRange(new object[] {
+            "Between",
+            "Not Between",
+            "Newer than",
+            "Older than"});
+      this.comboBoxDateCreationBetween.Location = new System.Drawing.Point(156, 78);
+      this.comboBoxDateCreationBetween.Name = "comboBoxDateCreationBetween";
+      this.comboBoxDateCreationBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateCreationBetween.TabIndex = 23;
+      this.comboBoxDateCreationBetween.Text = "Between";
+      // 
+      // comboBoxDateModifiedBetween
+      // 
+      this.comboBoxDateModifiedBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxDateModifiedBetween.Enabled = false;
+      this.comboBoxDateModifiedBetween.FormattingEnabled = true;
+      this.comboBoxDateModifiedBetween.Items.AddRange(new object[] {
+            "Between",
+            "Not Between",
+            "Newer than",
+            "Older than"});
+      this.comboBoxDateModifiedBetween.Location = new System.Drawing.Point(156, 47);
+      this.comboBoxDateModifiedBetween.Name = "comboBoxDateModifiedBetween";
+      this.comboBoxDateModifiedBetween.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxDateModifiedBetween.TabIndex = 22;
+      this.comboBoxDateModifiedBetween.Text = "Between";
+      // 
+      // checkBoxDateLastAccess
+      // 
+      this.checkBoxDateLastAccess.AutoSize = true;
+      this.checkBoxDateLastAccess.Enabled = false;
+      this.checkBoxDateLastAccess.Location = new System.Drawing.Point(22, 115);
+      this.checkBoxDateLastAccess.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDateLastAccess.Name = "checkBoxDateLastAccess";
+      this.checkBoxDateLastAccess.Size = new System.Drawing.Size(110, 17);
+      this.checkBoxDateLastAccess.TabIndex = 21;
+      this.checkBoxDateLastAccess.Text = "Date Last Access";
+      this.checkBoxDateLastAccess.UseVisualStyleBackColor = true;
+      // 
+      // checkBoxDateCreation
+      // 
+      this.checkBoxDateCreation.AutoSize = true;
+      this.checkBoxDateCreation.Enabled = false;
+      this.checkBoxDateCreation.Location = new System.Drawing.Point(22, 83);
+      this.checkBoxDateCreation.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDateCreation.Name = "checkBoxDateCreation";
+      this.checkBoxDateCreation.Size = new System.Drawing.Size(91, 17);
+      this.checkBoxDateCreation.TabIndex = 20;
+      this.checkBoxDateCreation.Text = "Date Creation";
+      this.checkBoxDateCreation.UseVisualStyleBackColor = true;
       // 
       // checkBoxDateModified
       // 
@@ -926,148 +1305,81 @@
       this.checkBoxDateModified.Text = "Date Modified";
       this.checkBoxDateModified.UseVisualStyleBackColor = true;
       // 
-      // checkBoxDateCreation
+      // checkBoxDate
       // 
-      this.checkBoxDateCreation.AutoSize = true;
-      this.checkBoxDateCreation.Enabled = false;
-      this.checkBoxDateCreation.Location = new System.Drawing.Point(22, 78);
-      this.checkBoxDateCreation.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxDateCreation.Name = "checkBoxDateCreation";
-      this.checkBoxDateCreation.Size = new System.Drawing.Size(91, 17);
-      this.checkBoxDateCreation.TabIndex = 20;
-      this.checkBoxDateCreation.Text = "Date Creation";
-      this.checkBoxDateCreation.UseVisualStyleBackColor = true;
+      this.checkBoxDate.AutoSize = true;
+      this.checkBoxDate.Location = new System.Drawing.Point(22, 19);
+      this.checkBoxDate.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxDate.Name = "checkBoxDate";
+      this.checkBoxDate.Size = new System.Drawing.Size(49, 17);
+      this.checkBoxDate.TabIndex = 18;
+      this.checkBoxDate.Text = "Date";
+      this.checkBoxDate.UseVisualStyleBackColor = true;
+      this.checkBoxDate.CheckedChanged += new System.EventHandler(this.CheckBoxDate_CheckedChanged);
       // 
-      // checkBoxDateLastAccess
+      // listViewResult
       // 
-      this.checkBoxDateLastAccess.AutoSize = true;
-      this.checkBoxDateLastAccess.Enabled = false;
-      this.checkBoxDateLastAccess.Location = new System.Drawing.Point(22, 110);
-      this.checkBoxDateLastAccess.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxDateLastAccess.Name = "checkBoxDateLastAccess";
-      this.checkBoxDateLastAccess.Size = new System.Drawing.Size(110, 17);
-      this.checkBoxDateLastAccess.TabIndex = 21;
-      this.checkBoxDateLastAccess.Text = "Date Last Access";
-      this.checkBoxDateLastAccess.UseVisualStyleBackColor = true;
+      this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
+      this.listViewResult.Location = new System.Drawing.Point(0, 267);
+      this.listViewResult.Name = "listViewResult";
+      this.listViewResult.Size = new System.Drawing.Size(1109, 350);
+      this.listViewResult.TabIndex = 15;
+      this.listViewResult.UseCompatibleStateImageBehavior = false;
+      this.listViewResult.View = System.Windows.Forms.View.SmallIcon;
       // 
-      // comboBoxDateModifiedBetween
+      // buttonReset
       // 
-      this.comboBoxDateModifiedBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.comboBoxDateModifiedBetween.FormattingEnabled = true;
-      this.comboBoxDateModifiedBetween.Location = new System.Drawing.Point(156, 47);
-      this.comboBoxDateModifiedBetween.Name = "comboBoxDateModifiedBetween";
-      this.comboBoxDateModifiedBetween.Size = new System.Drawing.Size(121, 21);
-      this.comboBoxDateModifiedBetween.TabIndex = 22;
-      this.comboBoxDateModifiedBetween.Text = "Between";
+      this.buttonReset.Location = new System.Drawing.Point(1017, 229);
+      this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonReset.Name = "buttonReset";
+      this.buttonReset.Size = new System.Drawing.Size(81, 26);
+      this.buttonReset.TabIndex = 14;
+      this.buttonReset.Text = "Reset";
+      this.buttonReset.UseVisualStyleBackColor = true;
       // 
-      // comboBoxDateCreationBetween
+      // buttonStop
       // 
-      this.comboBoxDateCreationBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.comboBoxDateCreationBetween.FormattingEnabled = true;
-      this.comboBoxDateCreationBetween.Location = new System.Drawing.Point(156, 78);
-      this.comboBoxDateCreationBetween.Name = "comboBoxDateCreationBetween";
-      this.comboBoxDateCreationBetween.Size = new System.Drawing.Size(121, 21);
-      this.comboBoxDateCreationBetween.TabIndex = 23;
-      this.comboBoxDateCreationBetween.Text = "Between";
+      this.buttonStop.Enabled = false;
+      this.buttonStop.Location = new System.Drawing.Point(1017, 89);
+      this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonStop.Name = "buttonStop";
+      this.buttonStop.Size = new System.Drawing.Size(81, 26);
+      this.buttonStop.TabIndex = 13;
+      this.buttonStop.Text = "Stop";
+      this.buttonStop.UseVisualStyleBackColor = true;
       // 
-      // comboBoxDateLastAccessBetween
+      // buttonSearch
       // 
-      this.comboBoxDateLastAccessBetween.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.comboBoxDateLastAccessBetween.FormattingEnabled = true;
-      this.comboBoxDateLastAccessBetween.Location = new System.Drawing.Point(156, 111);
-      this.comboBoxDateLastAccessBetween.Name = "comboBoxDateLastAccessBetween";
-      this.comboBoxDateLastAccessBetween.Size = new System.Drawing.Size(121, 21);
-      this.comboBoxDateLastAccessBetween.TabIndex = 24;
-      this.comboBoxDateLastAccessBetween.Text = "Between";
+      this.buttonSearch.Location = new System.Drawing.Point(1017, 46);
+      this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
+      this.buttonSearch.Name = "buttonSearch";
+      this.buttonSearch.Size = new System.Drawing.Size(81, 26);
+      this.buttonSearch.TabIndex = 12;
+      this.buttonSearch.Text = "Search";
+      this.buttonSearch.UseVisualStyleBackColor = true;
       // 
-      // dateTimePickerDateModifiedStart
+      // statusStripMain
       // 
-      this.dateTimePickerDateModifiedStart.Location = new System.Drawing.Point(308, 47);
-      this.dateTimePickerDateModifiedStart.Name = "dateTimePickerDateModifiedStart";
-      this.dateTimePickerDateModifiedStart.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateModifiedStart.TabIndex = 25;
-      this.dateTimePickerDateModifiedStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
-      // 
-      // domainUpDown1
-      // 
-      this.domainUpDown1.Items.Add("00");
-      this.domainUpDown1.Items.Add("01");
-      this.domainUpDown1.Items.Add("02");
-      this.domainUpDown1.Items.Add("03");
-      this.domainUpDown1.Items.Add("04");
-      this.domainUpDown1.Items.Add("05");
-      this.domainUpDown1.Location = new System.Drawing.Point(511, 47);
-      this.domainUpDown1.Name = "domainUpDown1";
-      this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
-      this.domainUpDown1.TabIndex = 26;
-      this.domainUpDown1.Text = "00:00:00";
-      // 
-      // dateTimePickerDateCreationStart
-      // 
-      this.dateTimePickerDateCreationStart.Location = new System.Drawing.Point(308, 79);
-      this.dateTimePickerDateCreationStart.Name = "dateTimePickerDateCreationStart";
-      this.dateTimePickerDateCreationStart.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateCreationStart.TabIndex = 27;
-      this.dateTimePickerDateCreationStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
-      // 
-      // dateTimePickerDateLastAccessStart
-      // 
-      this.dateTimePickerDateLastAccessStart.Location = new System.Drawing.Point(308, 110);
-      this.dateTimePickerDateLastAccessStart.Name = "dateTimePickerDateLastAccessStart";
-      this.dateTimePickerDateLastAccessStart.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateLastAccessStart.TabIndex = 28;
-      this.dateTimePickerDateLastAccessStart.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
-      // 
-      // labelAndDateModified
-      // 
-      this.labelAndDateModified.AutoSize = true;
-      this.labelAndDateModified.Location = new System.Drawing.Point(649, 52);
-      this.labelAndDateModified.Name = "labelAndDateModified";
-      this.labelAndDateModified.Size = new System.Drawing.Size(25, 13);
-      this.labelAndDateModified.TabIndex = 29;
-      this.labelAndDateModified.Text = "and";
-      // 
-      // labelAndDateCreation
-      // 
-      this.labelAndDateCreation.AutoSize = true;
-      this.labelAndDateCreation.Location = new System.Drawing.Point(649, 86);
-      this.labelAndDateCreation.Name = "labelAndDateCreation";
-      this.labelAndDateCreation.Size = new System.Drawing.Size(25, 13);
-      this.labelAndDateCreation.TabIndex = 30;
-      this.labelAndDateCreation.Text = "and";
-      // 
-      // labelAndDateLastAccess
-      // 
-      this.labelAndDateLastAccess.AutoSize = true;
-      this.labelAndDateLastAccess.Location = new System.Drawing.Point(649, 115);
-      this.labelAndDateLastAccess.Name = "labelAndDateLastAccess";
-      this.labelAndDateLastAccess.Size = new System.Drawing.Size(25, 13);
-      this.labelAndDateLastAccess.TabIndex = 31;
-      this.labelAndDateLastAccess.Text = "and";
-      // 
-      // dateTimePickerDateLastAccessEnd
-      // 
-      this.dateTimePickerDateLastAccessEnd.Location = new System.Drawing.Point(696, 112);
-      this.dateTimePickerDateLastAccessEnd.Name = "dateTimePickerDateLastAccessEnd";
-      this.dateTimePickerDateLastAccessEnd.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateLastAccessEnd.TabIndex = 34;
-      this.dateTimePickerDateLastAccessEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
-      // 
-      // dateTimePickerDateCreationEnd
-      // 
-      this.dateTimePickerDateCreationEnd.Location = new System.Drawing.Point(696, 81);
-      this.dateTimePickerDateCreationEnd.Name = "dateTimePickerDateCreationEnd";
-      this.dateTimePickerDateCreationEnd.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateCreationEnd.TabIndex = 33;
-      this.dateTimePickerDateCreationEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
-      // 
-      // dateTimePickerDateModifiedEnd
-      // 
-      this.dateTimePickerDateModifiedEnd.Location = new System.Drawing.Point(696, 49);
-      this.dateTimePickerDateModifiedEnd.Name = "dateTimePickerDateModifiedEnd";
-      this.dateTimePickerDateModifiedEnd.Size = new System.Drawing.Size(178, 20);
-      this.dateTimePickerDateModifiedEnd.TabIndex = 32;
-      this.dateTimePickerDateModifiedEnd.Value = new System.DateTime(2017, 4, 19, 0, 0, 0, 0);
+      this.statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+      this.statusStripMain.Location = new System.Drawing.Point(0, 620);
+      this.statusStripMain.Name = "statusStripMain";
+      this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+      this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
+      this.statusStripMain.TabIndex = 3;
+      this.statusStripMain.Text = "statusStrip1";
       // 
       // FormMain
       // 
@@ -1098,6 +1410,24 @@
       this.tabPageContaining.PerformLayout();
       this.tabPageDateAndSize.ResumeLayout(false);
       this.tabPageDateAndSize.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndSecond)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndMinute)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedEndHour)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -1187,7 +1517,6 @@
     private System.Windows.Forms.CheckBox checkBoxDateCreation;
     private System.Windows.Forms.CheckBox checkBoxDateModified;
     private System.Windows.Forms.CheckBox checkBoxDate;
-    private System.Windows.Forms.DomainUpDown domainUpDown1;
     private System.Windows.Forms.DateTimePicker dateTimePickerDateLastAccessStart;
     private System.Windows.Forms.DateTimePicker dateTimePickerDateCreationStart;
     private System.Windows.Forms.DateTimePicker dateTimePickerDateLastAccessEnd;
@@ -1196,5 +1525,24 @@
     private System.Windows.Forms.Label labelAndDateLastAccess;
     private System.Windows.Forms.Label labelAndDateCreation;
     private System.Windows.Forms.Label labelAndDateModified;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedStartSecond;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedStartMinute;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedStartHour;
+    private System.Windows.Forms.NumericUpDown numericUpDown13;
+    private System.Windows.Forms.NumericUpDown numericUpDown14;
+    private System.Windows.Forms.NumericUpDown numericUpDown15;
+    private System.Windows.Forms.NumericUpDown numericUpDown10;
+    private System.Windows.Forms.NumericUpDown numericUpDown11;
+    private System.Windows.Forms.NumericUpDown numericUpDown12;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedEndSecond;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedEndMinute;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateModifiedEndHour;
+    private System.Windows.Forms.NumericUpDown numericUpDown4;
+    private System.Windows.Forms.NumericUpDown numericUpDown5;
+    private System.Windows.Forms.NumericUpDown numericUpDown6;
+    private System.Windows.Forms.NumericUpDown numericUpDown1;
+    private System.Windows.Forms.NumericUpDown numericUpDown2;
+    private System.Windows.Forms.NumericUpDown numericUpDown3;
+    private System.Windows.Forms.CheckBox checkBoxSize;
   }
 }

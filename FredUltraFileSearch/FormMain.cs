@@ -742,5 +742,25 @@ namespace FredUltraFileSearch
       buttonReset.Left = this.Width - buttonReset.Width - padding;
       buttonStop.Left = this.Width - buttonStop.Width - padding;
     }
+
+    private void CheckBoxDate_CheckedChanged(object sender, EventArgs e)
+    {
+      if (checkBoxDate.Checked)
+      {
+        EnableDisableControls(new[] { (Control)checkBoxDateCreation, checkBoxDateModified, checkBoxDateLastAccess, comboBoxDateModifiedBetween, dateTimePickerDateModifiedStart, numericUpDownDateModifiedStartHour, numericUpDownDateModifiedStartMinute, numericUpDownDateModifiedStartSecond, labelAndDateModified, dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour, numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond });
+      }
+      else
+      {
+        EnableDisableControls(new[] { (Control)checkBoxDateCreation, checkBoxDateModified, checkBoxDateLastAccess, comboBoxDateModifiedBetween, dateTimePickerDateModifiedStart, numericUpDownDateModifiedStartHour, numericUpDownDateModifiedStartMinute, numericUpDownDateModifiedStartSecond, labelAndDateModified, dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour, numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond }, false);
+      }
+    }
+
+    private void EnableDisableControls(Control[] listOfControls, bool toBeTrue = true)
+    {
+      foreach (Control ctrl in listOfControls)
+      {
+        ctrl.Enabled = toBeTrue;
+      }
+    }
   }
 }
