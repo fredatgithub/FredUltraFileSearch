@@ -68,7 +68,7 @@ namespace FredUltraFileSearch
       this.buttonOptionsOK.TabIndex = 2;
       this.buttonOptionsOK.Text = "OK";
       this.buttonOptionsOK.UseVisualStyleBackColor = true;
-      this.buttonOptionsOK.Click += new System.EventHandler(this.buttonOptionsOK_Click);
+      this.buttonOptionsOK.Click += new System.EventHandler(this.ButtonOptionsOK_Click);
       // 
       // buttonOptionsCancel
       // 
@@ -79,7 +79,7 @@ namespace FredUltraFileSearch
       this.buttonOptionsCancel.TabIndex = 3;
       this.buttonOptionsCancel.Text = "Cancel";
       this.buttonOptionsCancel.UseVisualStyleBackColor = true;
-      this.buttonOptionsCancel.Click += new System.EventHandler(this.buttonOptionsCancel_Click);
+      this.buttonOptionsCancel.Click += new System.EventHandler(this.ButtonOptionsCancel_Click);
       // 
       // FormOptions
       // 

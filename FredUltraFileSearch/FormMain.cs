@@ -1,23 +1,5 @@
-﻿/*
-The MIT License(MIT)
-Copyright(c) 2017 Freddy Juhel
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#define DEBUG
+﻿#define DEBUG
+using FredUltraFileSearch.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,7 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using FredUltraFileSearch.Properties;
 
 namespace FredUltraFileSearch
 {
@@ -108,6 +89,7 @@ namespace FredUltraFileSearch
         CreateLanguageFile();
         return;
       }
+
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -122,6 +104,7 @@ namespace FredUltraFileSearch
                      englishValue = xElementEnglish.Value,
                      frenchValue = xElementFrench.Value
                    };
+
       foreach (var i in result)
       {
         if (!_languageDicoEn.ContainsKey(i.name))
@@ -365,14 +348,14 @@ namespace FredUltraFileSearch
       SaveWindowValue();
     }
 
-    private void frenchToolStripMenuItem_Click(object sender, EventArgs e)
+    private void FrenchToolStripMenuItem_Click(object sender, EventArgs e)
     {
       _currentLanguage = Language.French.ToString();
       SetLanguage(Language.French.ToString());
       AdjustAllControls();
     }
 
-    private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+    private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
     {
       _currentLanguage = Language.English.ToString();
       SetLanguage(Language.English.ToString());
@@ -462,7 +445,7 @@ namespace FredUltraFileSearch
       }
     }
 
-    private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CutToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       var tb = focusedControl as TextBox;
@@ -472,7 +455,7 @@ namespace FredUltraFileSearch
       }
     }
 
-    private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       var tb = focusedControl as TextBox;
@@ -482,7 +465,7 @@ namespace FredUltraFileSearch
       }
     }
 
-    private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+    private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       var tb = focusedControl as TextBox;
@@ -492,7 +475,7 @@ namespace FredUltraFileSearch
       }
     }
 
-    private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+    private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       TextBox control = focusedControl as TextBox;
@@ -672,7 +655,7 @@ namespace FredUltraFileSearch
       AdjustControls(); // insert here all labels, textboxes and buttons, one method per line of controls
     }
 
-    private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+    private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
     {
       FormOptions frmOptions = new FormOptions(_configurationOptions);
 
@@ -718,7 +701,7 @@ namespace FredUltraFileSearch
       button.Enabled = result;
     }
 
-    private void textBoxName_KeyDown(object sender, KeyEventArgs e)
+    private void TextBoxName_KeyDown(object sender, KeyEventArgs e)
     {
       if (e.KeyCode == Keys.Enter)
       {
