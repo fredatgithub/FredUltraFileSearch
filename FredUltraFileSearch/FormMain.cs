@@ -745,5 +745,13 @@ namespace FredUltraFileSearch
         ctrl.Enabled = toBeTrue;
       }
     }
+
+    private void ButtonSearch_Click(object sender, EventArgs e)
+    {
+      if (comboBoxFileName.Items.ToString() == string.Empty)
+      {
+        MessageBox.Show(" no pattern to search", "no text", MessageBoxButtons.OK);
+      }
+    }
   }
 }

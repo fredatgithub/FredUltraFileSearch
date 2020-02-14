@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("N°");
-      System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Name");
-      System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Folder");
-      System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Size");
-      System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Modified Date");
-      System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Creation Date");
-      System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Ext");
-      System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Type");
-      System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Attributes");
-      System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Last Access Date");
+      System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("N°");
+      System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Name");
+      System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Folder");
+      System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Size");
+      System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Modified Date");
+      System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Creation Date");
+      System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ext");
+      System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Type");
+      System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Attributes");
+      System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Last Access Date");
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -655,9 +655,9 @@
       this.labelFileNames.Location = new System.Drawing.Point(13, 17);
       this.labelFileNames.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelFileNames.Name = "labelFileNames";
-      this.labelFileNames.Size = new System.Drawing.Size(65, 13);
+      this.labelFileNames.Size = new System.Drawing.Size(54, 13);
       this.labelFileNames.TabIndex = 0;
-      this.labelFileNames.Text = "File Name(s)";
+      this.labelFileNames.Text = "File Name";
       // 
       // tabPageContaining
       // 
@@ -1322,17 +1322,18 @@
       this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.listViewResult.HideSelection = false;
       this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
       this.listViewResult.Location = new System.Drawing.Point(0, 267);
       this.listViewResult.Name = "listViewResult";
       this.listViewResult.Size = new System.Drawing.Size(1109, 350);
@@ -1370,6 +1371,7 @@
       this.buttonSearch.TabIndex = 12;
       this.buttonSearch.Text = "Search";
       this.buttonSearch.UseVisualStyleBackColor = true;
+      this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
       // 
       // statusStripMain
       // 
