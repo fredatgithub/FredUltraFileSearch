@@ -753,5 +753,10 @@ namespace FredUltraFileSearch
         MessageBox.Show(" no pattern to search", "no text", MessageBoxButtons.OK);
       }
     }
+
+    private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
   }
 }

@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("N°");
-      System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Name");
-      System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Folder");
-      System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Size");
-      System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Modified Date");
-      System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Creation Date");
-      System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ext");
-      System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Type");
-      System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Attributes");
-      System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Last Access Date");
+      System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("N°");
+      System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Name");
+      System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Folder");
+      System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Size");
+      System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Ext");
+      System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Type");
+      System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Attributes");
+      System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Modified Date");
+      System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Creation Date");
+      System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Last Access Date");
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,14 +77,14 @@
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tabControlMain = new System.Windows.Forms.TabControl();
       this.tabPageFilesAndFolders = new System.Windows.Forms.TabPage();
-      this.panel1 = new System.Windows.Forms.Panel();
+      this.panelMain = new System.Windows.Forms.Panel();
       this.comboBoxStartingFolder = new System.Windows.Forms.ComboBox();
       this.comboBoxFileName = new System.Windows.Forms.ComboBox();
       this.labelSelect = new System.Windows.Forms.Label();
       this.labelMode = new System.Windows.Forms.Label();
       this.comboBoxMode = new System.Windows.Forms.ComboBox();
-      this.checkBoxSearchForFolders = new System.Windows.Forms.CheckBox();
-      this.checkBoxSearchForFiles = new System.Windows.Forms.CheckBox();
+      this.checkBoxShowFoldernames = new System.Windows.Forms.CheckBox();
+      this.checkBoxShowFilenames = new System.Windows.Forms.CheckBox();
       this.checkBoxAppendResults = new System.Windows.Forms.CheckBox();
       this.checkBoxIncludeHiddenFolders = new System.Windows.Forms.CheckBox();
       this.buttonBrowsePath = new System.Windows.Forms.Button();
@@ -120,9 +120,9 @@
       this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
       this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
       this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-      this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-      this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-      this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateCreationStartsecond = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateCreationStartMinute = new System.Windows.Forms.NumericUpDown();
+      this.numericUpDownDateCreationStartHour = new System.Windows.Forms.NumericUpDown();
       this.numericUpDownDateModifiedStartSecond = new System.Windows.Forms.NumericUpDown();
       this.numericUpDownDateModifiedStartMinute = new System.Windows.Forms.NumericUpDown();
       this.numericUpDownDateModifiedStartHour = new System.Windows.Forms.NumericUpDown();
@@ -142,15 +142,22 @@
       this.checkBoxDateCreation = new System.Windows.Forms.CheckBox();
       this.checkBoxDateModified = new System.Windows.Forms.CheckBox();
       this.checkBoxDate = new System.Windows.Forms.CheckBox();
+      this.tabPageAttributes = new System.Windows.Forms.TabPage();
       this.listViewResult = new System.Windows.Forms.ListView();
       this.buttonReset = new System.Windows.Forms.Button();
       this.buttonStop = new System.Windows.Forms.Button();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
+      this.comboBoxBetweenSize = new System.Windows.Forms.ComboBox();
+      this.numericUpDownSizeFrom = new System.Windows.Forms.NumericUpDown();
+      this.comboBoxSizeMbKb = new System.Windows.Forms.ComboBox();
+      this.labelSizeAnd = new System.Windows.Forms.Label();
+      this.numericUpDownSizeTo = new System.Windows.Forms.NumericUpDown();
+      this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
-      this.panel1.SuspendLayout();
+      this.panelMain.SuspendLayout();
       this.tabPageContaining.SuspendLayout();
       this.tabPageDateAndSize.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
@@ -165,12 +172,14 @@
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartsecond)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartMinute)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartHour)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeFrom)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeTo)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -476,6 +485,7 @@
       this.tabControlMain.Controls.Add(this.tabPageFilesAndFolders);
       this.tabControlMain.Controls.Add(this.tabPageContaining);
       this.tabControlMain.Controls.Add(this.tabPageDateAndSize);
+      this.tabControlMain.Controls.Add(this.tabPageAttributes);
       this.tabControlMain.Location = new System.Drawing.Point(0, 24);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
       this.tabControlMain.Name = "tabControlMain";
@@ -485,7 +495,7 @@
       // 
       // tabPageFilesAndFolders
       // 
-      this.tabPageFilesAndFolders.Controls.Add(this.panel1);
+      this.tabPageFilesAndFolders.Controls.Add(this.panelMain);
       this.tabPageFilesAndFolders.Location = new System.Drawing.Point(4, 22);
       this.tabPageFilesAndFolders.Margin = new System.Windows.Forms.Padding(2);
       this.tabPageFilesAndFolders.Name = "tabPageFilesAndFolders";
@@ -495,26 +505,26 @@
       this.tabPageFilesAndFolders.Text = "Files and Folders";
       this.tabPageFilesAndFolders.UseVisualStyleBackColor = true;
       // 
-      // panel1
+      // panelMain
       // 
-      this.panel1.Controls.Add(this.comboBoxStartingFolder);
-      this.panel1.Controls.Add(this.comboBoxFileName);
-      this.panel1.Controls.Add(this.labelSelect);
-      this.panel1.Controls.Add(this.labelMode);
-      this.panel1.Controls.Add(this.comboBoxMode);
-      this.panel1.Controls.Add(this.checkBoxSearchForFolders);
-      this.panel1.Controls.Add(this.checkBoxSearchForFiles);
-      this.panel1.Controls.Add(this.checkBoxAppendResults);
-      this.panel1.Controls.Add(this.checkBoxIncludeHiddenFolders);
-      this.panel1.Controls.Add(this.buttonBrowsePath);
-      this.panel1.Controls.Add(this.labelStartingFolders);
-      this.panel1.Controls.Add(this.checkBoxScanInsubFolders);
-      this.panel1.Controls.Add(this.labelFileNames);
-      this.panel1.Location = new System.Drawing.Point(2, 2);
-      this.panel1.Margin = new System.Windows.Forms.Padding(2);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(822, 207);
-      this.panel1.TabIndex = 4;
+      this.panelMain.Controls.Add(this.comboBoxStartingFolder);
+      this.panelMain.Controls.Add(this.comboBoxFileName);
+      this.panelMain.Controls.Add(this.labelSelect);
+      this.panelMain.Controls.Add(this.labelMode);
+      this.panelMain.Controls.Add(this.comboBoxMode);
+      this.panelMain.Controls.Add(this.checkBoxShowFoldernames);
+      this.panelMain.Controls.Add(this.checkBoxShowFilenames);
+      this.panelMain.Controls.Add(this.checkBoxAppendResults);
+      this.panelMain.Controls.Add(this.checkBoxIncludeHiddenFolders);
+      this.panelMain.Controls.Add(this.buttonBrowsePath);
+      this.panelMain.Controls.Add(this.labelStartingFolders);
+      this.panelMain.Controls.Add(this.checkBoxScanInsubFolders);
+      this.panelMain.Controls.Add(this.labelFileNames);
+      this.panelMain.Location = new System.Drawing.Point(2, 2);
+      this.panelMain.Margin = new System.Windows.Forms.Padding(2);
+      this.panelMain.Name = "panelMain";
+      this.panelMain.Size = new System.Drawing.Size(990, 207);
+      this.panelMain.TabIndex = 4;
       // 
       // comboBoxStartingFolder
       // 
@@ -565,32 +575,33 @@
       this.comboBoxMode.Size = new System.Drawing.Size(92, 21);
       this.comboBoxMode.TabIndex = 12;
       this.comboBoxMode.Text = "Simple";
+      this.comboBoxMode.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMode_SelectedIndexChanged);
       // 
-      // checkBoxSearchForFolders
+      // checkBoxShowFoldernames
       // 
-      this.checkBoxSearchForFolders.AutoSize = true;
-      this.checkBoxSearchForFolders.Checked = true;
-      this.checkBoxSearchForFolders.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxSearchForFolders.Location = new System.Drawing.Point(174, 169);
-      this.checkBoxSearchForFolders.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxSearchForFolders.Name = "checkBoxSearchForFolders";
-      this.checkBoxSearchForFolders.Size = new System.Drawing.Size(112, 17);
-      this.checkBoxSearchForFolders.TabIndex = 11;
-      this.checkBoxSearchForFolders.Text = "Search for Folders";
-      this.checkBoxSearchForFolders.UseVisualStyleBackColor = true;
+      this.checkBoxShowFoldernames.AutoSize = true;
+      this.checkBoxShowFoldernames.Checked = true;
+      this.checkBoxShowFoldernames.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxShowFoldernames.Location = new System.Drawing.Point(174, 169);
+      this.checkBoxShowFoldernames.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxShowFoldernames.Name = "checkBoxShowFoldernames";
+      this.checkBoxShowFoldernames.Size = new System.Drawing.Size(116, 17);
+      this.checkBoxShowFoldernames.TabIndex = 11;
+      this.checkBoxShowFoldernames.Text = "Show Foldernames";
+      this.checkBoxShowFoldernames.UseVisualStyleBackColor = true;
       // 
-      // checkBoxSearchForFiles
+      // checkBoxShowFilenames
       // 
-      this.checkBoxSearchForFiles.AutoSize = true;
-      this.checkBoxSearchForFiles.Checked = true;
-      this.checkBoxSearchForFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxSearchForFiles.Location = new System.Drawing.Point(16, 169);
-      this.checkBoxSearchForFiles.Margin = new System.Windows.Forms.Padding(2);
-      this.checkBoxSearchForFiles.Name = "checkBoxSearchForFiles";
-      this.checkBoxSearchForFiles.Size = new System.Drawing.Size(96, 17);
-      this.checkBoxSearchForFiles.TabIndex = 10;
-      this.checkBoxSearchForFiles.Text = "Search for files";
-      this.checkBoxSearchForFiles.UseVisualStyleBackColor = true;
+      this.checkBoxShowFilenames.AutoSize = true;
+      this.checkBoxShowFilenames.Checked = true;
+      this.checkBoxShowFilenames.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxShowFilenames.Location = new System.Drawing.Point(16, 169);
+      this.checkBoxShowFilenames.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxShowFilenames.Name = "checkBoxShowFilenames";
+      this.checkBoxShowFilenames.Size = new System.Drawing.Size(103, 17);
+      this.checkBoxShowFilenames.TabIndex = 10;
+      this.checkBoxShowFilenames.Text = "Show Filenames";
+      this.checkBoxShowFilenames.UseVisualStyleBackColor = true;
       // 
       // checkBoxAppendResults
       // 
@@ -632,9 +643,9 @@
       this.labelStartingFolders.Location = new System.Drawing.Point(13, 79);
       this.labelStartingFolders.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelStartingFolders.Name = "labelStartingFolders";
-      this.labelStartingFolders.Size = new System.Drawing.Size(86, 13);
+      this.labelStartingFolders.Size = new System.Drawing.Size(66, 13);
       this.labelStartingFolders.TabIndex = 4;
-      this.labelStartingFolders.Text = "Starting Folder(s)";
+      this.labelStartingFolders.Text = "Search Path";
       // 
       // checkBoxScanInsubFolders
       // 
@@ -644,9 +655,9 @@
       this.checkBoxScanInsubFolders.Location = new System.Drawing.Point(16, 135);
       this.checkBoxScanInsubFolders.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxScanInsubFolders.Name = "checkBoxScanInsubFolders";
-      this.checkBoxScanInsubFolders.Size = new System.Drawing.Size(115, 17);
+      this.checkBoxScanInsubFolders.Size = new System.Drawing.Size(124, 17);
       this.checkBoxScanInsubFolders.TabIndex = 6;
-      this.checkBoxScanInsubFolders.Text = "Scan in Subfolders";
+      this.checkBoxScanInsubFolders.Text = "Search in Subfolders";
       this.checkBoxScanInsubFolders.UseVisualStyleBackColor = true;
       // 
       // labelFileNames
@@ -723,22 +734,22 @@
       // radioButtonContainingTextMatchAll
       // 
       this.radioButtonContainingTextMatchAll.AutoSize = true;
-      this.radioButtonContainingTextMatchAll.Checked = true;
       this.radioButtonContainingTextMatchAll.Location = new System.Drawing.Point(113, 89);
       this.radioButtonContainingTextMatchAll.Name = "radioButtonContainingTextMatchAll";
       this.radioButtonContainingTextMatchAll.Size = new System.Drawing.Size(69, 17);
       this.radioButtonContainingTextMatchAll.TabIndex = 26;
-      this.radioButtonContainingTextMatchAll.TabStop = true;
       this.radioButtonContainingTextMatchAll.Text = "Match All";
       this.radioButtonContainingTextMatchAll.UseVisualStyleBackColor = true;
       // 
       // radioButtonContainingTextMatchAny
       // 
       this.radioButtonContainingTextMatchAny.AutoSize = true;
+      this.radioButtonContainingTextMatchAny.Checked = true;
       this.radioButtonContainingTextMatchAny.Location = new System.Drawing.Point(31, 89);
       this.radioButtonContainingTextMatchAny.Name = "radioButtonContainingTextMatchAny";
       this.radioButtonContainingTextMatchAny.Size = new System.Drawing.Size(76, 17);
       this.radioButtonContainingTextMatchAny.TabIndex = 25;
+      this.radioButtonContainingTextMatchAny.TabStop = true;
       this.radioButtonContainingTextMatchAny.Text = "Match Any";
       this.radioButtonContainingTextMatchAny.UseVisualStyleBackColor = true;
       // 
@@ -779,7 +790,7 @@
       this.checkBoxSkipAudioFiles.AutoSize = true;
       this.checkBoxSkipAudioFiles.Checked = true;
       this.checkBoxSkipAudioFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxSkipAudioFiles.Location = new System.Drawing.Point(187, 156);
+      this.checkBoxSkipAudioFiles.Location = new System.Drawing.Point(194, 156);
       this.checkBoxSkipAudioFiles.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSkipAudioFiles.Name = "checkBoxSkipAudioFiles";
       this.checkBoxSkipAudioFiles.Size = new System.Drawing.Size(98, 17);
@@ -803,6 +814,8 @@
       // checkBoxSkipVideoFiles
       // 
       this.checkBoxSkipVideoFiles.AutoSize = true;
+      this.checkBoxSkipVideoFiles.Checked = true;
+      this.checkBoxSkipVideoFiles.CheckState = System.Windows.Forms.CheckState.Checked;
       this.checkBoxSkipVideoFiles.Location = new System.Drawing.Point(350, 156);
       this.checkBoxSkipVideoFiles.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSkipVideoFiles.Name = "checkBoxSkipVideoFiles";
@@ -816,7 +829,7 @@
       this.checkBoxSkipSystemFiles.AutoSize = true;
       this.checkBoxSkipSystemFiles.Checked = true;
       this.checkBoxSkipSystemFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBoxSkipSystemFiles.Location = new System.Drawing.Point(187, 122);
+      this.checkBoxSkipSystemFiles.Location = new System.Drawing.Point(194, 122);
       this.checkBoxSkipSystemFiles.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxSkipSystemFiles.Name = "checkBoxSkipSystemFiles";
       this.checkBoxSkipSystemFiles.Size = new System.Drawing.Size(108, 17);
@@ -843,12 +856,18 @@
       this.labelSearchText.Location = new System.Drawing.Point(28, 24);
       this.labelSearchText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSearchText.Name = "labelSearchText";
-      this.labelSearchText.Size = new System.Drawing.Size(76, 13);
+      this.labelSearchText.Size = new System.Drawing.Size(65, 13);
       this.labelSearchText.TabIndex = 16;
-      this.labelSearchText.Text = "Search Text(s)";
+      this.labelSearchText.Text = "Search Text";
       // 
       // tabPageDateAndSize
       // 
+      this.tabPageDateAndSize.Controls.Add(this.comboBox1);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownSizeTo);
+      this.tabPageDateAndSize.Controls.Add(this.labelSizeAnd);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxSizeMbKb);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownSizeFrom);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxBetweenSize);
       this.tabPageDateAndSize.Controls.Add(this.checkBoxSize);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDown13);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDown14);
@@ -862,9 +881,9 @@
       this.tabPageDateAndSize.Controls.Add(this.numericUpDown4);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDown5);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDown6);
-      this.tabPageDateAndSize.Controls.Add(this.numericUpDown1);
-      this.tabPageDateAndSize.Controls.Add(this.numericUpDown2);
-      this.tabPageDateAndSize.Controls.Add(this.numericUpDown3);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateCreationStartsecond);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateCreationStartMinute);
+      this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateCreationStartHour);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartSecond);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartMinute);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDownDateModifiedStartHour);
@@ -1059,44 +1078,44 @@
       this.numericUpDown6.Size = new System.Drawing.Size(35, 20);
       this.numericUpDown6.TabIndex = 41;
       // 
-      // numericUpDown1
+      // numericUpDownDateCreationStartsecond
       // 
-      this.numericUpDown1.Enabled = false;
-      this.numericUpDown1.Location = new System.Drawing.Point(565, 83);
-      this.numericUpDown1.Maximum = new decimal(new int[] {
+      this.numericUpDownDateCreationStartsecond.Enabled = false;
+      this.numericUpDownDateCreationStartsecond.Location = new System.Drawing.Point(565, 83);
+      this.numericUpDownDateCreationStartsecond.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-      this.numericUpDown1.Name = "numericUpDown1";
-      this.numericUpDown1.Size = new System.Drawing.Size(35, 20);
-      this.numericUpDown1.TabIndex = 40;
+      this.numericUpDownDateCreationStartsecond.Name = "numericUpDownDateCreationStartsecond";
+      this.numericUpDownDateCreationStartsecond.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateCreationStartsecond.TabIndex = 40;
       // 
-      // numericUpDown2
+      // numericUpDownDateCreationStartMinute
       // 
-      this.numericUpDown2.Enabled = false;
-      this.numericUpDown2.Location = new System.Drawing.Point(524, 83);
-      this.numericUpDown2.Maximum = new decimal(new int[] {
+      this.numericUpDownDateCreationStartMinute.Enabled = false;
+      this.numericUpDownDateCreationStartMinute.Location = new System.Drawing.Point(524, 83);
+      this.numericUpDownDateCreationStartMinute.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-      this.numericUpDown2.Name = "numericUpDown2";
-      this.numericUpDown2.Size = new System.Drawing.Size(35, 20);
-      this.numericUpDown2.TabIndex = 39;
+      this.numericUpDownDateCreationStartMinute.Name = "numericUpDownDateCreationStartMinute";
+      this.numericUpDownDateCreationStartMinute.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateCreationStartMinute.TabIndex = 39;
       // 
-      // numericUpDown3
+      // numericUpDownDateCreationStartHour
       // 
-      this.numericUpDown3.Enabled = false;
-      this.numericUpDown3.Location = new System.Drawing.Point(483, 83);
-      this.numericUpDown3.Maximum = new decimal(new int[] {
+      this.numericUpDownDateCreationStartHour.Enabled = false;
+      this.numericUpDownDateCreationStartHour.Location = new System.Drawing.Point(483, 83);
+      this.numericUpDownDateCreationStartHour.Maximum = new decimal(new int[] {
             23,
             0,
             0,
             0});
-      this.numericUpDown3.Name = "numericUpDown3";
-      this.numericUpDown3.Size = new System.Drawing.Size(35, 20);
-      this.numericUpDown3.TabIndex = 38;
+      this.numericUpDownDateCreationStartHour.Name = "numericUpDownDateCreationStartHour";
+      this.numericUpDownDateCreationStartHour.Size = new System.Drawing.Size(35, 20);
+      this.numericUpDownDateCreationStartHour.TabIndex = 38;
       // 
       // numericUpDownDateModifiedStartSecond
       // 
@@ -1317,6 +1336,15 @@
       this.checkBoxDate.UseVisualStyleBackColor = true;
       this.checkBoxDate.CheckedChanged += new System.EventHandler(this.CheckBoxDate_CheckedChanged);
       // 
+      // tabPageAttributes
+      // 
+      this.tabPageAttributes.Location = new System.Drawing.Point(4, 22);
+      this.tabPageAttributes.Name = "tabPageAttributes";
+      this.tabPageAttributes.Size = new System.Drawing.Size(996, 216);
+      this.tabPageAttributes.TabIndex = 4;
+      this.tabPageAttributes.Text = "Attributes";
+      this.tabPageAttributes.UseVisualStyleBackColor = true;
+      // 
       // listViewResult
       // 
       this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1324,16 +1352,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.listViewResult.HideSelection = false;
       this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
       this.listViewResult.Location = new System.Drawing.Point(0, 267);
       this.listViewResult.Name = "listViewResult";
       this.listViewResult.Size = new System.Drawing.Size(1109, 350);
@@ -1383,6 +1411,89 @@
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
       // 
+      // comboBoxBetweenSize
+      // 
+      this.comboBoxBetweenSize.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxBetweenSize.Enabled = false;
+      this.comboBoxBetweenSize.FormattingEnabled = true;
+      this.comboBoxBetweenSize.Items.AddRange(new object[] {
+            "Between",
+            "Not Between",
+            "Newer than",
+            "Older than"});
+      this.comboBoxBetweenSize.Location = new System.Drawing.Point(156, 183);
+      this.comboBoxBetweenSize.Name = "comboBoxBetweenSize";
+      this.comboBoxBetweenSize.Size = new System.Drawing.Size(121, 21);
+      this.comboBoxBetweenSize.TabIndex = 54;
+      this.comboBoxBetweenSize.Text = "Between";
+      // 
+      // numericUpDownSizeFrom
+      // 
+      this.numericUpDownSizeFrom.Enabled = false;
+      this.numericUpDownSizeFrom.Location = new System.Drawing.Point(296, 184);
+      this.numericUpDownSizeFrom.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDownSizeFrom.Name = "numericUpDownSizeFrom";
+      this.numericUpDownSizeFrom.Size = new System.Drawing.Size(80, 20);
+      this.numericUpDownSizeFrom.TabIndex = 55;
+      // 
+      // comboBoxSizeMbKb
+      // 
+      this.comboBoxSizeMbKb.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxSizeMbKb.Enabled = false;
+      this.comboBoxSizeMbKb.FormattingEnabled = true;
+      this.comboBoxSizeMbKb.Items.AddRange(new object[] {
+            "GB",
+            "MB",
+            "KB",
+            "Bytes"});
+      this.comboBoxSizeMbKb.Location = new System.Drawing.Point(397, 181);
+      this.comboBoxSizeMbKb.Name = "comboBoxSizeMbKb";
+      this.comboBoxSizeMbKb.Size = new System.Drawing.Size(77, 21);
+      this.comboBoxSizeMbKb.TabIndex = 56;
+      this.comboBoxSizeMbKb.Text = "KB";
+      // 
+      // labelSizeAnd
+      // 
+      this.labelSizeAnd.AutoSize = true;
+      this.labelSizeAnd.Location = new System.Drawing.Point(483, 184);
+      this.labelSizeAnd.Name = "labelSizeAnd";
+      this.labelSizeAnd.Size = new System.Drawing.Size(25, 13);
+      this.labelSizeAnd.TabIndex = 57;
+      this.labelSizeAnd.Text = "and";
+      // 
+      // numericUpDownSizeTo
+      // 
+      this.numericUpDownSizeTo.Enabled = false;
+      this.numericUpDownSizeTo.Location = new System.Drawing.Point(520, 182);
+      this.numericUpDownSizeTo.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+      this.numericUpDownSizeTo.Name = "numericUpDownSizeTo";
+      this.numericUpDownSizeTo.Size = new System.Drawing.Size(80, 20);
+      this.numericUpDownSizeTo.TabIndex = 58;
+      // 
+      // comboBox1
+      // 
+      this.comboBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBox1.Enabled = false;
+      this.comboBox1.FormattingEnabled = true;
+      this.comboBox1.Items.AddRange(new object[] {
+            "GB",
+            "MB",
+            "KB",
+            "Bytes"});
+      this.comboBox1.Location = new System.Drawing.Point(637, 181);
+      this.comboBox1.Name = "comboBox1";
+      this.comboBox1.Size = new System.Drawing.Size(77, 21);
+      this.comboBox1.TabIndex = 59;
+      this.comboBox1.Text = "KB";
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1406,8 +1517,8 @@
       this.menuStrip1.PerformLayout();
       this.tabControlMain.ResumeLayout(false);
       this.tabPageFilesAndFolders.ResumeLayout(false);
-      this.panel1.ResumeLayout(false);
-      this.panel1.PerformLayout();
+      this.panelMain.ResumeLayout(false);
+      this.panelMain.PerformLayout();
       this.tabPageContaining.ResumeLayout(false);
       this.tabPageContaining.PerformLayout();
       this.tabPageDateAndSize.ResumeLayout(false);
@@ -1424,12 +1535,14 @@
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartsecond)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartMinute)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateCreationStartHour)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeFrom)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeTo)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -1482,10 +1595,10 @@
     private System.Windows.Forms.Button buttonReset;
     private System.Windows.Forms.Button buttonStop;
     private System.Windows.Forms.Button buttonSearch;
-    private System.Windows.Forms.Panel panel1;
+    private System.Windows.Forms.Panel panelMain;
     private System.Windows.Forms.ComboBox comboBoxMode;
-    private System.Windows.Forms.CheckBox checkBoxSearchForFolders;
-    private System.Windows.Forms.CheckBox checkBoxSearchForFiles;
+    private System.Windows.Forms.CheckBox checkBoxShowFoldernames;
+    private System.Windows.Forms.CheckBox checkBoxShowFilenames;
     private System.Windows.Forms.CheckBox checkBoxAppendResults;
     private System.Windows.Forms.CheckBox checkBoxIncludeHiddenFolders;
     private System.Windows.Forms.Button buttonBrowsePath;
@@ -1542,9 +1655,16 @@
     private System.Windows.Forms.NumericUpDown numericUpDown4;
     private System.Windows.Forms.NumericUpDown numericUpDown5;
     private System.Windows.Forms.NumericUpDown numericUpDown6;
-    private System.Windows.Forms.NumericUpDown numericUpDown1;
-    private System.Windows.Forms.NumericUpDown numericUpDown2;
-    private System.Windows.Forms.NumericUpDown numericUpDown3;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateCreationStartsecond;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateCreationStartMinute;
+    private System.Windows.Forms.NumericUpDown numericUpDownDateCreationStartHour;
     private System.Windows.Forms.CheckBox checkBoxSize;
-  }
+        private System.Windows.Forms.TabPage tabPageAttributes;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDownSizeTo;
+        private System.Windows.Forms.Label labelSizeAnd;
+        private System.Windows.Forms.ComboBox comboBoxSizeMbKb;
+        private System.Windows.Forms.NumericUpDown numericUpDownSizeFrom;
+        private System.Windows.Forms.ComboBox comboBoxBetweenSize;
+    }
 }
