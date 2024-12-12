@@ -22,7 +22,7 @@ namespace FredUltraFileSearch
     public readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
-    private byte padding = 25;
+    private readonly byte padding = 25;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -38,9 +38,14 @@ namespace FredUltraFileSearch
 
     private void DisplayTitle()
     {
+      Text += GetAssemblyInformation();
+    }
+
+    private static string GetAssemblyInformation()
+    {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      Text += string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart, fvi.FilePrivatePart);
+      return string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart, fvi.FilePrivatePart);
     }
 
     private void FormMain_Load(object sender, EventArgs e)

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("FredUltraFileSearch")]
-[assembly: AssemblyDescription("Simple application")]
+[assembly: AssemblyDescription("Simple application to search for files on Windows")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Freddy Juhel")]
 [assembly: AssemblyProduct("FredUltraFileSearch")]
-[assembly: AssemblyCopyright("Copyright © Freddy Juhel MIT 2015-2020")]
+[assembly: AssemblyCopyright("Copyright © Freddy Juhel MIT 2015-2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
