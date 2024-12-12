@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredUltraFileSearch", "FredUltraFileSearch\FredUltraFileSearch.csproj", "{2A72C4E9-0406-4E70-A8A1-032727930A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{FA41B0C9-EC85-4D27-A747-1B178A08D783}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2A72C4E9-0406-4E70-A8A1-032727930A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A72C4E9-0406-4E70-A8A1-032727930A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A72C4E9-0406-4E70-A8A1-032727930A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA41B0C9-EC85-4D27-A747-1B178A08D783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA41B0C9-EC85-4D27-A747-1B178A08D783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA41B0C9-EC85-4D27-A747-1B178A08D783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA41B0C9-EC85-4D27-A747-1B178A08D783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

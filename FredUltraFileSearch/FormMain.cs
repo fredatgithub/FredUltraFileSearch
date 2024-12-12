@@ -1,5 +1,6 @@
 ﻿#define DEBUG
 using FredUltraFileSearch.Properties;
+using HelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -758,12 +759,22 @@ namespace FredUltraFileSearch
         MessageBox.Show(" no pattern to search", "no text", MessageBoxButtons.OK);
       }
 
+      // on récupère les paramètres optionnels
+      var startDirectory = @"C:\";
+      if (!string.IsNullOrEmpty(comboBoxStartingFolder.Text))
+      {
+        startDirectory = comboBoxStartingFolder.Text;
+      }
+      
+      // on rempli listViewResult au fur et à mesure
+      var files = Helper.GetFiles(startDirectory, "*.txt", SearchOption.AllDirectories);
+
 
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+      // code not yet implemented
     }
   }
 }
