@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -25,6 +26,7 @@ namespace FredUltraFileSearch
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private readonly byte padding = 25;
+    private CancellationTokenSource _searchCancellationTokenSource;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -772,12 +774,17 @@ namespace FredUltraFileSearch
       }
 
       buttonSearch.Enabled = false;
+      buttonStop.Enabled = true;
+      _searchCancellationTokenSource = new CancellationTokenSource();
+      bool searchCompleted = false;
       try
       {
         var progress = new Progress<string>(file =>
           toolStripStatusLabelCurrentFile.Text = file);
+        var cancellationToken = _searchCancellationTokenSource.Token;
         var files = await Task.Run(() => Helper.GetFiles(
-          startDirectory, searchPattern, SearchOption.AllDirectories, progress));
+          startDirectory, searchPattern, SearchOption.AllDirectories, progress, cancellationToken),
+          cancellationToken);
 
         listViewResult.BeginUpdate();
         try
@@ -789,6 +796,11 @@ namespace FredUltraFileSearch
         {
           listViewResult.EndUpdate();
         }
+        searchCompleted = true;
+      }
+      catch (OperationCanceledException)
+      {
+        toolStripStatusLabelCurrentFile.Text = "Search cancelled";
       }
       catch (Exception exception) when (exception is ArgumentException ||
                                         exception is DirectoryNotFoundException ||
@@ -800,14 +812,25 @@ namespace FredUltraFileSearch
       finally
       {
         buttonSearch.Enabled = true;
+        buttonStop.Enabled = false;
+        _searchCancellationTokenSource.Dispose();
+        _searchCancellationTokenSource = null;
       }
 
-      MessageBox.Show(this, $"Search completed. Found {listViewResult.Items.Count} files.", "Search completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      if (searchCompleted)
+      {
+        MessageBox.Show(this, $"Search completed. Found {listViewResult.Items.Count} files.", "Search completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
     {
       // code not yet implemented
+    }
+
+    private void ButtonStop_Click(object sender, EventArgs e)
+    {
+      _searchCancellationTokenSource?.Cancel();
     }
   }
 }

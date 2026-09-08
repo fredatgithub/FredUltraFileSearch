@@ -181,6 +181,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).BeginInit();
+      this.statusStripMain.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -1473,6 +1474,7 @@
       this.buttonStop.TabIndex = 13;
       this.buttonStop.Text = "Stop";
       this.buttonStop.UseVisualStyleBackColor = true;
+      this.buttonStop.Click += new System.EventHandler(this.ButtonStop_Click);
       // 
       // buttonSearch
       // 
@@ -1488,14 +1490,14 @@
       // statusStripMain
       // 
       this.statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+      this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelCurrentFile});
       this.statusStripMain.Location = new System.Drawing.Point(0, 620);
       this.statusStripMain.Name = "statusStripMain";
       this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
       this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
-      this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelCurrentFile});
       // 
       // toolStripStatusLabelCurrentFile
       // 
@@ -1551,6 +1553,8 @@
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartSecond)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartMinute)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).EndInit();
+      this.statusStripMain.ResumeLayout(false);
+      this.statusStripMain.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
