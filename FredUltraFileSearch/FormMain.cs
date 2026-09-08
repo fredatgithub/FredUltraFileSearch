@@ -772,8 +772,10 @@ namespace FredUltraFileSearch
       buttonSearch.Enabled = false;
       try
       {
+        var progress = new Progress<string>(file =>
+          toolStripStatusLabelCurrentFile.Text = file);
         var files = await Task.Run(() => Helper.GetFiles(
-          startDirectory, searchPattern, SearchOption.AllDirectories));
+          startDirectory, searchPattern, SearchOption.AllDirectories, progress));
 
         listViewResult.BeginUpdate();
         try
@@ -797,6 +799,8 @@ namespace FredUltraFileSearch
       {
         buttonSearch.Enabled = true;
       }
+
+      MessageBox.Show(this, $"Search completed. Found {listViewResult.Items.Count} files.", "Search completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)

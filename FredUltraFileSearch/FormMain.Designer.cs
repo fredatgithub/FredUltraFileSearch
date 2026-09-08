@@ -154,6 +154,7 @@
       this.buttonStop = new System.Windows.Forms.Button();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
+      this.toolStripStatusLabelCurrentFile = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
@@ -1493,6 +1494,13 @@
       this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
+      this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelCurrentFile});
+      // 
+      // toolStripStatusLabelCurrentFile
+      // 
+      this.toolStripStatusLabelCurrentFile.Name = "toolStripStatusLabelCurrentFile";
+      this.toolStripStatusLabelCurrentFile.Size = new System.Drawing.Size(0, 17);
       // 
       // FormMain
       // 
@@ -1592,6 +1600,7 @@
     private System.Windows.Forms.TabPage tabPageContaining;
     private System.Windows.Forms.TabPage tabPageDateAndSize;
     private System.Windows.Forms.StatusStrip statusStripMain;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCurrentFile;
     private System.Windows.Forms.Button buttonReset;
     private System.Windows.Forms.Button buttonStop;
     private System.Windows.Forms.Button buttonSearch;
