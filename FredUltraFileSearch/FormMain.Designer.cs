@@ -149,10 +149,10 @@
       this.buttonStop = new System.Windows.Forms.Button();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
-      this.toolStripStatusLabelCurrentFile = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelSelection = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelObjectsFound = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelTotalSize = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelCurrentFile = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelBusy = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelBusyIndicator = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1.SuspendLayout();
@@ -418,7 +418,7 @@
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
       // 
@@ -548,7 +548,7 @@
       this.comboBoxStartingFolder.FormattingEnabled = true;
       this.comboBoxStartingFolder.Location = new System.Drawing.Point(16, 97);
       this.comboBoxStartingFolder.Name = "comboBoxStartingFolder";
-      this.comboBoxStartingFolder.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxStartingFolder.Size = new System.Drawing.Size(815, 21);
       this.comboBoxStartingFolder.TabIndex = 16;
       // 
       // comboBoxFileName
@@ -556,13 +556,13 @@
       this.comboBoxFileName.FormattingEnabled = true;
       this.comboBoxFileName.Location = new System.Drawing.Point(16, 45);
       this.comboBoxFileName.Name = "comboBoxFileName";
-      this.comboBoxFileName.Size = new System.Drawing.Size(448, 21);
+      this.comboBoxFileName.Size = new System.Drawing.Size(815, 21);
       this.comboBoxFileName.TabIndex = 15;
       // 
       // labelSelect
       // 
       this.labelSelect.AutoSize = true;
-      this.labelSelect.Location = new System.Drawing.Point(484, 79);
+      this.labelSelect.Location = new System.Drawing.Point(850, 79);
       this.labelSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSelect.Name = "labelSelect";
       this.labelSelect.Size = new System.Drawing.Size(82, 13);
@@ -572,7 +572,7 @@
       // labelMode
       // 
       this.labelMode.AutoSize = true;
-      this.labelMode.Location = new System.Drawing.Point(484, 24);
+      this.labelMode.Location = new System.Drawing.Point(850, 24);
       this.labelMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelMode.Name = "labelMode";
       this.labelMode.Size = new System.Drawing.Size(34, 13);
@@ -586,7 +586,7 @@
       this.comboBoxMode.Items.AddRange(new object[] {
             "Simple",
             "Wildcards"});
-      this.comboBoxMode.Location = new System.Drawing.Point(487, 45);
+      this.comboBoxMode.Location = new System.Drawing.Point(850, 45);
       this.comboBoxMode.Margin = new System.Windows.Forms.Padding(2);
       this.comboBoxMode.Name = "comboBoxMode";
       this.comboBoxMode.Size = new System.Drawing.Size(92, 21);
@@ -646,7 +646,7 @@
       // 
       // buttonBrowsePath
       // 
-      this.buttonBrowsePath.Location = new System.Drawing.Point(487, 98);
+      this.buttonBrowsePath.Location = new System.Drawing.Point(850, 98);
       this.buttonBrowsePath.Margin = new System.Windows.Forms.Padding(2);
       this.buttonBrowsePath.Name = "buttonBrowsePath";
       this.buttonBrowsePath.Size = new System.Drawing.Size(91, 20);
@@ -1515,50 +1515,50 @@
             this.toolStripStatusLabelCurrentFile,
             this.toolStripStatusLabelBusy,
             this.toolStripStatusLabelBusyIndicator});
-      this.statusStripMain.Location = new System.Drawing.Point(0, 620);
+      this.statusStripMain.Location = new System.Drawing.Point(0, 618);
       this.statusStripMain.Name = "statusStripMain";
       this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-      this.statusStripMain.Size = new System.Drawing.Size(1109, 22);
+      this.statusStripMain.Size = new System.Drawing.Size(1109, 24);
       this.statusStripMain.TabIndex = 3;
       this.statusStripMain.Text = "statusStrip1";
-      // 
-      // toolStripStatusLabelCurrentFile
-      // 
-      this.toolStripStatusLabelCurrentFile.Name = "toolStripStatusLabelCurrentFile";
-      this.toolStripStatusLabelCurrentFile.Size = new System.Drawing.Size(0, 17);
       // 
       // toolStripStatusLabelSelection
       // 
       this.toolStripStatusLabelSelection.Name = "toolStripStatusLabelSelection";
-      this.toolStripStatusLabelSelection.Size = new System.Drawing.Size(210, 17);
+      this.toolStripStatusLabelSelection.Size = new System.Drawing.Size(200, 19);
       this.toolStripStatusLabelSelection.Text = "Selected 0 of 0 Objects (Size: 0 Bytes)";
       // 
       // toolStripStatusLabelObjectsFound
       // 
       this.toolStripStatusLabelObjectsFound.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
       this.toolStripStatusLabelObjectsFound.Name = "toolStripStatusLabelObjectsFound";
-      this.toolStripStatusLabelObjectsFound.Size = new System.Drawing.Size(145, 17);
+      this.toolStripStatusLabelObjectsFound.Size = new System.Drawing.Size(126, 19);
       this.toolStripStatusLabelObjectsFound.Text = "Objects Found: 0 Files";
       // 
       // toolStripStatusLabelTotalSize
       // 
       this.toolStripStatusLabelTotalSize.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
       this.toolStripStatusLabelTotalSize.Name = "toolStripStatusLabelTotalSize";
-      this.toolStripStatusLabelTotalSize.Size = new System.Drawing.Size(120, 17);
+      this.toolStripStatusLabelTotalSize.Size = new System.Drawing.Size(103, 19);
       this.toolStripStatusLabelTotalSize.Text = "Total Size: 0 Bytes";
+      // 
+      // toolStripStatusLabelCurrentFile
+      // 
+      this.toolStripStatusLabelCurrentFile.Name = "toolStripStatusLabelCurrentFile";
+      this.toolStripStatusLabelCurrentFile.Size = new System.Drawing.Size(0, 19);
       // 
       // toolStripStatusLabelBusy
       // 
       this.toolStripStatusLabelBusy.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
       this.toolStripStatusLabelBusy.Name = "toolStripStatusLabelBusy";
-      this.toolStripStatusLabelBusy.Size = new System.Drawing.Size(39, 17);
+      this.toolStripStatusLabelBusy.Size = new System.Drawing.Size(43, 19);
       this.toolStripStatusLabelBusy.Text = "Ready";
       // 
       // toolStripStatusLabelBusyIndicator
       // 
       this.toolStripStatusLabelBusyIndicator.BackColor = System.Drawing.Color.Red;
       this.toolStripStatusLabelBusyIndicator.Name = "toolStripStatusLabelBusyIndicator";
-      this.toolStripStatusLabelBusyIndicator.Size = new System.Drawing.Size(16, 17);
+      this.toolStripStatusLabelBusyIndicator.Size = new System.Drawing.Size(10, 19);
       this.toolStripStatusLabelBusyIndicator.Text = " ";
       // 
       // FormMain
