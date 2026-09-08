@@ -853,14 +853,27 @@ namespace FredUltraFileSearch
 
     private void CheckBoxDate_CheckedChanged(object sender, EventArgs e)
     {
-      if (checkBoxDate.Checked)
+      EnableDisableControls(GetDateFilterControls(), checkBoxDate.Checked);
+    }
+
+    private Control[] GetDateFilterControls()
+    {
+      return new[]
       {
-        EnableDisableControls(new[] { (Control)checkBoxDateCreation, checkBoxDateModified, checkBoxDateLastAccess, comboBoxDateModifiedBetween, dateTimePickerDateModifiedStart, numericUpDownDateModifiedStartHour, numericUpDownDateModifiedStartMinute, numericUpDownDateModifiedStartSecond, labelAndDateModified, dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour, numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond });
-      }
-      else
-      {
-        EnableDisableControls(new[] { (Control)checkBoxDateCreation, checkBoxDateModified, checkBoxDateLastAccess, comboBoxDateModifiedBetween, dateTimePickerDateModifiedStart, numericUpDownDateModifiedStartHour, numericUpDownDateModifiedStartMinute, numericUpDownDateModifiedStartSecond, labelAndDateModified, dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour, numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond }, false);
-      }
+        (Control)checkBoxDateModified, checkBoxDateCreation, checkBoxDateLastAccess,
+        comboBoxDateModifiedBetween, dateTimePickerDateModifiedStart,
+        numericUpDownDateModifiedStartHour, numericUpDownDateModifiedStartMinute,
+        numericUpDownDateModifiedStartSecond, labelAndDateModified,
+        dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour,
+        numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond,
+        comboBoxDateCreationBetween, dateTimePickerDateCreationStart,
+        numericUpDownDateCreationStartHour, numericUpDownDateCreationStartMinute,
+        numericUpDownDateCreationStartsecond, labelAndDateCreation,
+        dateTimePickerDateCreationEnd, numericUpDown12, numericUpDown11, numericUpDown10,
+        comboBoxDateLastAccessBetween, dateTimePickerDateLastAccessStart,
+        numericUpDown6, numericUpDown5, numericUpDown4, labelAndDateLastAccess,
+        dateTimePickerDateLastAccessEnd, numericUpDown15, numericUpDown14, numericUpDown13
+      };
     }
 
     private void EnableDisableControls(Control[] listOfControls, bool toBeTrue = true)
@@ -896,8 +909,12 @@ namespace FredUltraFileSearch
         var progress = new Progress<string>(file =>
         {
           toolStripStatusLabelCurrentFile.Text = file;
-          var item = listViewResult.Items.Add(CreateResultItem(file));
-          item.EnsureVisible();
+          var fileInfo = new FileInfo(file);
+          if (MatchesDateFilters(fileInfo))
+          {
+            var item = listViewResult.Items.Add(CreateResultItem(file));
+            item.EnsureVisible();
+          }
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
         await Task.Run(() => Helper.GetFiles(
@@ -948,6 +965,54 @@ namespace FredUltraFileSearch
       item.SubItems.Add(fileInfo.CreationTime.ToString());
       item.SubItems.Add(fileInfo.LastAccessTime.ToString());
       return item;
+    }
+
+    private bool MatchesDateFilters(FileInfo fileInfo)
+    {
+      if (!checkBoxDate.Checked)
+      {
+        return true;
+      }
+
+      return (!checkBoxDateModified.Checked || MatchesDateFilter(
+          fileInfo.LastWriteTime, comboBoxDateModifiedBetween.Text,
+          GetDateTime(dateTimePickerDateModifiedStart, numericUpDownDateModifiedStartHour,
+            numericUpDownDateModifiedStartMinute, numericUpDownDateModifiedStartSecond),
+          GetDateTime(dateTimePickerDateModifiedEnd, numericUpDownDateModifiedEndHour,
+            numericUpDownDateModifiedEndMinute, numericUpDownDateModifiedEndSecond))) &&
+        (!checkBoxDateCreation.Checked || MatchesDateFilter(
+          fileInfo.CreationTime, comboBoxDateCreationBetween.Text,
+          GetDateTime(dateTimePickerDateCreationStart, numericUpDownDateCreationStartHour,
+            numericUpDownDateCreationStartMinute, numericUpDownDateCreationStartsecond),
+          GetDateTime(dateTimePickerDateCreationEnd, numericUpDown12, numericUpDown11, numericUpDown10))) &&
+        (!checkBoxDateLastAccess.Checked || MatchesDateFilter(
+          fileInfo.LastAccessTime, comboBoxDateLastAccessBetween.Text,
+          GetDateTime(dateTimePickerDateLastAccessStart, numericUpDown6, numericUpDown5, numericUpDown4),
+          GetDateTime(dateTimePickerDateLastAccessEnd, numericUpDown15, numericUpDown14, numericUpDown13)));
+    }
+
+    private static DateTime GetDateTime(DateTimePicker datePicker, NumericUpDown hour,
+      NumericUpDown minute, NumericUpDown second)
+    {
+      return datePicker.Value.Date.AddHours((double)hour.Value)
+        .AddMinutes((double)minute.Value).AddSeconds((double)second.Value);
+    }
+
+    private static bool MatchesDateFilter(DateTime fileDate, string operation,
+      DateTime startDate, DateTime endDate)
+    {
+      switch (operation)
+      {
+        case "Not Between":
+          return fileDate < startDate || fileDate > endDate;
+        case "Newer than":
+          return fileDate >= startDate;
+        case "Older than":
+          return fileDate <= startDate;
+        case "Between":
+        default:
+          return fileDate >= startDate && fileDate <= endDate;
+      }
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
