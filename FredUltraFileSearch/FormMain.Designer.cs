@@ -984,7 +984,7 @@
       this.numericUpDownSizeTo.Enabled = false;
       this.numericUpDownSizeTo.Location = new System.Drawing.Point(520, 182);
       this.numericUpDownSizeTo.Maximum = new decimal(new int[] {
-            23,
+            2147483647,
             0,
             0,
             0});
@@ -1022,7 +1022,7 @@
       this.numericUpDownSizeFrom.Enabled = false;
       this.numericUpDownSizeFrom.Location = new System.Drawing.Point(296, 184);
       this.numericUpDownSizeFrom.Maximum = new decimal(new int[] {
-            23,
+            2147483647,
             0,
             0,
             0});
@@ -1038,8 +1038,8 @@
       this.comboBoxBetweenSize.Items.AddRange(new object[] {
             "Between",
             "Not Between",
-            "Newer than",
-            "Older than"});
+            "Larger than",
+            "Smaller than"});
       this.comboBoxBetweenSize.Location = new System.Drawing.Point(156, 183);
       this.comboBoxBetweenSize.Name = "comboBoxBetweenSize";
       this.comboBoxBetweenSize.Size = new System.Drawing.Size(121, 21);

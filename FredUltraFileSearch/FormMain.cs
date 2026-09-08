@@ -8,10 +8,12 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace FredUltraFileSearch
 {
@@ -21,6 +23,7 @@ namespace FredUltraFileSearch
     {
       InitializeComponent();
       InitializeResultContextMenu();
+      checkBoxSize.CheckedChanged += CheckBoxSize_CheckedChanged;
     }
 
     public readonly Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
@@ -884,6 +887,15 @@ namespace FredUltraFileSearch
       }
     }
 
+    private void CheckBoxSize_CheckedChanged(object sender, EventArgs e)
+    {
+      EnableDisableControls(new[]
+      {
+        (Control)comboBoxBetweenSize, numericUpDownSizeFrom, comboBoxSizeMbKb,
+        labelSizeAnd, numericUpDownSizeTo, comboBox1
+      }, checkBoxSize.Checked);
+    }
+
     private async void ButtonSearch_Click(object sender, EventArgs e)
     {
       string searchPattern = comboBoxFileName.Text.Trim();
@@ -910,7 +922,7 @@ namespace FredUltraFileSearch
         {
           toolStripStatusLabelCurrentFile.Text = file;
           var fileInfo = new FileInfo(file);
-          if (MatchesDateFilters(fileInfo))
+          if (MatchesFileFilters(fileInfo))
           {
             var item = listViewResult.Items.Add(CreateResultItem(file));
             item.EnsureVisible();
@@ -943,10 +955,24 @@ namespace FredUltraFileSearch
 
       if (searchCompleted)
       {
+        ResizeResultColumnsToContent();
         int fileCount = listViewResult.Items.Count;
         string fileLabel = fileCount == 1 ? "fichier" : "fichiers";
         toolStripStatusLabelCurrentFile.Text =
           $"{fileCount} {fileLabel} {searchPattern} trouvés";
+      }
+    }
+
+    private void ResizeResultColumnsToContent()
+    {
+      if (listViewResult.Items.Count == 0)
+      {
+        return;
+      }
+
+      foreach (ColumnHeader column in listViewResult.Columns)
+      {
+        column.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
       }
     }
 
@@ -989,6 +1015,133 @@ namespace FredUltraFileSearch
           fileInfo.LastAccessTime, comboBoxDateLastAccessBetween.Text,
           GetDateTime(dateTimePickerDateLastAccessStart, numericUpDown6, numericUpDown5, numericUpDown4),
           GetDateTime(dateTimePickerDateLastAccessEnd, numericUpDown15, numericUpDown14, numericUpDown13)));
+    }
+
+    private bool MatchesFileFilters(FileInfo fileInfo)
+    {
+      return MatchesDateFilters(fileInfo) &&
+        MatchesSizeFilter(fileInfo.Length) &&
+        MatchesAttributeFilters(fileInfo) &&
+        MatchesContainingText(fileInfo);
+    }
+
+    private bool MatchesSizeFilter(long fileSize)
+    {
+      if (!checkBoxSize.Checked)
+      {
+        return true;
+      }
+
+      decimal startSize = GetSizeInBytes(numericUpDownSizeFrom.Value, comboBoxSizeMbKb.Text);
+      decimal endSize = GetSizeInBytes(numericUpDownSizeTo.Value, comboBox1.Text);
+      decimal size = fileSize;
+
+      switch (comboBoxBetweenSize.Text)
+      {
+        case "Not Between":
+          return size < startSize || size > endSize;
+        case "Larger than":
+          return size >= startSize;
+        case "Smaller than":
+          return size <= startSize;
+        case "Between":
+        default:
+          return size >= startSize && size <= endSize;
+      }
+    }
+
+    private static decimal GetSizeInBytes(decimal value, string unit)
+    {
+      switch (unit)
+      {
+        case "GB":
+          return value * 1024m * 1024m * 1024m;
+        case "MB":
+          return value * 1024m * 1024m;
+        case "KB":
+          return value * 1024m;
+        case "Bytes":
+        default:
+          return value;
+      }
+    }
+
+    private bool MatchesAttributeFilters(FileInfo fileInfo)
+    {
+      if (checkBoxSkipHiddenFiles.Checked &&
+          (fileInfo.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden)
+      {
+        return false;
+      }
+
+      if (checkBoxSkipSystemFiles.Checked &&
+          (fileInfo.Attributes & FileAttributes.System) == FileAttributes.System)
+      {
+        return false;
+      }
+
+      string extension = fileInfo.Extension.ToLowerInvariant();
+      if (checkBoxSkipImageFiles.Checked &&
+          new[] { ".bmp", ".gif", ".ico", ".jpeg", ".jpg", ".png", ".tif", ".tiff", ".webp" }.Contains(extension))
+      {
+        return false;
+      }
+
+      if (checkBoxSkipAudioFiles.Checked &&
+          new[] { ".aac", ".flac", ".m4a", ".mp3", ".ogg", ".wav", ".wma" }.Contains(extension))
+      {
+        return false;
+      }
+
+      if (checkBoxSkipVideoFiles.Checked &&
+          new[] { ".avi", ".m4v", ".mkv", ".mov", ".mp4", ".mpeg", ".mpg", ".wmv" }.Contains(extension))
+      {
+        return false;
+      }
+
+      return true;
+    }
+
+    private bool MatchesContainingText(FileInfo fileInfo)
+    {
+      string searchText = comboBoxSearchText.Text.Trim();
+      if (searchText == string.Empty)
+      {
+        return true;
+      }
+
+      bool containsText;
+      try
+      {
+        string content = File.ReadAllText(fileInfo.FullName);
+        string[] searchTerms = comboBoxContainingTextMode.Text == "Words"
+          ? searchText.Split(new[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+          : new[] { searchText };
+
+        var regexOptions = checkBoxCaseSensitive.Checked
+          ? RegexOptions.None
+          : RegexOptions.IgnoreCase;
+        Func<string, bool> termMatches = term =>
+        {
+          string expression = Regex.Escape(term);
+          if (checkBoxwholeWords.Checked)
+          {
+            expression = $"\\b{expression}\\b";
+          }
+
+          return Regex.IsMatch(content, expression, regexOptions);
+        };
+
+        containsText = radioButtonContainingTextMatchAll.Checked
+          ? searchTerms.All(termMatches)
+          : searchTerms.Any(termMatches);
+      }
+      catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException || exception is DecoderFallbackException)
+      {
+        containsText = false;
+      }
+
+      return checkBoxWithout.Checked ? !containsText : containsText;
     }
 
     private static DateTime GetDateTime(DateTimePicker datePicker, NumericUpDown hour,
