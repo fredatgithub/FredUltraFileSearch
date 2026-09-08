@@ -16,7 +16,7 @@ namespace HelperLibrary
     /// <returns>Liste des chemins de fichiers trouvés.</returns>
     /// <exception cref="ArgumentException">Si le chemin du répertoire est invalide ou vide.</exception>
     /// <exception cref="DirectoryNotFoundException">Si le répertoire n'existe pas.</exception>
-    public static List<string> GetFiles(string directoryPath, string searchPattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories, IProgress<string> progress = null, CancellationToken cancellationToken = default(CancellationToken))
+    public static List<string> GetFiles(string directoryPath, string searchPattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories, IProgress<string> progress = null, CancellationToken cancellationToken = default(CancellationToken), bool includeDirectories = false)
     {
       if (string.IsNullOrWhiteSpace(directoryPath))
       {
@@ -33,6 +33,12 @@ namespace HelperLibrary
 
       try
       {
+        if (includeDirectories)
+        {
+          files.Add(directoryPath);
+          progress?.Report(directoryPath);
+        }
+
         // Ajouter les fichiers du répertoire actuel
         foreach (var file in Directory.GetFiles(directoryPath, searchPattern))
         {
@@ -50,7 +56,7 @@ namespace HelperLibrary
             try
             {
               // Ajouter récursivement les fichiers des sous-répertoires
-              files.AddRange(GetFiles(subDirectory, searchPattern, searchOption, progress, cancellationToken));
+              files.AddRange(GetFiles(subDirectory, searchPattern, searchOption, progress, cancellationToken, includeDirectories));
             }
             catch (UnauthorizedAccessException)
             {

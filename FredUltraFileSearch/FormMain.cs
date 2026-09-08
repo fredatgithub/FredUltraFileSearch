@@ -968,6 +968,19 @@ namespace FredUltraFileSearch
       }, checkBoxSize.Checked);
     }
 
+    private void CheckBoxAttributes_CheckedChanged(object sender, EventArgs e)
+    {
+      EnableDisableControls(new[]
+      {
+        (Control)radioButtonAttributesAny, radioButtonAttributesAll,
+        radioButtonAttributesOnly, checkBoxAttributeNormal, checkBoxAttributeArchive,
+        checkBoxAttributeReadOnly, checkBoxAttributeSystem, checkBoxAttributeHidden,
+        checkBoxAttributeDirectory, checkBoxAttributeCompressed, checkBoxAttributeEncrypted,
+        checkBoxAttributeTemporary, checkBoxAttributeNotIndexed,
+        checkBoxAttributeReparsePoint, checkBoxAttributeSparseFile, checkBoxAttributeOffline
+      }, checkBoxAttributes.Checked);
+    }
+
     private async void ButtonSearch_Click(object sender, EventArgs e)
     {
       string searchPattern = comboBoxFileName.Text.Trim();
@@ -999,17 +1012,20 @@ namespace FredUltraFileSearch
         var progress = new Progress<string>(file =>
         {
           toolStripStatusLabelCurrentFile.Text = file;
-          var fileInfo = new FileInfo(file);
+          FileSystemInfo fileInfo = Directory.Exists(file)
+            ? (FileSystemInfo)new DirectoryInfo(file)
+            : new FileInfo(file);
           if (MatchesFileFilters(fileInfo))
           {
-            var item = listViewResult.Items.Add(CreateResultItem(file));
+            var item = listViewResult.Items.Add(CreateResultItem(fileInfo));
             item.EnsureVisible();
             UpdateStatusStrip();
           }
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
         await Task.Run(() => Helper.GetFiles(
-          startDirectory, searchPattern, SearchOption.AllDirectories, progress, cancellationToken),
+          startDirectory, searchPattern, SearchOption.AllDirectories, progress, cancellationToken,
+          checkBoxAttributeDirectory.Checked),
           cancellationToken);
         searchCompleted = true;
       }
@@ -1057,16 +1073,17 @@ namespace FredUltraFileSearch
       }
     }
 
-    private ListViewItem CreateResultItem(string filePath)
+    private ListViewItem CreateResultItem(FileSystemInfo fileInfo)
     {
-      var fileInfo = new FileInfo(filePath);
       var item = new ListViewItem((listViewResult.Items.Count + 1).ToString());
-      item.Tag = filePath;
+      item.Tag = fileInfo.FullName;
       item.SubItems.Add(fileInfo.Name);
-      item.SubItems.Add(fileInfo.DirectoryName);
-      item.SubItems.Add(fileInfo.Length.ToString("#,0", CultureInfo.InvariantCulture).Replace(',', ' '));
-      item.SubItems.Add(fileInfo.Extension);
-      item.SubItems.Add("File");
+      var file = fileInfo as FileInfo;
+      var directory = fileInfo as DirectoryInfo;
+      item.SubItems.Add(file != null ? file.DirectoryName : directory.Parent?.FullName);
+      item.SubItems.Add(file == null ? "0" : file.Length.ToString("#,0", CultureInfo.InvariantCulture).Replace(',', ' '));
+      item.SubItems.Add(file == null ? string.Empty : file.Extension);
+      item.SubItems.Add(file == null ? "Directory" : "File");
       item.SubItems.Add(fileInfo.Attributes.ToString());
       item.SubItems.Add(fileInfo.LastWriteTime.ToString());
       item.SubItems.Add(fileInfo.CreationTime.ToString());
@@ -1074,7 +1091,7 @@ namespace FredUltraFileSearch
       return item;
     }
 
-    private bool MatchesDateFilters(FileInfo fileInfo)
+    private bool MatchesDateFilters(FileSystemInfo fileInfo)
     {
       if (!checkBoxDate.Checked)
       {
@@ -1098,24 +1115,24 @@ namespace FredUltraFileSearch
           GetDateTime(dateTimePickerDateLastAccessEnd, numericUpDown15, numericUpDown14, numericUpDown13)));
     }
 
-    private bool MatchesFileFilters(FileInfo fileInfo)
+    private bool MatchesFileFilters(FileSystemInfo fileInfo)
     {
       return MatchesDateFilters(fileInfo) &&
-        MatchesSizeFilter(fileInfo.Length) &&
+        MatchesSizeFilter(fileInfo as FileInfo) &&
         MatchesAttributeFilters(fileInfo) &&
         MatchesContainingText(fileInfo);
     }
 
-    private bool MatchesSizeFilter(long fileSize)
+    private bool MatchesSizeFilter(FileInfo fileInfo)
     {
-      if (!checkBoxSize.Checked)
+      if (!checkBoxSize.Checked || fileInfo == null)
       {
         return true;
       }
 
       decimal startSize = GetSizeInBytes(numericUpDownSizeFrom.Value, comboBoxSizeMbKb.Text);
       decimal endSize = GetSizeInBytes(numericUpDownSizeTo.Value, comboBox1.Text);
-      decimal size = fileSize;
+      decimal size = fileInfo.Length;
 
       switch (comboBoxBetweenSize.Text)
       {
@@ -1147,7 +1164,7 @@ namespace FredUltraFileSearch
       }
     }
 
-    private bool MatchesAttributeFilters(FileInfo fileInfo)
+    private bool MatchesAttributeFilters(FileSystemInfo fileInfo)
     {
       if (checkBoxSkipHiddenFiles.Checked &&
           (fileInfo.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden)
@@ -1161,7 +1178,43 @@ namespace FredUltraFileSearch
         return false;
       }
 
-      string extension = fileInfo.Extension.ToLowerInvariant();
+      if (!checkBoxAttributeDirectory.Checked && fileInfo is DirectoryInfo)
+      {
+        return false;
+      }
+
+      FileAttributes selectedAttributes = FileAttributes.Normal;
+      if (checkBoxAttributeArchive.Checked) selectedAttributes |= FileAttributes.Archive;
+      if (checkBoxAttributeReadOnly.Checked) selectedAttributes |= FileAttributes.ReadOnly;
+      if (checkBoxAttributeSystem.Checked) selectedAttributes |= FileAttributes.System;
+      if (checkBoxAttributeHidden.Checked) selectedAttributes |= FileAttributes.Hidden;
+      if (checkBoxAttributeDirectory.Checked) selectedAttributes |= FileAttributes.Directory;
+      if (checkBoxAttributeCompressed.Checked) selectedAttributes |= FileAttributes.Compressed;
+      if (checkBoxAttributeEncrypted.Checked) selectedAttributes |= FileAttributes.Encrypted;
+      if (checkBoxAttributeTemporary.Checked) selectedAttributes |= FileAttributes.Temporary;
+      if (checkBoxAttributeNotIndexed.Checked) selectedAttributes |= FileAttributes.NotContentIndexed;
+      if (checkBoxAttributeReparsePoint.Checked) selectedAttributes |= FileAttributes.ReparsePoint;
+      if (checkBoxAttributeSparseFile.Checked) selectedAttributes |= FileAttributes.SparseFile;
+      if (checkBoxAttributeOffline.Checked) selectedAttributes |= FileAttributes.Offline;
+
+      FileAttributes actualAttributes = fileInfo.Attributes;
+      var selectedFlags = Enum.GetValues(typeof(FileAttributes)).Cast<FileAttributes>()
+        .Where(attribute => attribute != FileAttributes.Normal && (selectedAttributes & attribute) == attribute)
+        .ToArray();
+      bool attributesMatch = radioButtonAttributesAll.Checked
+        ? selectedFlags.All(attribute => (actualAttributes & attribute) == attribute)
+        : selectedFlags.Any(attribute => (actualAttributes & attribute) == attribute);
+      if (radioButtonAttributesOnly.Checked && actualAttributes != selectedAttributes)
+      {
+        attributesMatch = false;
+      }
+      if (checkBoxAttributes.Checked && !attributesMatch)
+      {
+        return false;
+      }
+
+      var file = fileInfo as FileInfo;
+      string extension = file == null ? string.Empty : file.Extension.ToLowerInvariant();
       if (checkBoxSkipImageFiles.Checked &&
           new[] { ".bmp", ".gif", ".ico", ".jpeg", ".jpg", ".png", ".tif", ".tiff", ".webp" }.Contains(extension))
       {
@@ -1183,8 +1236,13 @@ namespace FredUltraFileSearch
       return true;
     }
 
-    private bool MatchesContainingText(FileInfo fileInfo)
+    private bool MatchesContainingText(FileSystemInfo fileInfo)
     {
+      if (!(fileInfo is FileInfo))
+      {
+        return true;
+      }
+
       string searchText = comboBoxSearchText.Text.Trim();
       if (searchText == string.Empty)
       {
