@@ -9,12 +9,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic;
 
 namespace FredUltraFileSearch
 {
@@ -40,6 +42,10 @@ namespace FredUltraFileSearch
     private readonly ToolStripMenuItem _openWithNotepadPlusPlusMenuItem = new ToolStripMenuItem("Open with NotePad++");
     private readonly ToolStripMenuItem _openWithVisualStudioCodeMenuItem = new ToolStripMenuItem("Open with VS Code");
     private readonly ToolStripSeparator _externalToolsSeparator = new ToolStripSeparator();
+    private readonly ToolStripSeparator _fileActionsSeparator = new ToolStripSeparator();
+    private readonly ToolStripMenuItem _renameMenuItem = new ToolStripMenuItem("Rename");
+    private readonly ToolStripMenuItem _deleteMenuItem = new ToolStripMenuItem("Delete");
+    private readonly ToolStripMenuItem _propertiesMenuItem = new ToolStripMenuItem("Properties");
     private string _notepadPlusPlusPath;
     private string _visualStudioCodePath;
     private int _sortColumn = -1;
@@ -52,6 +58,9 @@ namespace FredUltraFileSearch
       _commandPromptMenuItem.Click += CommandPromptMenuItem_Click;
       _openWithNotepadPlusPlusMenuItem.Click += OpenWithNotepadPlusPlusMenuItem_Click;
       _openWithVisualStudioCodeMenuItem.Click += OpenWithVisualStudioCodeMenuItem_Click;
+      _renameMenuItem.Click += RenameMenuItem_Click;
+      _deleteMenuItem.Click += DeleteMenuItem_Click;
+      _propertiesMenuItem.Click += PropertiesMenuItem_Click;
       RefreshExternalApplicationPaths();
       _resultContextMenu.Items.AddRange(new ToolStripItem[]
       {
@@ -60,7 +69,11 @@ namespace FredUltraFileSearch
         _externalToolsSeparator,
         _commandPromptMenuItem,
         _openWithNotepadPlusPlusMenuItem,
-        _openWithVisualStudioCodeMenuItem
+        _openWithVisualStudioCodeMenuItem,
+        _fileActionsSeparator,
+        _renameMenuItem,
+        _deleteMenuItem,
+        _propertiesMenuItem
       });
       _resultContextMenu.Opening += ResultContextMenu_Opening;
       listViewResult.ContextMenuStrip = _resultContextMenu;
@@ -173,6 +186,10 @@ namespace FredUltraFileSearch
       _openWithNotepadPlusPlusMenuItem.Enabled = _openFileMenuItem.Enabled;
       _openWithVisualStudioCodeMenuItem.Visible = !string.IsNullOrEmpty(_visualStudioCodePath);
       _openWithVisualStudioCodeMenuItem.Enabled = _openFileMenuItem.Enabled;
+      bool pathExists = !string.IsNullOrEmpty(filePath) && (File.Exists(filePath) || Directory.Exists(filePath));
+      _renameMenuItem.Enabled = pathExists;
+      _deleteMenuItem.Enabled = pathExists;
+      _propertiesMenuItem.Enabled = pathExists;
     }
 
     private void RefreshExternalApplicationPaths()
@@ -233,6 +250,93 @@ namespace FredUltraFileSearch
     {
       StartApplication(_visualStudioCodePath, QuoteArgument(GetSelectedResultPath()));
     }
+
+    private void RenameMenuItem_Click(object sender, EventArgs e)
+    {
+      string path = GetSelectedResultPath();
+      if (string.IsNullOrEmpty(path) || (!File.Exists(path) && !Directory.Exists(path)))
+      {
+        return;
+      }
+
+      string currentName = Path.GetFileName(path.TrimEnd(Path.DirectorySeparatorChar));
+      string newName = Interaction.InputBox("Enter the new name:", "Rename", currentName).Trim();
+      if (string.IsNullOrEmpty(newName) || string.Equals(newName, currentName, StringComparison.Ordinal))
+      {
+        return;
+      }
+
+      string parentDirectory = Path.GetDirectoryName(path.TrimEnd(Path.DirectorySeparatorChar));
+      string newPath = Path.Combine(parentDirectory, newName);
+      try
+      {
+        if (File.Exists(path))
+        {
+          File.Move(path, newPath);
+        }
+        else
+        {
+          Directory.Move(path, newPath);
+        }
+
+        listViewResult.SelectedItems[0].Tag = newPath;
+        listViewResult.SelectedItems[0].SubItems[1].Text = Path.GetFileName(newPath);
+        listViewResult.SelectedItems[0].SubItems[2].Text = parentDirectory;
+      }
+      catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException || exception is ArgumentException)
+      {
+        MessageBox.Show(this, exception.Message, "Unable to rename", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void DeleteMenuItem_Click(object sender, EventArgs e)
+    {
+      string path = GetSelectedResultPath();
+      if (string.IsNullOrEmpty(path) || (!File.Exists(path) && !Directory.Exists(path)))
+      {
+        return;
+      }
+
+      if (MessageBox.Show(this, "Delete the selected item?", "Confirm delete",
+          MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+      {
+        return;
+      }
+
+      try
+      {
+        if (File.Exists(path))
+        {
+          File.Delete(path);
+        }
+        else
+        {
+          Directory.Delete(path, true);
+        }
+
+        listViewResult.Items.Remove(listViewResult.SelectedItems[0]);
+        UpdateStatusStrip();
+      }
+      catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
+      {
+        MessageBox.Show(this, exception.Message, "Unable to delete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void PropertiesMenuItem_Click(object sender, EventArgs e)
+    {
+      string path = GetSelectedResultPath();
+      if (string.IsNullOrEmpty(path) || (!File.Exists(path) && !Directory.Exists(path)))
+      {
+        return;
+      }
+
+      ShellExecute(IntPtr.Zero, "properties", path, null, null, 1);
+    }
+
+    [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
+    private static extern IntPtr ShellExecute(IntPtr windowHandle, string operation,
+      string file, string parameters, string directory, int showCommand);
 
     private static string FindExecutable(string executableName, params string[] candidatePaths)
     {
