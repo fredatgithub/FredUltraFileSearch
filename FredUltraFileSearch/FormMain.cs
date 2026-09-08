@@ -776,26 +776,20 @@ namespace FredUltraFileSearch
       buttonSearch.Enabled = false;
       buttonStop.Enabled = true;
       _searchCancellationTokenSource = new CancellationTokenSource();
+      listViewResult.Items.Clear();
       bool searchCompleted = false;
       try
       {
         var progress = new Progress<string>(file =>
-          toolStripStatusLabelCurrentFile.Text = file);
+        {
+          toolStripStatusLabelCurrentFile.Text = file;
+          var item = listViewResult.Items.Add(CreateResultItem(file));
+          item.EnsureVisible();
+        });
         var cancellationToken = _searchCancellationTokenSource.Token;
-        var files = await Task.Run(() => Helper.GetFiles(
+        await Task.Run(() => Helper.GetFiles(
           startDirectory, searchPattern, SearchOption.AllDirectories, progress, cancellationToken),
           cancellationToken);
-
-        listViewResult.BeginUpdate();
-        try
-        {
-          listViewResult.Items.Clear();
-          listViewResult.Items.AddRange(files.Select(file => new ListViewItem(file)).ToArray());
-        }
-        finally
-        {
-          listViewResult.EndUpdate();
-        }
         searchCompleted = true;
       }
       catch (OperationCanceledException)
@@ -821,6 +815,22 @@ namespace FredUltraFileSearch
       {
         MessageBox.Show(this, $"Search completed. Found {listViewResult.Items.Count} files.", "Search completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
+    }
+
+    private ListViewItem CreateResultItem(string filePath)
+    {
+      var fileInfo = new FileInfo(filePath);
+      var item = new ListViewItem((listViewResult.Items.Count + 1).ToString());
+      item.SubItems.Add(fileInfo.Name);
+      item.SubItems.Add(fileInfo.DirectoryName);
+      item.SubItems.Add(fileInfo.Length.ToString("N0"));
+      item.SubItems.Add(fileInfo.Extension);
+      item.SubItems.Add("File");
+      item.SubItems.Add(fileInfo.Attributes.ToString());
+      item.SubItems.Add(fileInfo.LastWriteTime.ToString());
+      item.SubItems.Add(fileInfo.CreationTime.ToString());
+      item.SubItems.Add(fileInfo.LastAccessTime.ToString());
+      return item;
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)

@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("N°");
-      System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Name");
-      System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Folder");
-      System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Size");
-      System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Ext");
-      System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Type");
-      System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Attributes");
-      System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Modified Date");
-      System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Creation Date");
-      System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Last Access Date");
+      System.Windows.Forms.ColumnHeader columnHeaderNumber = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderName = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderFolder = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderSize = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderExtension = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderType = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderAttributes = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderModifiedDate = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderCreationDate = new System.Windows.Forms.ColumnHeader();
+      System.Windows.Forms.ColumnHeader columnHeaderLastAccessDate = new System.Windows.Forms.ColumnHeader();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1435,24 +1435,46 @@
       this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.listViewResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeaderNumber,
+            columnHeaderName,
+            columnHeaderFolder,
+            columnHeaderSize,
+            columnHeaderExtension,
+            columnHeaderType,
+            columnHeaderAttributes,
+            columnHeaderModifiedDate,
+            columnHeaderCreationDate,
+            columnHeaderLastAccessDate});
+      this.listViewResult.FullRowSelect = true;
+      this.listViewResult.GridLines = true;
       this.listViewResult.HideSelection = false;
-      this.listViewResult.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
       this.listViewResult.Location = new System.Drawing.Point(0, 267);
       this.listViewResult.Name = "listViewResult";
       this.listViewResult.Size = new System.Drawing.Size(1109, 350);
       this.listViewResult.TabIndex = 15;
       this.listViewResult.UseCompatibleStateImageBehavior = false;
-      this.listViewResult.View = System.Windows.Forms.View.SmallIcon;
+      this.listViewResult.View = System.Windows.Forms.View.Details;
+      columnHeaderNumber.Text = "N°";
+      columnHeaderNumber.Width = 40;
+      columnHeaderName.Text = "Name";
+      columnHeaderName.Width = 180;
+      columnHeaderFolder.Text = "Folder";
+      columnHeaderFolder.Width = 220;
+      columnHeaderSize.Text = "Size";
+      columnHeaderSize.Width = 80;
+      columnHeaderExtension.Text = "Ext";
+      columnHeaderExtension.Width = 60;
+      columnHeaderType.Text = "Type";
+      columnHeaderType.Width = 80;
+      columnHeaderAttributes.Text = "Attributes";
+      columnHeaderAttributes.Width = 100;
+      columnHeaderModifiedDate.Text = "Modified Date";
+      columnHeaderModifiedDate.Width = 130;
+      columnHeaderCreationDate.Text = "Creation Date";
+      columnHeaderCreationDate.Width = 130;
+      columnHeaderLastAccessDate.Text = "Last Access Date";
+      columnHeaderLastAccessDate.Width = 130;
       // 
       // buttonReset
       // 
@@ -1679,5 +1701,5 @@
         private System.Windows.Forms.ComboBox comboBoxSizeMbKb;
         private System.Windows.Forms.NumericUpDown numericUpDownSizeFrom;
         private System.Windows.Forms.ComboBox comboBoxBetweenSize;
-    }
+  }
 }
