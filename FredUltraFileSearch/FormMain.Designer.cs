@@ -599,9 +599,9 @@
       this.labelSelect.Location = new System.Drawing.Point(484, 79);
       this.labelSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSelect.Name = "labelSelect";
-      this.labelSelect.Size = new System.Drawing.Size(37, 13);
+      this.labelSelect.Size = new System.Drawing.Size(82, 13);
       this.labelSelect.TabIndex = 14;
-      this.labelSelect.Text = "Select";
+      this.labelSelect.Text = "Select Directory";
       // 
       // labelMode
       // 
