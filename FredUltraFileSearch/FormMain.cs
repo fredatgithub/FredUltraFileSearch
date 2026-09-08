@@ -412,6 +412,18 @@ namespace FredUltraFileSearch
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       comboBoxStartingFolder.Text = Settings.Default.ComboBoxStartingFolderValue;
       comboBoxFileName.Text = Settings.Default.ComboBoxFileNameValue;
+      comboBoxSearchText.Text = Settings.Default.ComboBoxSearchTextValue;
+      comboBoxContainingTextMode.Text = Settings.Default.ComboBoxContainingTextModeValue;
+      checkBoxCaseSensitive.Checked = Settings.Default.ContainingTextCaseSensitive;
+      checkBoxwholeWords.Checked = Settings.Default.ContainingTextWholeWords;
+      checkBoxWithout.Checked = Settings.Default.ContainingTextWithout;
+      radioButtonContainingTextMatchAll.Checked = Settings.Default.ContainingTextMatchAll;
+      radioButtonContainingTextMatchAny.Checked = !radioButtonContainingTextMatchAll.Checked;
+      checkBoxSkipHiddenFiles.Checked = Settings.Default.SkipHiddenFiles;
+      checkBoxSkipSystemFiles.Checked = Settings.Default.SkipSystemFiles;
+      checkBoxSkipImageFiles.Checked = Settings.Default.SkipImageFiles;
+      checkBoxSkipAudioFiles.Checked = Settings.Default.SkipAudioFiles;
+      checkBoxSkipVideoFiles.Checked = Settings.Default.SkipVideoFiles;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -426,6 +438,17 @@ namespace FredUltraFileSearch
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.ComboBoxStartingFolderValue = comboBoxStartingFolder.Text;
       Settings.Default.ComboBoxFileNameValue = comboBoxFileName.Text;
+      Settings.Default.ComboBoxSearchTextValue = comboBoxSearchText.Text;
+      Settings.Default.ComboBoxContainingTextModeValue = comboBoxContainingTextMode.Text;
+      Settings.Default.ContainingTextCaseSensitive = checkBoxCaseSensitive.Checked;
+      Settings.Default.ContainingTextWholeWords = checkBoxwholeWords.Checked;
+      Settings.Default.ContainingTextWithout = checkBoxWithout.Checked;
+      Settings.Default.ContainingTextMatchAll = radioButtonContainingTextMatchAll.Checked;
+      Settings.Default.SkipHiddenFiles = checkBoxSkipHiddenFiles.Checked;
+      Settings.Default.SkipSystemFiles = checkBoxSkipSystemFiles.Checked;
+      Settings.Default.SkipImageFiles = checkBoxSkipImageFiles.Checked;
+      Settings.Default.SkipAudioFiles = checkBoxSkipAudioFiles.Checked;
+      Settings.Default.SkipVideoFiles = checkBoxSkipVideoFiles.Checked;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
