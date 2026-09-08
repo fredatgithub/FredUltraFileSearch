@@ -4,6 +4,7 @@ using HelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +20,7 @@ namespace FredUltraFileSearch
     public FormMain()
     {
       InitializeComponent();
+      InitializeResultContextMenu();
     }
 
     public readonly Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
@@ -27,6 +29,106 @@ namespace FredUltraFileSearch
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private readonly byte padding = 25;
     private CancellationTokenSource _searchCancellationTokenSource;
+    private readonly ContextMenuStrip _resultContextMenu = new ContextMenuStrip();
+    private readonly ToolStripMenuItem _openFileMenuItem = new ToolStripMenuItem("Open file");
+    private readonly ToolStripMenuItem _openDirectoryMenuItem = new ToolStripMenuItem("Open directory location");
+    private int _sortColumn = -1;
+    private bool _sortAscending = true;
+
+    private void InitializeResultContextMenu()
+    {
+      _openFileMenuItem.Click += OpenFileMenuItem_Click;
+      _openDirectoryMenuItem.Click += OpenDirectoryMenuItem_Click;
+      _resultContextMenu.Items.AddRange(new ToolStripItem[]
+      {
+        _openFileMenuItem,
+        _openDirectoryMenuItem
+      });
+      _resultContextMenu.Opening += ResultContextMenu_Opening;
+      listViewResult.ContextMenuStrip = _resultContextMenu;
+      listViewResult.MouseUp += ListViewResult_MouseUp;
+      listViewResult.ColumnClick += ListViewResult_ColumnClick;
+    }
+
+    private void ListViewResult_ColumnClick(object sender, ColumnClickEventArgs e)
+    {
+      if (_sortColumn == e.Column)
+      {
+        _sortAscending = !_sortAscending;
+      }
+      else
+      {
+        _sortColumn = e.Column;
+        _sortAscending = true;
+      }
+
+      listViewResult.ListViewItemSorter = new ListViewItemComparer(e.Column, _sortAscending);
+      listViewResult.Sort();
+    }
+
+    private void ListViewResult_MouseUp(object sender, MouseEventArgs e)
+    {
+      if (e.Button != MouseButtons.Right)
+      {
+        return;
+      }
+
+      var item = listViewResult.HitTest(e.Location).Item;
+      if (item != null)
+      {
+        item.Selected = true;
+        item.Focused = true;
+      }
+    }
+
+    private void ResultContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      string filePath = GetSelectedResultPath();
+      _openFileMenuItem.Enabled = !string.IsNullOrEmpty(filePath) && File.Exists(filePath);
+      _openDirectoryMenuItem.Enabled = !string.IsNullOrEmpty(filePath) &&
+        Directory.Exists(Path.GetDirectoryName(filePath));
+    }
+
+    private string GetSelectedResultPath()
+    {
+      return listViewResult.SelectedItems.Count == 0
+        ? null
+        : listViewResult.SelectedItems[0].Tag as string;
+    }
+
+    private void OpenFileMenuItem_Click(object sender, EventArgs e)
+    {
+      OpenPath(GetSelectedResultPath());
+    }
+
+    private void OpenDirectoryMenuItem_Click(object sender, EventArgs e)
+    {
+      string filePath = GetSelectedResultPath();
+      string directoryPath = string.IsNullOrEmpty(filePath) ? null : Path.GetDirectoryName(filePath);
+      OpenPath(directoryPath);
+    }
+
+    private static void OpenPath(string path)
+    {
+      if (string.IsNullOrEmpty(path))
+      {
+        return;
+      }
+
+      try
+      {
+        Process.Start(new ProcessStartInfo
+        {
+          FileName = path,
+          UseShellExecute = true
+        });
+      }
+      catch (Exception exception) when (exception is IOException || exception is System.ComponentModel.Win32Exception)
+      {
+        MessageBox.Show(exception.Message, "Unable to open path", MessageBoxButtons.OK,
+          MessageBoxIcon.Error);
+      }
+    }
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -813,7 +915,10 @@ namespace FredUltraFileSearch
 
       if (searchCompleted)
       {
-        MessageBox.Show(this, $"Search completed. Found {listViewResult.Items.Count} files.", "Search completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        int fileCount = listViewResult.Items.Count;
+        string fileLabel = fileCount == 1 ? "fichier" : "fichiers";
+        toolStripStatusLabelCurrentFile.Text =
+          $"{fileCount} {fileLabel} {searchPattern} trouvés";
       }
     }
 
@@ -821,9 +926,10 @@ namespace FredUltraFileSearch
     {
       var fileInfo = new FileInfo(filePath);
       var item = new ListViewItem((listViewResult.Items.Count + 1).ToString());
+      item.Tag = filePath;
       item.SubItems.Add(fileInfo.Name);
       item.SubItems.Add(fileInfo.DirectoryName);
-      item.SubItems.Add(fileInfo.Length.ToString("N0"));
+      item.SubItems.Add(fileInfo.Length.ToString("#,0", CultureInfo.InvariantCulture).Replace(',', ' '));
       item.SubItems.Add(fileInfo.Extension);
       item.SubItems.Add("File");
       item.SubItems.Add(fileInfo.Attributes.ToString());
@@ -841,6 +947,44 @@ namespace FredUltraFileSearch
     private void ButtonStop_Click(object sender, EventArgs e)
     {
       _searchCancellationTokenSource?.Cancel();
+    }
+
+    private sealed class ListViewItemComparer : Comparer<ListViewItem>
+    {
+      private readonly int _column;
+      private readonly bool _ascending;
+
+      public ListViewItemComparer(int column, bool ascending)
+      {
+        _column = column;
+        _ascending = ascending;
+      }
+
+      public override int Compare(ListViewItem leftItem, ListViewItem rightItem)
+      {
+        string leftText = leftItem.SubItems[_column].Text;
+        string rightText = rightItem.SubItems[_column].Text;
+        int result;
+
+        if (_column == 0 || _column == 3)
+        {
+          long.TryParse(leftText, NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out long leftValue);
+          long.TryParse(rightText, NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out long rightValue);
+          result = leftValue.CompareTo(rightValue);
+        }
+        else if (_column >= 7)
+        {
+          DateTime.TryParse(leftText, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime leftValue);
+          DateTime.TryParse(rightText, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime rightValue);
+          result = leftValue.CompareTo(rightValue);
+        }
+        else
+        {
+          result = StringComparer.CurrentCultureIgnoreCase.Compare(leftText, rightText);
+        }
+
+        return _ascending ? result : -result;
+      }
     }
   }
 }
