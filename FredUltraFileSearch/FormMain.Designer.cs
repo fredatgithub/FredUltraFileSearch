@@ -60,7 +60,6 @@
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.personalizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.languagetoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,10 +69,6 @@
       this.MediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.LargeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tabControlMain = new System.Windows.Forms.TabControl();
       this.tabPageFilesAndFolders = new System.Windows.Forms.TabPage();
@@ -410,17 +405,10 @@
       // toolsToolStripMenuItem
       // 
       this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.personalizeToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
       this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
       this.toolsToolStripMenuItem.Text = "&Outils";
-      // 
-      // personalizeToolStripMenuItem
-      // 
-      this.personalizeToolStripMenuItem.Name = "personalizeToolStripMenuItem";
-      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-      this.personalizeToolStripMenuItem.Text = "&Personnaliser";
       // 
       // optionsToolStripMenuItem
       // 
@@ -490,37 +478,10 @@
       // helpToolStripMenuItem
       // 
       this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.summaryToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator5,
             this.aboutToolStripMenuItem});
       this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
       this.helpToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
       this.helpToolStripMenuItem.Text = "&Aide";
-      // 
-      // summaryToolStripMenuItem
-      // 
-      this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-      this.summaryToolStripMenuItem.Text = "&Sommaire";
-      // 
-      // indexToolStripMenuItem
-      // 
-      this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-      this.indexToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-      this.indexToolStripMenuItem.Text = "&Index";
-      // 
-      // searchToolStripMenuItem
-      // 
-      this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-      this.searchToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-      this.searchToolStripMenuItem.Text = "&Rechercher";
-      // 
-      // toolStripSeparator5
-      // 
-      this.toolStripSeparator5.Name = "toolStripSeparator5";
-      this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
       // 
       // aboutToolStripMenuItem
       // 
@@ -1636,13 +1597,8 @@
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem personalizeToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-    private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem languagetoolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem;
