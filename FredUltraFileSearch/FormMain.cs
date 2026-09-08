@@ -48,6 +48,17 @@ namespace FredUltraFileSearch
       listViewResult.ContextMenuStrip = _resultContextMenu;
       listViewResult.MouseUp += ListViewResult_MouseUp;
       listViewResult.ColumnClick += ListViewResult_ColumnClick;
+      listViewResult.MouseDoubleClick += ListViewResult_MouseDoubleClick;
+    }
+
+    private void ListViewResult_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      var item = listViewResult.HitTest(e.Location).Item;
+      string filePath = item?.Tag as string;
+      if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+      {
+        OpenPath(filePath);
+      }
     }
 
     private void ListViewResult_ColumnClick(object sender, ColumnClickEventArgs e)
