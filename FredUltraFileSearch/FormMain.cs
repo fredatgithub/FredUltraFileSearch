@@ -997,5 +997,21 @@ namespace FredUltraFileSearch
         return _ascending ? result : -result;
       }
     }
+
+    private void ButtonBrowsePath_Click(object sender, EventArgs e)
+    {
+      string selectedDirectory = PeekDirectory();
+      if (string.IsNullOrEmpty(selectedDirectory))
+      {
+        return;
+      }
+
+      if (!comboBoxStartingFolder.Items.Contains(selectedDirectory))
+      {
+        comboBoxStartingFolder.Items.Add(selectedDirectory);
+      }
+
+      comboBoxStartingFolder.Text = selectedDirectory;
+    }
   }
 }

@@ -28,16 +28,16 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ColumnHeader columnHeaderNumber = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderName = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderFolder = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderSize = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderExtension = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderType = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderAttributes = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderModifiedDate = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderCreationDate = new System.Windows.Forms.ColumnHeader();
-      System.Windows.Forms.ColumnHeader columnHeaderLastAccessDate = new System.Windows.Forms.ColumnHeader();
+      this.columnHeaderNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderFolder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderExtension = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderAttributes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderModifiedDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderCreationDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeaderLastAccessDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -183,6 +183,55 @@
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDateModifiedStartHour)).BeginInit();
       this.statusStripMain.SuspendLayout();
       this.SuspendLayout();
+      // 
+      // columnHeaderNumber
+      // 
+      this.columnHeaderNumber.Text = "N°";
+      this.columnHeaderNumber.Width = 40;
+      // 
+      // columnHeaderName
+      // 
+      this.columnHeaderName.Text = "Name";
+      this.columnHeaderName.Width = 180;
+      // 
+      // columnHeaderFolder
+      // 
+      this.columnHeaderFolder.Text = "Folder";
+      this.columnHeaderFolder.Width = 220;
+      // 
+      // columnHeaderSize
+      // 
+      this.columnHeaderSize.Text = "Size";
+      this.columnHeaderSize.Width = 80;
+      // 
+      // columnHeaderExtension
+      // 
+      this.columnHeaderExtension.Text = "Ext";
+      // 
+      // columnHeaderType
+      // 
+      this.columnHeaderType.Text = "Type";
+      this.columnHeaderType.Width = 80;
+      // 
+      // columnHeaderAttributes
+      // 
+      this.columnHeaderAttributes.Text = "Attributes";
+      this.columnHeaderAttributes.Width = 100;
+      // 
+      // columnHeaderModifiedDate
+      // 
+      this.columnHeaderModifiedDate.Text = "Modified Date";
+      this.columnHeaderModifiedDate.Width = 130;
+      // 
+      // columnHeaderCreationDate
+      // 
+      this.columnHeaderCreationDate.Text = "Creation Date";
+      this.columnHeaderCreationDate.Width = 130;
+      // 
+      // columnHeaderLastAccessDate
+      // 
+      this.columnHeaderLastAccessDate.Text = "Last Access Date";
+      this.columnHeaderLastAccessDate.Width = 130;
       // 
       // menuStrip1
       // 
@@ -638,6 +687,7 @@
       this.buttonBrowsePath.TabIndex = 7;
       this.buttonBrowsePath.Text = "Browse ...";
       this.buttonBrowsePath.UseVisualStyleBackColor = true;
+      this.buttonBrowsePath.Click += new System.EventHandler(this.ButtonBrowsePath_Click);
       // 
       // labelStartingFolders
       // 
@@ -1436,16 +1486,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.listViewResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            columnHeaderNumber,
-            columnHeaderName,
-            columnHeaderFolder,
-            columnHeaderSize,
-            columnHeaderExtension,
-            columnHeaderType,
-            columnHeaderAttributes,
-            columnHeaderModifiedDate,
-            columnHeaderCreationDate,
-            columnHeaderLastAccessDate});
+            this.columnHeaderNumber,
+            this.columnHeaderName,
+            this.columnHeaderFolder,
+            this.columnHeaderSize,
+            this.columnHeaderExtension,
+            this.columnHeaderType,
+            this.columnHeaderAttributes,
+            this.columnHeaderModifiedDate,
+            this.columnHeaderCreationDate,
+            this.columnHeaderLastAccessDate});
       this.listViewResult.FullRowSelect = true;
       this.listViewResult.GridLines = true;
       this.listViewResult.HideSelection = false;
@@ -1455,26 +1505,6 @@
       this.listViewResult.TabIndex = 15;
       this.listViewResult.UseCompatibleStateImageBehavior = false;
       this.listViewResult.View = System.Windows.Forms.View.Details;
-      columnHeaderNumber.Text = "N°";
-      columnHeaderNumber.Width = 40;
-      columnHeaderName.Text = "Name";
-      columnHeaderName.Width = 180;
-      columnHeaderFolder.Text = "Folder";
-      columnHeaderFolder.Width = 220;
-      columnHeaderSize.Text = "Size";
-      columnHeaderSize.Width = 80;
-      columnHeaderExtension.Text = "Ext";
-      columnHeaderExtension.Width = 60;
-      columnHeaderType.Text = "Type";
-      columnHeaderType.Width = 80;
-      columnHeaderAttributes.Text = "Attributes";
-      columnHeaderAttributes.Width = 100;
-      columnHeaderModifiedDate.Text = "Modified Date";
-      columnHeaderModifiedDate.Width = 130;
-      columnHeaderCreationDate.Text = "Creation Date";
-      columnHeaderCreationDate.Width = 130;
-      columnHeaderLastAccessDate.Text = "Last Access Date";
-      columnHeaderLastAccessDate.Width = 130;
       // 
       // buttonReset
       // 
@@ -1701,5 +1731,15 @@
         private System.Windows.Forms.ComboBox comboBoxSizeMbKb;
         private System.Windows.Forms.NumericUpDown numericUpDownSizeFrom;
         private System.Windows.Forms.ComboBox comboBoxBetweenSize;
+    private System.Windows.Forms.ColumnHeader columnHeaderNumber;
+    private System.Windows.Forms.ColumnHeader columnHeaderName;
+    private System.Windows.Forms.ColumnHeader columnHeaderFolder;
+    private System.Windows.Forms.ColumnHeader columnHeaderSize;
+    private System.Windows.Forms.ColumnHeader columnHeaderExtension;
+    private System.Windows.Forms.ColumnHeader columnHeaderType;
+    private System.Windows.Forms.ColumnHeader columnHeaderAttributes;
+    private System.Windows.Forms.ColumnHeader columnHeaderModifiedDate;
+    private System.Windows.Forms.ColumnHeader columnHeaderCreationDate;
+    private System.Windows.Forms.ColumnHeader columnHeaderLastAccessDate;
   }
 }
