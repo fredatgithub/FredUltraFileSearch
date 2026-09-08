@@ -1675,7 +1675,7 @@
       // 
       // toolStripStatusLabelBusyIndicator
       // 
-      this.toolStripStatusLabelBusyIndicator.BackColor = System.Drawing.Color.Red;
+      this.toolStripStatusLabelBusyIndicator.BackColor = System.Drawing.Color.Green;
       this.toolStripStatusLabelBusyIndicator.Name = "toolStripStatusLabelBusyIndicator";
       this.toolStripStatusLabelBusyIndicator.Size = new System.Drawing.Size(10, 19);
       this.toolStripStatusLabelBusyIndicator.Text = " ";

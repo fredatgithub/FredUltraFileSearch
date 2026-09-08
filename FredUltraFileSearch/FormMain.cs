@@ -4,6 +4,7 @@ using HelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -1000,6 +1001,7 @@ namespace FredUltraFileSearch
       buttonStop.Enabled = true;
       toolStripStatusLabelBusy.Text = "Busy";
       toolStripStatusLabelBusyIndicator.Visible = true;
+      toolStripStatusLabelBusyIndicator.BackColor = Color.Red;
       _searchCancellationTokenSource = new CancellationTokenSource();
       if (!checkBoxAppendResults.Checked)
       {
@@ -1045,7 +1047,8 @@ namespace FredUltraFileSearch
         buttonSearch.Enabled = true;
         buttonStop.Enabled = false;
         toolStripStatusLabelBusy.Text = "Ready";
-        toolStripStatusLabelBusyIndicator.Visible = false;
+        toolStripStatusLabelBusyIndicator.BackColor = Color.Green;
+        toolStripStatusLabelBusyIndicator.Visible = true;
         _searchCancellationTokenSource.Dispose();
         _searchCancellationTokenSource = null;
       }
