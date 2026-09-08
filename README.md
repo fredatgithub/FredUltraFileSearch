@@ -4,6 +4,8 @@
 Windows desktop application for searching files on a local computer or server.
 Searches can be filtered by file name, date, size, attributes, and file content.
 
+![Fred Ultra File Search sample](Sample_09-08-2026.jpg)
+
 ## Features
 
 - Search recursively from a selected starting folder.
