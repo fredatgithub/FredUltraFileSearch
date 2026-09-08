@@ -150,6 +150,11 @@
       this.buttonSearch = new System.Windows.Forms.Button();
       this.statusStripMain = new System.Windows.Forms.StatusStrip();
       this.toolStripStatusLabelCurrentFile = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelSelection = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelObjectsFound = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelTotalSize = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelBusy = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripStatusLabelBusyIndicator = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
@@ -1504,7 +1509,12 @@
       // 
       this.statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
       this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelCurrentFile});
+            this.toolStripStatusLabelSelection,
+            this.toolStripStatusLabelObjectsFound,
+            this.toolStripStatusLabelTotalSize,
+            this.toolStripStatusLabelCurrentFile,
+            this.toolStripStatusLabelBusy,
+            this.toolStripStatusLabelBusyIndicator});
       this.statusStripMain.Location = new System.Drawing.Point(0, 620);
       this.statusStripMain.Name = "statusStripMain";
       this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
@@ -1516,6 +1526,40 @@
       // 
       this.toolStripStatusLabelCurrentFile.Name = "toolStripStatusLabelCurrentFile";
       this.toolStripStatusLabelCurrentFile.Size = new System.Drawing.Size(0, 17);
+      // 
+      // toolStripStatusLabelSelection
+      // 
+      this.toolStripStatusLabelSelection.Name = "toolStripStatusLabelSelection";
+      this.toolStripStatusLabelSelection.Size = new System.Drawing.Size(210, 17);
+      this.toolStripStatusLabelSelection.Text = "Selected 0 of 0 Objects (Size: 0 Bytes)";
+      // 
+      // toolStripStatusLabelObjectsFound
+      // 
+      this.toolStripStatusLabelObjectsFound.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+      this.toolStripStatusLabelObjectsFound.Name = "toolStripStatusLabelObjectsFound";
+      this.toolStripStatusLabelObjectsFound.Size = new System.Drawing.Size(145, 17);
+      this.toolStripStatusLabelObjectsFound.Text = "Objects Found: 0 Files";
+      // 
+      // toolStripStatusLabelTotalSize
+      // 
+      this.toolStripStatusLabelTotalSize.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+      this.toolStripStatusLabelTotalSize.Name = "toolStripStatusLabelTotalSize";
+      this.toolStripStatusLabelTotalSize.Size = new System.Drawing.Size(120, 17);
+      this.toolStripStatusLabelTotalSize.Text = "Total Size: 0 Bytes";
+      // 
+      // toolStripStatusLabelBusy
+      // 
+      this.toolStripStatusLabelBusy.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+      this.toolStripStatusLabelBusy.Name = "toolStripStatusLabelBusy";
+      this.toolStripStatusLabelBusy.Size = new System.Drawing.Size(39, 17);
+      this.toolStripStatusLabelBusy.Text = "Ready";
+      // 
+      // toolStripStatusLabelBusyIndicator
+      // 
+      this.toolStripStatusLabelBusyIndicator.BackColor = System.Drawing.Color.Red;
+      this.toolStripStatusLabelBusyIndicator.Name = "toolStripStatusLabelBusyIndicator";
+      this.toolStripStatusLabelBusyIndicator.Size = new System.Drawing.Size(16, 17);
+      this.toolStripStatusLabelBusyIndicator.Text = " ";
       // 
       // FormMain
       // 
@@ -1613,6 +1657,11 @@
     private System.Windows.Forms.TabPage tabPageDateAndSize;
     private System.Windows.Forms.StatusStrip statusStripMain;
       private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCurrentFile;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelSelection;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelObjectsFound;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTotalSize;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelBusy;
+      private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelBusyIndicator;
     private System.Windows.Forms.Button buttonReset;
     private System.Windows.Forms.Button buttonStop;
     private System.Windows.Forms.Button buttonSearch;

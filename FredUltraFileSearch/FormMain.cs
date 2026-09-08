@@ -52,6 +52,57 @@ namespace FredUltraFileSearch
       listViewResult.MouseUp += ListViewResult_MouseUp;
       listViewResult.ColumnClick += ListViewResult_ColumnClick;
       listViewResult.MouseDoubleClick += ListViewResult_MouseDoubleClick;
+      listViewResult.SelectedIndexChanged += ListViewResult_SelectedIndexChanged;
+      UpdateStatusStrip();
+    }
+
+    private void ListViewResult_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      UpdateStatusStrip();
+    }
+
+    private void UpdateStatusStrip()
+    {
+      long selectedSize = listViewResult.SelectedItems.Cast<ListViewItem>()
+        .Select(item => item.Tag as string)
+        .Where(path => !string.IsNullOrEmpty(path) && File.Exists(path))
+        .Select(path => new FileInfo(path).Length)
+        .Sum();
+      long totalSize = listViewResult.Items.Cast<ListViewItem>()
+        .Select(item => item.Tag as string)
+        .Where(path => !string.IsNullOrEmpty(path) && File.Exists(path))
+        .Select(path => new FileInfo(path).Length)
+        .Sum();
+
+      toolStripStatusLabelSelection.Text =
+        $"Selected {listViewResult.SelectedItems.Count} of {listViewResult.Items.Count} Objects (Size: {FormatSize(selectedSize)})";
+      toolStripStatusLabelObjectsFound.Text =
+        $"Objects Found: {listViewResult.Items.Count} Files";
+      toolStripStatusLabelTotalSize.Text = $"Total Size: {FormatSize(totalSize)}";
+    }
+
+    private static string FormatSize(long size)
+    {
+      const double kilobyte = 1024d;
+      const double megabyte = kilobyte * 1024d;
+      const double gigabyte = megabyte * 1024d;
+
+      if (size >= gigabyte)
+      {
+        return (size / gigabyte).ToString("0.00", CultureInfo.CurrentCulture) + " GB";
+      }
+
+      if (size >= megabyte)
+      {
+        return (size / megabyte).ToString("0.00", CultureInfo.CurrentCulture) + " MB";
+      }
+
+      if (size >= kilobyte)
+      {
+        return (size / kilobyte).ToString("0.00", CultureInfo.CurrentCulture) + " KB";
+      }
+
+      return size.ToString("N0", CultureInfo.CurrentCulture) + " Bytes";
     }
 
     private void ListViewResult_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -934,11 +985,14 @@ namespace FredUltraFileSearch
 
       buttonSearch.Enabled = false;
       buttonStop.Enabled = true;
+      toolStripStatusLabelBusy.Text = "Busy";
+      toolStripStatusLabelBusyIndicator.Visible = true;
       _searchCancellationTokenSource = new CancellationTokenSource();
       if (!checkBoxAppendResults.Checked)
       {
         listViewResult.Items.Clear();
       }
+      UpdateStatusStrip();
       bool searchCompleted = false;
       try
       {
@@ -950,6 +1004,7 @@ namespace FredUltraFileSearch
           {
             var item = listViewResult.Items.Add(CreateResultItem(file));
             item.EnsureVisible();
+            UpdateStatusStrip();
           }
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
@@ -973,6 +1028,8 @@ namespace FredUltraFileSearch
       {
         buttonSearch.Enabled = true;
         buttonStop.Enabled = false;
+        toolStripStatusLabelBusy.Text = "Ready";
+        toolStripStatusLabelBusyIndicator.Visible = false;
         _searchCancellationTokenSource.Dispose();
         _searchCancellationTokenSource = null;
       }
