@@ -1322,6 +1322,19 @@ namespace FredUltraFileSearch
       {
         column.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
       }
+
+      EnsureMinimumColumnWidth(columnHeaderExtension);
+      EnsureMinimumColumnWidth(columnHeaderType);
+      EnsureMinimumColumnWidth(columnHeaderAttributes);
+    }
+
+    private static void EnsureMinimumColumnWidth(ColumnHeader column)
+    {
+      int minimumWidth = TextRenderer.MeasureText(column.Text, SystemFonts.DefaultFont).Width + 16;
+      if (column.Width < minimumWidth)
+      {
+        column.Width = minimumWidth;
+      }
     }
 
     private ListViewItem CreateResultItem(FileSystemInfo fileInfo)
