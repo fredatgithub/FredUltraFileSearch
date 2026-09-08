@@ -293,6 +293,7 @@ namespace FredUltraFileSearch
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       comboBoxStartingFolder.Text = Settings.Default.ComboBoxStartingFolderValue;
+      comboBoxFileName.Text = Settings.Default.ComboBoxFileNameValue;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -306,6 +307,7 @@ namespace FredUltraFileSearch
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.ComboBoxStartingFolderValue = comboBoxStartingFolder.Text;
+      Settings.Default.ComboBoxFileNameValue = comboBoxFileName.Text;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }

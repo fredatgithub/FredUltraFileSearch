@@ -32,5 +32,8 @@
     <Setting Name="ComboBoxStartingFolderValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
+    <Setting Name="ComboBoxFileNameValue" Type="System.String" Scope="User">
+      <Value Profile="(Default)">*.pdf</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

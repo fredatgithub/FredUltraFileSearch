@@ -142,5 +142,17 @@ namespace FredUltraFileSearch.Properties {
                 this["ComboBoxStartingFolderValue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("*.pdf")]
+        public string ComboBoxFileNameValue {
+            get {
+                return ((string)(this["ComboBoxFileNameValue"]));
+            }
+            set {
+                this["ComboBoxFileNameValue"] = value;
+            }
+        }
     }
 }
