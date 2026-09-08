@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -291,6 +292,7 @@ namespace FredUltraFileSearch
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      comboBoxStartingFolder.Text = Settings.Default.ComboBoxStartingFolderValue;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -303,6 +305,7 @@ namespace FredUltraFileSearch
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.ComboBoxStartingFolderValue = comboBoxStartingFolder.Text;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
@@ -751,24 +754,49 @@ namespace FredUltraFileSearch
       }
     }
 
-    private void ButtonSearch_Click(object sender, EventArgs e)
+    private async void ButtonSearch_Click(object sender, EventArgs e)
     {
-      if (comboBoxFileName.Items.ToString() == string.Empty)
+      string searchPattern = comboBoxFileName.Text.Trim();
+      if (searchPattern == string.Empty)
       {
-        MessageBox.Show(" no pattern to search", "no text", MessageBoxButtons.OK);
+        MessageBox.Show("No pattern to search", "No text", MessageBoxButtons.OK);
+        return;
       }
 
-      // on récupère les paramètres optionnels
       var startDirectory = @"C:\";
       if (!string.IsNullOrEmpty(comboBoxStartingFolder.Text))
       {
         startDirectory = comboBoxStartingFolder.Text;
       }
-      
-      // on rempli listViewResult au fur et à mesure
-      var files = Helper.GetFiles(startDirectory, "*.txt", SearchOption.AllDirectories);
 
+      buttonSearch.Enabled = false;
+      try
+      {
+        var files = await Task.Run(() => Helper.GetFiles(
+          startDirectory, searchPattern, SearchOption.AllDirectories));
 
+        listViewResult.BeginUpdate();
+        try
+        {
+          listViewResult.Items.Clear();
+          listViewResult.Items.AddRange(files.Select(file => new ListViewItem(file)).ToArray());
+        }
+        finally
+        {
+          listViewResult.EndUpdate();
+        }
+      }
+      catch (Exception exception) when (exception is ArgumentException ||
+                                        exception is DirectoryNotFoundException ||
+                                        exception is IOException)
+      {
+        MessageBox.Show(this, exception.Message, "Search error", MessageBoxButtons.OK,
+          MessageBoxIcon.Error);
+      }
+      finally
+      {
+        buttonSearch.Enabled = true;
+      }
     }
 
     private void ComboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
