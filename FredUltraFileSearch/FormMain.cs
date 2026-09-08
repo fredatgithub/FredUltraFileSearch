@@ -331,12 +331,45 @@ namespace FredUltraFileSearch
         return;
       }
 
-      ShellExecute(IntPtr.Zero, "properties", path, null, null, 1);
+      var shellExecuteInfo = new ShellExecuteInfo
+      {
+        Size = (uint)Marshal.SizeOf(typeof(ShellExecuteInfo)),
+        Mask = 0x0000000C,
+        Verb = "properties",
+        File = path,
+        Show = 1
+      };
+
+      if (!ShellExecuteEx(ref shellExecuteInfo))
+      {
+        MessageBox.Show(this, new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error()).Message,
+          "Unable to open properties", MessageBoxButtons.OK,
+          MessageBoxIcon.Error);
+      }
     }
 
-    [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
-    private static extern IntPtr ShellExecute(IntPtr windowHandle, string operation,
-      string file, string parameters, string directory, int showCommand);
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    private struct ShellExecuteInfo
+    {
+      public uint Size;
+      public uint Mask;
+      public IntPtr WindowHandle;
+      [MarshalAs(UnmanagedType.LPWStr)] public string Verb;
+      [MarshalAs(UnmanagedType.LPWStr)] public string File;
+      [MarshalAs(UnmanagedType.LPWStr)] public string Parameters;
+      [MarshalAs(UnmanagedType.LPWStr)] public string Directory;
+      public int Show;
+      public IntPtr Instance;
+      public IntPtr IdList;
+      [MarshalAs(UnmanagedType.LPWStr)] public string Class;
+      public IntPtr ClassKey;
+      public uint HotKey;
+      public IntPtr Icon;
+      public IntPtr Process;
+    }
+
+    [DllImport("shell32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern bool ShellExecuteEx(ref ShellExecuteInfo executeInfo);
 
     private static string FindExecutable(string executableName, params string[] candidatePaths)
     {
