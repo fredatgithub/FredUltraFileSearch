@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Freddy Juhel")]
 [assembly: AssemblyProduct("FredUltraFileSearch")]
-[assembly: AssemblyCopyright("Copyright © Freddy Juhel MIT 2015-2024")]
+[assembly: AssemblyCopyright("Copyright © Freddy Juhel MIT 2015-2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

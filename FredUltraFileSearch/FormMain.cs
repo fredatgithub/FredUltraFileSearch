@@ -454,8 +454,7 @@ namespace FredUltraFileSearch
     private void CutToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
-      var tb = focusedControl as TextBox;
-      if (tb != null)
+      if (focusedControl is TextBox tb)
       {
         CutToClipboard(tb);
       }
@@ -464,8 +463,7 @@ namespace FredUltraFileSearch
     private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
-      var tb = focusedControl as TextBox;
-      if (tb != null)
+      if (focusedControl is TextBox tb)
       {
         CopyToClipboard(tb);
       }
@@ -474,8 +472,7 @@ namespace FredUltraFileSearch
     private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
-      var tb = focusedControl as TextBox;
-      if (tb != null)
+      if (focusedControl is TextBox tb)
       {
         PasteFromClipboard(tb);
       }
@@ -484,8 +481,10 @@ namespace FredUltraFileSearch
     private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
-      TextBox control = focusedControl as TextBox;
-      if (control != null) control.SelectAll();
+      if (focusedControl is TextBox control)
+      {
+        control.SelectAll();
+      }
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
