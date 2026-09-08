@@ -410,6 +410,10 @@ namespace FredUltraFileSearch
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      if (Settings.Default.WindowMaximized)
+      {
+        WindowState = FormWindowState.Maximized;
+      }
       comboBoxStartingFolder.Text = Settings.Default.ComboBoxStartingFolderValue;
       comboBoxFileName.Text = Settings.Default.ComboBoxFileNameValue;
       comboBoxSearchText.Text = Settings.Default.ComboBoxSearchTextValue;
@@ -430,10 +434,12 @@ namespace FredUltraFileSearch
 
     private void SaveWindowValue()
     {
-      Settings.Default.WindowHeight = Height;
-      Settings.Default.WindowWidth = Width;
-      Settings.Default.WindowLeft = Left;
-      Settings.Default.WindowTop = Top;
+      var bounds = WindowState == FormWindowState.Normal ? Bounds : RestoreBounds;
+      Settings.Default.WindowHeight = bounds.Height;
+      Settings.Default.WindowWidth = bounds.Width;
+      Settings.Default.WindowLeft = bounds.Left;
+      Settings.Default.WindowTop = bounds.Top;
+      Settings.Default.WindowMaximized = WindowState == FormWindowState.Maximized;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.ComboBoxStartingFolderValue = comboBoxStartingFolder.Text;
@@ -937,7 +943,10 @@ namespace FredUltraFileSearch
       buttonSearch.Enabled = false;
       buttonStop.Enabled = true;
       _searchCancellationTokenSource = new CancellationTokenSource();
-      listViewResult.Items.Clear();
+      if (!checkBoxAppendResults.Checked)
+      {
+        listViewResult.Items.Clear();
+      }
       bool searchCompleted = false;
       try
       {
