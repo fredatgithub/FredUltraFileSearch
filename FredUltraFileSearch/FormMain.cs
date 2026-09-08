@@ -52,13 +52,7 @@ namespace FredUltraFileSearch
       _commandPromptMenuItem.Click += CommandPromptMenuItem_Click;
       _openWithNotepadPlusPlusMenuItem.Click += OpenWithNotepadPlusPlusMenuItem_Click;
       _openWithVisualStudioCodeMenuItem.Click += OpenWithVisualStudioCodeMenuItem_Click;
-      _notepadPlusPlusPath = FindExecutable("notepad++.exe",
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Notepad++", "notepad++.exe"),
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Notepad++", "notepad++.exe"));
-      _visualStudioCodePath = FindExecutable("code.exe",
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "Microsoft VS Code", "Code.exe"),
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Microsoft VS Code", "Code.exe"),
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Microsoft VS Code", "Code.exe"));
+      RefreshExternalApplicationPaths();
       _resultContextMenu.Items.AddRange(new ToolStripItem[]
       {
         _openFileMenuItem,
@@ -169,6 +163,7 @@ namespace FredUltraFileSearch
 
     private void ResultContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
     {
+      RefreshExternalApplicationPaths();
       string filePath = GetSelectedResultPath();
       _openFileMenuItem.Enabled = !string.IsNullOrEmpty(filePath) && File.Exists(filePath);
       _openDirectoryMenuItem.Enabled = !string.IsNullOrEmpty(filePath) &&
@@ -178,6 +173,23 @@ namespace FredUltraFileSearch
       _openWithNotepadPlusPlusMenuItem.Enabled = _openFileMenuItem.Enabled;
       _openWithVisualStudioCodeMenuItem.Visible = !string.IsNullOrEmpty(_visualStudioCodePath);
       _openWithVisualStudioCodeMenuItem.Enabled = _openFileMenuItem.Enabled;
+    }
+
+    private void RefreshExternalApplicationPaths()
+    {
+      _notepadPlusPlusPath = FindExecutable("notepad++.exe",
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Notepad++", "notepad++.exe"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Notepad++", "notepad++.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramW6432") ?? string.Empty, "Notepad++", "notepad++.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramFiles") ?? string.Empty, "Notepad++", "notepad++.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramFiles(x86)") ?? string.Empty, "Notepad++", "notepad++.exe"));
+      _visualStudioCodePath = FindExecutable("code.exe",
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "Microsoft VS Code", "Code.exe"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Microsoft VS Code", "Code.exe"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Microsoft VS Code", "Code.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramW6432") ?? string.Empty, "Microsoft VS Code", "Code.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramFiles") ?? string.Empty, "Microsoft VS Code", "Code.exe"),
+        Path.Combine(Environment.GetEnvironmentVariable("ProgramFiles(x86)") ?? string.Empty, "Microsoft VS Code", "Code.exe"));
     }
 
     private string GetSelectedResultPath()
