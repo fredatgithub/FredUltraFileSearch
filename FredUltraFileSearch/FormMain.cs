@@ -1600,8 +1600,10 @@ namespace FredUltraFileSearch
 
         if (_column == 0 || _column == 3)
         {
-          long.TryParse(leftText, NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out long leftValue);
-          long.TryParse(rightText, NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out long rightValue);
+          long.TryParse(leftText.Replace(" ", string.Empty), NumberStyles.Integer,
+            CultureInfo.InvariantCulture, out long leftValue);
+          long.TryParse(rightText.Replace(" ", string.Empty), NumberStyles.Integer,
+            CultureInfo.InvariantCulture, out long rightValue);
           result = leftValue.CompareTo(rightValue);
         }
         else if (_column >= 7)
