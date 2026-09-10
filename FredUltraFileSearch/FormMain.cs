@@ -723,12 +723,21 @@ namespace FredUltraFileSearch
       checkBoxSkipImageFiles.Checked = Settings.Default.SkipImageFiles;
       checkBoxSkipAudioFiles.Checked = Settings.Default.SkipAudioFiles;
       checkBoxSkipVideoFiles.Checked = Settings.Default.SkipVideoFiles;
+      
       checkBoxAppendResults.Checked = Settings.Default.checkBoxAppendResults;
       checkBoxScanInsubFolders.Checked = Settings.Default.checkBoxScanInsubFolders;
       checkBoxIncludeHiddenFolders.Checked = Settings.Default.checkBoxIncludeHiddenFolders;
       checkBoxSearchFiles.Checked = Settings.Default.checkBoxSearchFiles;
       checkBoxSearchFolders.Checked = Settings.Default.checkBoxSearchFolders;
       checkBoxAppendResults.Checked = Settings.Default.checkBoxAppendResults;
+
+      checkBoxSize.Checked = Settings.Default.checkBoxSize;
+      numericUpDownSizeFrom.Value = Settings.Default.numericUpDownSizeFrom;
+      numericUpDownSizeTo.Value = Settings.Default.numericUpDownSizeTo;
+      comboBoxBetweenSize.Text = Settings.Default.comboBoxBetweenSize;
+      comboBoxSizeMbKbFrom.Text = Settings.Default.comboBoxSizeMbKbFrom;
+      comboBoxSizeMbKbTo.Text = Settings.Default.comboBoxSizeMbKbTo;
+
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -762,6 +771,14 @@ namespace FredUltraFileSearch
       Settings.Default.checkBoxSearchFiles = checkBoxSearchFiles.Checked;
       Settings.Default.checkBoxSearchFolders = checkBoxSearchFolders.Checked;
       Settings.Default.checkBoxAppendResults = checkBoxAppendResults.Checked;
+
+      Settings.Default.checkBoxSize = checkBoxSize.Checked;
+      Settings.Default.numericUpDownSizeFrom = numericUpDownSizeFrom.Value;
+      Settings.Default.numericUpDownSizeTo = numericUpDownSizeTo.Value;
+      Settings.Default.comboBoxBetweenSize = comboBoxBetweenSize.Text;
+      Settings.Default.comboBoxSizeMbKbFrom = comboBoxSizeMbKbFrom.Text;
+      Settings.Default.comboBoxSizeMbKbTo = comboBoxSizeMbKbTo.Text;
+
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
@@ -1220,8 +1237,8 @@ namespace FredUltraFileSearch
     {
       EnableDisableControls(new[]
       {
-        (Control)comboBoxBetweenSize, numericUpDownSizeFrom, comboBoxSizeMbKb,
-        labelSizeAnd, numericUpDownSizeTo, comboBox1
+        (Control)comboBoxBetweenSize, numericUpDownSizeFrom, comboBoxSizeMbKbFrom,
+        labelSizeAnd, numericUpDownSizeTo, comboBoxSizeMbKbTo
       }, checkBoxSize.Checked);
     }
 
@@ -1421,8 +1438,8 @@ namespace FredUltraFileSearch
         return true;
       }
 
-      decimal startSize = GetSizeInBytes(numericUpDownSizeFrom.Value, comboBoxSizeMbKb.Text);
-      decimal endSize = GetSizeInBytes(numericUpDownSizeTo.Value, comboBox1.Text);
+      decimal startSize = GetSizeInBytes(numericUpDownSizeFrom.Value, comboBoxSizeMbKbFrom.Text);
+      decimal endSize = GetSizeInBytes(numericUpDownSizeTo.Value, comboBoxSizeMbKbTo.Text);
       decimal size = fileInfo.Length;
 
       switch (comboBoxBetweenSize.Text)

@@ -102,10 +102,10 @@
       this.checkBoxSkipHiddenFiles = new System.Windows.Forms.CheckBox();
       this.labelSearchText = new System.Windows.Forms.Label();
       this.tabPageDateAndSize = new System.Windows.Forms.TabPage();
-      this.comboBox1 = new System.Windows.Forms.ComboBox();
+      this.comboBoxSizeMbKbTo = new System.Windows.Forms.ComboBox();
       this.numericUpDownSizeTo = new System.Windows.Forms.NumericUpDown();
       this.labelSizeAnd = new System.Windows.Forms.Label();
-      this.comboBoxSizeMbKb = new System.Windows.Forms.ComboBox();
+      this.comboBoxSizeMbKbFrom = new System.Windows.Forms.ComboBox();
       this.numericUpDownSizeFrom = new System.Windows.Forms.NumericUpDown();
       this.comboBoxBetweenSize = new System.Windows.Forms.ComboBox();
       this.checkBoxSize = new System.Windows.Forms.CheckBox();
@@ -437,7 +437,7 @@
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       this.optionsToolStripMenuItem.Visible = false;
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
@@ -881,10 +881,10 @@
       // 
       // tabPageDateAndSize
       // 
-      this.tabPageDateAndSize.Controls.Add(this.comboBox1);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxSizeMbKbTo);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDownSizeTo);
       this.tabPageDateAndSize.Controls.Add(this.labelSizeAnd);
-      this.tabPageDateAndSize.Controls.Add(this.comboBoxSizeMbKb);
+      this.tabPageDateAndSize.Controls.Add(this.comboBoxSizeMbKbFrom);
       this.tabPageDateAndSize.Controls.Add(this.numericUpDownSizeFrom);
       this.tabPageDateAndSize.Controls.Add(this.comboBoxBetweenSize);
       this.tabPageDateAndSize.Controls.Add(this.checkBoxSize);
@@ -929,22 +929,22 @@
       this.tabPageDateAndSize.Text = "Date and Size";
       this.tabPageDateAndSize.UseVisualStyleBackColor = true;
       // 
-      // comboBox1
+      // comboBoxSizeMbKbTo
       // 
-      this.comboBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.comboBox1.Enabled = false;
-      this.comboBox1.FormattingEnabled = true;
-      this.comboBox1.Items.AddRange(new object[] {
+      this.comboBoxSizeMbKbTo.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxSizeMbKbTo.Enabled = false;
+      this.comboBoxSizeMbKbTo.FormattingEnabled = true;
+      this.comboBoxSizeMbKbTo.Items.AddRange(new object[] {
             "GB",
             "MB",
             "KB",
             "Bytes"});
-      this.comboBox1.Location = new System.Drawing.Point(956, 278);
-      this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.comboBox1.Name = "comboBox1";
-      this.comboBox1.Size = new System.Drawing.Size(114, 28);
-      this.comboBox1.TabIndex = 59;
-      this.comboBox1.Text = "KB";
+      this.comboBoxSizeMbKbTo.Location = new System.Drawing.Point(956, 278);
+      this.comboBoxSizeMbKbTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.comboBoxSizeMbKbTo.Name = "comboBoxSizeMbKbTo";
+      this.comboBoxSizeMbKbTo.Size = new System.Drawing.Size(114, 28);
+      this.comboBoxSizeMbKbTo.TabIndex = 59;
+      this.comboBoxSizeMbKbTo.Text = "KB";
       // 
       // numericUpDownSizeTo
       // 
@@ -959,11 +959,6 @@
       this.numericUpDownSizeTo.Name = "numericUpDownSizeTo";
       this.numericUpDownSizeTo.Size = new System.Drawing.Size(120, 26);
       this.numericUpDownSizeTo.TabIndex = 58;
-      this.numericUpDownSizeTo.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
       // 
       // labelSizeAnd
       // 
@@ -975,22 +970,22 @@
       this.labelSizeAnd.TabIndex = 57;
       this.labelSizeAnd.Text = "and";
       // 
-      // comboBoxSizeMbKb
+      // comboBoxSizeMbKbFrom
       // 
-      this.comboBoxSizeMbKb.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.comboBoxSizeMbKb.Enabled = false;
-      this.comboBoxSizeMbKb.FormattingEnabled = true;
-      this.comboBoxSizeMbKb.Items.AddRange(new object[] {
+      this.comboBoxSizeMbKbFrom.BackColor = System.Drawing.SystemColors.AppWorkspace;
+      this.comboBoxSizeMbKbFrom.Enabled = false;
+      this.comboBoxSizeMbKbFrom.FormattingEnabled = true;
+      this.comboBoxSizeMbKbFrom.Items.AddRange(new object[] {
             "GB",
             "MB",
             "KB",
             "Bytes"});
-      this.comboBoxSizeMbKb.Location = new System.Drawing.Point(596, 278);
-      this.comboBoxSizeMbKb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.comboBoxSizeMbKb.Name = "comboBoxSizeMbKb";
-      this.comboBoxSizeMbKb.Size = new System.Drawing.Size(114, 28);
-      this.comboBoxSizeMbKb.TabIndex = 56;
-      this.comboBoxSizeMbKb.Text = "KB";
+      this.comboBoxSizeMbKbFrom.Location = new System.Drawing.Point(596, 278);
+      this.comboBoxSizeMbKbFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.comboBoxSizeMbKbFrom.Name = "comboBoxSizeMbKbFrom";
+      this.comboBoxSizeMbKbFrom.Size = new System.Drawing.Size(114, 28);
+      this.comboBoxSizeMbKbFrom.TabIndex = 56;
+      this.comboBoxSizeMbKbFrom.Text = "KB";
       // 
       // numericUpDownSizeFrom
       // 
@@ -1005,11 +1000,6 @@
       this.numericUpDownSizeFrom.Name = "numericUpDownSizeFrom";
       this.numericUpDownSizeFrom.Size = new System.Drawing.Size(120, 26);
       this.numericUpDownSizeFrom.TabIndex = 55;
-      this.numericUpDownSizeFrom.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
       // 
       // comboBoxBetweenSize
       // 
@@ -2006,10 +1996,10 @@
       private System.Windows.Forms.CheckBox checkBoxAttributeReparsePoint;
       private System.Windows.Forms.CheckBox checkBoxAttributeSparseFile;
       private System.Windows.Forms.CheckBox checkBoxAttributeOffline;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxSizeMbKbTo;
         private System.Windows.Forms.NumericUpDown numericUpDownSizeTo;
         private System.Windows.Forms.Label labelSizeAnd;
-        private System.Windows.Forms.ComboBox comboBoxSizeMbKb;
+        private System.Windows.Forms.ComboBox comboBoxSizeMbKbFrom;
         private System.Windows.Forms.NumericUpDown numericUpDownSizeFrom;
         private System.Windows.Forms.ComboBox comboBoxBetweenSize;
     private System.Windows.Forms.ColumnHeader columnHeaderNumber;

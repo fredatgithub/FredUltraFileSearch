@@ -369,5 +369,77 @@ namespace FredUltraFileSearch.Properties {
                 this["checkBoxAppendResults"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxSize {
+            get {
+                return ((bool)(this["checkBoxSize"]));
+            }
+            set {
+                this["checkBoxSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal numericUpDownSizeFrom {
+            get {
+                return ((decimal)(this["numericUpDownSizeFrom"]));
+            }
+            set {
+                this["numericUpDownSizeFrom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal numericUpDownSizeTo {
+            get {
+                return ((decimal)(this["numericUpDownSizeTo"]));
+            }
+            set {
+                this["numericUpDownSizeTo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxBetweenSize {
+            get {
+                return ((string)(this["comboBoxBetweenSize"]));
+            }
+            set {
+                this["comboBoxBetweenSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxSizeMbKbFrom {
+            get {
+                return ((string)(this["comboBoxSizeMbKbFrom"]));
+            }
+            set {
+                this["comboBoxSizeMbKbFrom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxSizeMbKbTo {
+            get {
+                return ((string)(this["comboBoxSizeMbKbTo"]));
+            }
+            set {
+                this["comboBoxSizeMbKbTo"] = value;
+            }
+        }
     }
 }
