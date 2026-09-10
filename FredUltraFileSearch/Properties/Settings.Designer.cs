@@ -250,5 +250,16 @@ namespace FredUltraFileSearch.Properties {
             get { return ((bool)(this["SkipVideoFiles"])); }
             set { this["SkipVideoFiles"] = value; }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection ComboBoxFileNameHistory {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ComboBoxFileNameHistory"]));
+            }
+            set {
+                this["ComboBoxFileNameHistory"] = value;
+            }
+        }
     }
 }

@@ -479,6 +479,7 @@ namespace FredUltraFileSearch
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      LoadComboBoxHistory();
     }
 
     private void LoadConfigurationOptions()
@@ -804,6 +805,7 @@ namespace FredUltraFileSearch
     private void FormMainFormClosing(object sender, FormClosingEventArgs e)
     {
       SaveWindowValue();
+      SaveComboBoxHistory();
     }
 
     private void FrenchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1239,6 +1241,22 @@ namespace FredUltraFileSearch
         return;
       }
 
+      // Ajouter le pattern à l'historique de la ComboBox s'il n'existe pas déjà
+      if (!comboBoxFileName.Items.Contains(searchPattern))
+      {
+        comboBoxFileName.Items.Insert(0, searchPattern);
+      }
+      else
+      {
+        // Si le pattern existe déjà, le déplacer au début
+        int index = comboBoxFileName.Items.IndexOf(searchPattern);
+        if (index > 0)
+        {
+          comboBoxFileName.Items.RemoveAt(index);
+          comboBoxFileName.Items.Insert(0, searchPattern);
+        }
+      }
+
       var startDirectory = @"C:\"; // default value
       if (!string.IsNullOrEmpty(comboBoxStartingFolder.Text))
       {
@@ -1664,6 +1682,64 @@ namespace FredUltraFileSearch
       if (!checkBoxSearchFiles.Checked)
       {
         checkBoxSearchFolders.Checked = true;
+      }
+    }
+
+    private void LoadComboBoxHistory()
+    {
+      try
+      {
+        if (Settings.Default.ComboBoxFileNameHistory != null && Settings.Default.ComboBoxFileNameHistory.Count > 0)
+        {
+          comboBoxFileName.Items.Clear();
+          foreach (string item in Settings.Default.ComboBoxFileNameHistory)
+          {
+            if (!string.IsNullOrEmpty(item))
+            {
+              comboBoxFileName.Items.Add(item);
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        // Ignorer les erreurs lors du chargement de l'historique
+        Debug.WriteLine($"Error loading ComboBoxFileNameHistory: {ex.Message}");
+      }
+    }
+
+    private void SaveComboBoxHistory()
+    {
+      try
+      {
+        // Récupérer les items de la ComboBox
+        var history = new System.Collections.Specialized.StringCollection();
+        
+        // Ajouter l'élément courant s'il n'est pas vide
+        if (!string.IsNullOrEmpty(comboBoxFileName.Text))
+        {
+          history.Add(comboBoxFileName.Text);
+        }
+        
+        // Ajouter les autres items existants (limité à 20 pour éviter de surcharger)
+        int count = 0;
+        foreach (var item in comboBoxFileName.Items)
+        {
+          if (count >= 20) break;
+          if (!string.IsNullOrEmpty(item.ToString()) && item.ToString() != comboBoxFileName.Text)
+          {
+            history.Add(item.ToString());
+            count++;
+          }
+        }
+        
+        Settings.Default.ComboBoxFileNameHistory = history;
+        Settings.Default.Save();
+      }
+      catch (Exception ex)
+      {
+        // Ignorer les erreurs lors de la sauvegarde de l'historique
+        Debug.WriteLine($"Error saving ComboBoxFileNameHistory: {ex.Message}");
       }
     }
 
