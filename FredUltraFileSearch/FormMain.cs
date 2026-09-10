@@ -20,7 +20,7 @@ using Microsoft.VisualBasic;
 
 namespace FredUltraFileSearch
 {
-  public partial class FormMain : Form
+  public partial class FormMain: Form
   {
     public FormMain()
     {
@@ -1583,7 +1583,7 @@ namespace FredUltraFileSearch
       _searchCancellationTokenSource?.Cancel();
     }
 
-    private sealed class ListViewItemComparer : Comparer<ListViewItem>
+    private sealed class ListViewItemComparer: Comparer<ListViewItem>
     {
       private readonly int _column;
       private readonly bool _ascending;
@@ -1637,6 +1637,24 @@ namespace FredUltraFileSearch
       }
 
       comboBoxStartingFolder.Text = selectedDirectory;
+    }
+
+    private void CheckBoxSearchFiles_CheckedChanged(object sender, EventArgs e)
+    {
+      // Si searchFiles est décoché, alors searchFolders devient coché
+      if (!checkBoxSearchFiles.Checked)
+      {
+        checkBoxSearchFolders.Checked = true;
+      }
+    }
+
+    private void CheckBoxSearchFolders_CheckedChanged(object sender, EventArgs e)
+    {
+      // Si searchFolders est décoché, alors searchFiles devient coché
+      if (!checkBoxSearchFolders.Checked)
+      {
+        checkBoxSearchFiles.Checked = true;
+      }
     }
   }
 }
