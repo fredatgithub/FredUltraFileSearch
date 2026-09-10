@@ -75,6 +75,7 @@ namespace FredUltraFileSearch
         _deleteMenuItem,
         _propertiesMenuItem
       });
+
       _resultContextMenu.Opening += ResultContextMenu_Opening;
       listViewResult.ContextMenuStrip = _resultContextMenu;
       listViewResult.MouseUp += ListViewResult_MouseUp;
@@ -102,10 +103,8 @@ namespace FredUltraFileSearch
         .Select(path => new FileInfo(path).Length)
         .Sum();
 
-      toolStripStatusLabelSelection.Text =
-        $"Selected {listViewResult.SelectedItems.Count} of {listViewResult.Items.Count} Objects (Size: {FormatSize(selectedSize)})";
-      toolStripStatusLabelObjectsFound.Text =
-        $"Objects Found: {listViewResult.Items.Count} Files";
+      toolStripStatusLabelSelection.Text = $"Selected {listViewResult.SelectedItems.Count} of {listViewResult.Items.Count} Objects (Size: {FormatSize(selectedSize)})";
+      toolStripStatusLabelObjectsFound.Text = $"Objects Found: {listViewResult.Items.Count} Files";
       toolStripStatusLabelTotalSize.Text = $"Total Size: {FormatSize(totalSize)}";
     }
 
@@ -237,8 +236,7 @@ namespace FredUltraFileSearch
         return;
       }
 
-      StartApplication(Environment.GetEnvironmentVariable("ComSpec") ?? "cmd.exe",
-        "/K cd /d \"" + directoryPath + "\"");
+      StartApplication(Environment.GetEnvironmentVariable("ComSpec") ?? "cmd.exe", "/K cd /d \"" + directoryPath + "\"");
     }
 
     private void OpenWithNotepadPlusPlusMenuItem_Click(object sender, EventArgs e)
@@ -342,9 +340,7 @@ namespace FredUltraFileSearch
 
       if (!ShellExecuteEx(ref shellExecuteInfo))
       {
-        MessageBox.Show(this, new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error()).Message,
-          "Unable to open properties", MessageBoxButtons.OK,
-          MessageBoxIcon.Error);
+        MessageBox.Show(this, new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error()).Message, "Unable to open properties", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -417,8 +413,7 @@ namespace FredUltraFileSearch
       }
       catch (Exception exception) when (exception is IOException || exception is System.ComponentModel.Win32Exception)
       {
-        MessageBox.Show(exception.Message, "Unable to open application", MessageBoxButtons.OK,
-          MessageBoxIcon.Error);
+        MessageBox.Show(exception.Message, "Unable to open application", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -439,8 +434,7 @@ namespace FredUltraFileSearch
       }
       catch (Exception exception) when (exception is IOException || exception is System.ComponentModel.Win32Exception)
       {
-        MessageBox.Show(exception.Message, "Unable to open path", MessageBoxButtons.OK,
-          MessageBoxIcon.Error);
+        MessageBox.Show(exception.Message, "Unable to open path", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 

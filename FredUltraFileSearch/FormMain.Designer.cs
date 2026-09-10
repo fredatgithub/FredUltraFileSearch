@@ -437,8 +437,9 @@
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
+      this.optionsToolStripMenuItem.Visible = false;
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
       // 
       // languagetoolStripMenuItem
