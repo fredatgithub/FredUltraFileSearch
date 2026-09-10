@@ -1428,13 +1428,33 @@ namespace FredUltraFileSearch
       switch (comboBoxBetweenSize.Text)
       {
         case "Not Between":
+          // Ignorer le filtre si les deux valeurs sont à 0
+          if (startSize == 0 && endSize == 0)
+          {
+            return true;
+          }
           return size < startSize || size > endSize;
         case "Larger than":
+          // Ignorer le filtre si la valeur est à 0
+          if (startSize == 0)
+          {
+            return true;
+          }
           return size >= startSize;
         case "Smaller than":
+          // Ne pas ignorer le filtre : si startSize est 0, aucun fichier ne peut être plus petit que 0
+          if (startSize == 0)
+          {
+            return false;
+          }
           return size <= startSize;
         case "Between":
         default:
+          // Ignorer le filtre si les deux valeurs sont à 0
+          if (startSize == 0 && endSize == 0)
+          {
+            return true;
+          }
           return size >= startSize && size <= endSize;
       }
     }

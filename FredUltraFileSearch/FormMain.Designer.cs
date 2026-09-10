@@ -959,6 +959,11 @@
       this.numericUpDownSizeTo.Name = "numericUpDownSizeTo";
       this.numericUpDownSizeTo.Size = new System.Drawing.Size(120, 26);
       this.numericUpDownSizeTo.TabIndex = 58;
+      this.numericUpDownSizeTo.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
       // 
       // labelSizeAnd
       // 
@@ -1000,6 +1005,11 @@
       this.numericUpDownSizeFrom.Name = "numericUpDownSizeFrom";
       this.numericUpDownSizeFrom.Size = new System.Drawing.Size(120, 26);
       this.numericUpDownSizeFrom.TabIndex = 55;
+      this.numericUpDownSizeFrom.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
       // 
       // comboBoxBetweenSize
       // 
