@@ -1274,7 +1274,9 @@ namespace FredUltraFileSearch
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
         await Task.Run(() => Helper.GetFiles(
-          startDirectory, searchPattern, SearchOption.AllDirectories, progress, cancellationToken,
+          startDirectory, searchPattern,
+          checkBoxScanInsubFolders.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly,
+          progress, cancellationToken,
           checkBoxAttributeDirectory.Checked),
           cancellationToken);
         searchCompleted = true;
