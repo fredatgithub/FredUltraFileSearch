@@ -1239,7 +1239,7 @@ namespace FredUltraFileSearch
         return;
       }
 
-      var startDirectory = @"C:\";
+      var startDirectory = @"C:\"; // default value
       if (!string.IsNullOrEmpty(comboBoxStartingFolder.Text))
       {
         startDirectory = comboBoxStartingFolder.Text;
@@ -1273,11 +1273,12 @@ namespace FredUltraFileSearch
           }
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
+        
         await Task.Run(() => Helper.GetFiles(
           startDirectory, searchPattern,
           checkBoxScanInsubFolders.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly,
           progress, cancellationToken,
-          checkBoxAttributeDirectory.Checked),
+          true),
           cancellationToken);
         searchCompleted = true;
       }
@@ -1432,6 +1433,17 @@ namespace FredUltraFileSearch
 
     private bool MatchesAttributeFilters(FileSystemInfo fileInfo)
     {
+      // Filtrer selon les checkboxes Search Files et Search Folders
+      if (fileInfo is FileInfo && !checkBoxSearchFiles.Checked)
+      {
+        return false;
+      }
+
+      if (fileInfo is DirectoryInfo && !checkBoxSearchFolders.Checked)
+      {
+        return false;
+      }
+
       if (checkBoxSkipHiddenFiles.Checked &&
           (fileInfo.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden)
       {
@@ -1444,7 +1456,8 @@ namespace FredUltraFileSearch
         return false;
       }
 
-      if (!checkBoxAttributeDirectory.Checked && fileInfo is DirectoryInfo)
+      // Cette vérification ne s'applique que si on cherche aussi les fichiers
+      if (checkBoxSearchFiles.Checked && !checkBoxAttributeDirectory.Checked && fileInfo is DirectoryInfo)
       {
         return false;
       }
@@ -1474,7 +1487,13 @@ namespace FredUltraFileSearch
       {
         attributesMatch = false;
       }
-      if (checkBoxAttributes.Checked && !attributesMatch)
+      
+      // Ne pas appliquer le filtre d'attributs si on cherche uniquement des dossiers
+      if (!checkBoxSearchFiles.Checked && checkBoxSearchFolders.Checked)
+      {
+        // Quand on cherche uniquement des dossiers, ignorer le filtre d'attributs
+      }
+      else if (checkBoxAttributes.Checked && !attributesMatch)
       {
         return false;
       }

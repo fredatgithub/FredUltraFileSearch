@@ -20,7 +20,6 @@ namespace HelperLibrary
     {
       if (string.IsNullOrWhiteSpace(directoryPath))
       {
-        //throw new ArgumentException("Le chemin du répertoire ne peut pas être vide ou null.", nameof(directoryPath));
         directoryPath = @"C:\";
       }
 
@@ -33,18 +32,23 @@ namespace HelperLibrary
 
       try
       {
-        if (includeDirectories)
-        {
-          files.Add(directoryPath);
-          progress?.Report(directoryPath);
-        }
-
         // Ajouter les fichiers du répertoire actuel
         foreach (var file in Directory.GetFiles(directoryPath, searchPattern))
         {
           cancellationToken.ThrowIfCancellationRequested();
           files.Add(file);
           progress?.Report(file);
+        }
+
+        // Ajouter les répertoires du répertoire actuel qui matchent le pattern
+        if (includeDirectories)
+        {
+          foreach (var subDirectory in Directory.GetDirectories(directoryPath, searchPattern))
+          {
+            cancellationToken.ThrowIfCancellationRequested();
+            files.Add(subDirectory);
+            progress?.Report(subDirectory);
+          }
         }
 
         // Si une recherche récursive est demandée, parcourir les sous-répertoires
@@ -55,13 +59,11 @@ namespace HelperLibrary
             cancellationToken.ThrowIfCancellationRequested();
             try
             {
-              // Ajouter récursivement les fichiers des sous-répertoires
               files.AddRange(GetFiles(subDirectory, searchPattern, searchOption, progress, cancellationToken, includeDirectories));
             }
             catch (UnauthorizedAccessException)
             {
               // Ignorer les répertoires auxquels l'accès est refusé
-              //Console.WriteLine($"Accès refusé au répertoire : {subDirectory}");
             }
           }
         }
@@ -69,7 +71,6 @@ namespace HelperLibrary
       catch (UnauthorizedAccessException)
       {
         // Ignorer le répertoire principal si l'accès est refusé
-        //Console.WriteLine($"Accès refusé au répertoire : {directoryPath}");
       }
 
       return files;
