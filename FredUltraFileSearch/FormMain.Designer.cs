@@ -173,7 +173,6 @@
       this.toolStripStatusLabelCurrentFile = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelBusy = new System.Windows.Forms.ToolStripStatusLabel();
       this.toolStripStatusLabelBusyIndicator = new System.Windows.Forms.ToolStripStatusLabel();
-      this.labelDebug = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageFilesAndFolders.SuspendLayout();
@@ -542,7 +541,6 @@
       // 
       // panelMain
       // 
-      this.panelMain.Controls.Add(this.labelDebug);
       this.panelMain.Controls.Add(this.comboBoxStartingFolder);
       this.panelMain.Controls.Add(this.comboBoxFileName);
       this.panelMain.Controls.Add(this.labelSelect);
@@ -1809,15 +1807,6 @@
       this.toolStripStatusLabelBusyIndicator.Size = new System.Drawing.Size(10, 19);
       this.toolStripStatusLabelBusyIndicator.Text = " ";
       // 
-      // labelDebug
-      // 
-      this.labelDebug.AutoSize = true;
-      this.labelDebug.Location = new System.Drawing.Point(502, 211);
-      this.labelDebug.Name = "labelDebug";
-      this.labelDebug.Size = new System.Drawing.Size(123, 20);
-      this.labelDebug.TabIndex = 17;
-      this.labelDebug.Text = "Search pattern: ";
-      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2022,6 +2011,5 @@
     private System.Windows.Forms.ColumnHeader columnHeaderModifiedDate;
     private System.Windows.Forms.ColumnHeader columnHeaderCreationDate;
     private System.Windows.Forms.ColumnHeader columnHeaderLastAccessDate;
-    private System.Windows.Forms.Label labelDebug;
   }
 }
