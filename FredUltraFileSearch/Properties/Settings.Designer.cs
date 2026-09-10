@@ -130,13 +130,17 @@ namespace FredUltraFileSearch.Properties {
                 this["WindowWidth"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool WindowMaximized {
-            get { return ((bool)(this["WindowMaximized"])); }
-            set { this["WindowMaximized"] = value; }
+            get {
+                return ((bool)(this["WindowMaximized"]));
+            }
+            set {
+                this["WindowMaximized"] = value;
+            }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
@@ -162,93 +166,137 @@ namespace FredUltraFileSearch.Properties {
                 this["ComboBoxFileNameValue"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ComboBoxSearchTextValue {
-            get { return ((string)(this["ComboBoxSearchTextValue"])); }
-            set { this["ComboBoxSearchTextValue"] = value; }
+            get {
+                return ((string)(this["ComboBoxSearchTextValue"]));
+            }
+            set {
+                this["ComboBoxSearchTextValue"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Words")]
         public string ComboBoxContainingTextModeValue {
-            get { return ((string)(this["ComboBoxContainingTextModeValue"])); }
-            set { this["ComboBoxContainingTextModeValue"] = value; }
+            get {
+                return ((string)(this["ComboBoxContainingTextModeValue"]));
+            }
+            set {
+                this["ComboBoxContainingTextModeValue"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ContainingTextCaseSensitive {
-            get { return ((bool)(this["ContainingTextCaseSensitive"])); }
-            set { this["ContainingTextCaseSensitive"] = value; }
+            get {
+                return ((bool)(this["ContainingTextCaseSensitive"]));
+            }
+            set {
+                this["ContainingTextCaseSensitive"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ContainingTextWholeWords {
-            get { return ((bool)(this["ContainingTextWholeWords"])); }
-            set { this["ContainingTextWholeWords"] = value; }
+            get {
+                return ((bool)(this["ContainingTextWholeWords"]));
+            }
+            set {
+                this["ContainingTextWholeWords"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ContainingTextWithout {
-            get { return ((bool)(this["ContainingTextWithout"])); }
-            set { this["ContainingTextWithout"] = value; }
+            get {
+                return ((bool)(this["ContainingTextWithout"]));
+            }
+            set {
+                this["ContainingTextWithout"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ContainingTextMatchAll {
-            get { return ((bool)(this["ContainingTextMatchAll"])); }
-            set { this["ContainingTextMatchAll"] = value; }
+            get {
+                return ((bool)(this["ContainingTextMatchAll"]));
+            }
+            set {
+                this["ContainingTextMatchAll"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SkipHiddenFiles {
-            get { return ((bool)(this["SkipHiddenFiles"])); }
-            set { this["SkipHiddenFiles"] = value; }
+            get {
+                return ((bool)(this["SkipHiddenFiles"]));
+            }
+            set {
+                this["SkipHiddenFiles"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SkipSystemFiles {
-            get { return ((bool)(this["SkipSystemFiles"])); }
-            set { this["SkipSystemFiles"] = value; }
+            get {
+                return ((bool)(this["SkipSystemFiles"]));
+            }
+            set {
+                this["SkipSystemFiles"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SkipImageFiles {
-            get { return ((bool)(this["SkipImageFiles"])); }
-            set { this["SkipImageFiles"] = value; }
+            get {
+                return ((bool)(this["SkipImageFiles"]));
+            }
+            set {
+                this["SkipImageFiles"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SkipAudioFiles {
-            get { return ((bool)(this["SkipAudioFiles"])); }
-            set { this["SkipAudioFiles"] = value; }
+            get {
+                return ((bool)(this["SkipAudioFiles"]));
+            }
+            set {
+                this["SkipAudioFiles"] = value;
+            }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SkipVideoFiles {
-            get { return ((bool)(this["SkipVideoFiles"])); }
-            set { this["SkipVideoFiles"] = value; }
+            get {
+                return ((bool)(this["SkipVideoFiles"]));
+            }
+            set {
+                this["SkipVideoFiles"] = value;
+            }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
@@ -259,6 +307,66 @@ namespace FredUltraFileSearch.Properties {
             }
             set {
                 this["ComboBoxFileNameHistory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkBoxScanInsubFolders {
+            get {
+                return ((bool)(this["checkBoxScanInsubFolders"]));
+            }
+            set {
+                this["checkBoxScanInsubFolders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkBoxIncludeHiddenFolders {
+            get {
+                return ((bool)(this["checkBoxIncludeHiddenFolders"]));
+            }
+            set {
+                this["checkBoxIncludeHiddenFolders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkBoxSearchFiles {
+            get {
+                return ((bool)(this["checkBoxSearchFiles"]));
+            }
+            set {
+                this["checkBoxSearchFiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkBoxSearchFolders {
+            get {
+                return ((bool)(this["checkBoxSearchFolders"]));
+            }
+            set {
+                this["checkBoxSearchFolders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxAppendResults {
+            get {
+                return ((bool)(this["checkBoxAppendResults"]));
+            }
+            set {
+                this["checkBoxAppendResults"] = value;
             }
         }
     }

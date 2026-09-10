@@ -723,6 +723,12 @@ namespace FredUltraFileSearch
       checkBoxSkipImageFiles.Checked = Settings.Default.SkipImageFiles;
       checkBoxSkipAudioFiles.Checked = Settings.Default.SkipAudioFiles;
       checkBoxSkipVideoFiles.Checked = Settings.Default.SkipVideoFiles;
+      checkBoxAppendResults.Checked = Settings.Default.checkBoxAppendResults;
+      checkBoxScanInsubFolders.Checked = Settings.Default.checkBoxScanInsubFolders;
+      checkBoxIncludeHiddenFolders.Checked = Settings.Default.checkBoxIncludeHiddenFolders;
+      checkBoxSearchFiles.Checked = Settings.Default.checkBoxSearchFiles;
+      checkBoxSearchFolders.Checked = Settings.Default.checkBoxSearchFolders;
+      checkBoxAppendResults.Checked = Settings.Default.checkBoxAppendResults;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -750,6 +756,12 @@ namespace FredUltraFileSearch
       Settings.Default.SkipImageFiles = checkBoxSkipImageFiles.Checked;
       Settings.Default.SkipAudioFiles = checkBoxSkipAudioFiles.Checked;
       Settings.Default.SkipVideoFiles = checkBoxSkipVideoFiles.Checked;
+
+      Settings.Default.checkBoxScanInsubFolders = checkBoxScanInsubFolders.Checked;
+      Settings.Default.checkBoxIncludeHiddenFolders = checkBoxIncludeHiddenFolders.Checked;
+      Settings.Default.checkBoxSearchFiles = checkBoxSearchFiles.Checked;
+      Settings.Default.checkBoxSearchFolders = checkBoxSearchFolders.Checked;
+      Settings.Default.checkBoxAppendResults = checkBoxAppendResults.Checked;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
@@ -1285,7 +1297,7 @@ namespace FredUltraFileSearch
           }
         });
         var cancellationToken = _searchCancellationTokenSource.Token;
-        
+
         await Task.Run(() => Helper.GetFiles(
           startDirectory, searchPattern,
           checkBoxScanInsubFolders.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly,
@@ -1499,7 +1511,7 @@ namespace FredUltraFileSearch
       {
         attributesMatch = false;
       }
-      
+
       // Ne pas appliquer le filtre d'attributs si on cherche uniquement des dossiers
       if (!checkBoxSearchFiles.Checked && checkBoxSearchFolders.Checked)
       {
@@ -1708,13 +1720,13 @@ namespace FredUltraFileSearch
       {
         // Récupérer les items de la ComboBox
         var history = new System.Collections.Specialized.StringCollection();
-        
+
         // Ajouter l'élément courant s'il n'est pas vide
         if (!string.IsNullOrEmpty(comboBoxFileName.Text))
         {
           history.Add(comboBoxFileName.Text);
         }
-        
+
         // Ajouter les autres items existants (limité à 20 pour éviter de surcharger)
         int count = 0;
         foreach (var item in comboBoxFileName.Items)
@@ -1726,7 +1738,7 @@ namespace FredUltraFileSearch
             count++;
           }
         }
-        
+
         Settings.Default.ComboBoxFileNameHistory = history;
         Settings.Default.Save();
       }
