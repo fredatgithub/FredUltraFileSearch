@@ -1,6 +1,4 @@
 ﻿#define DEBUG
-using FredUltraFileSearch.Properties;
-using HelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,11 +9,13 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Text.RegularExpressions;
+using FredUltraFileSearch.Properties;
+using HelperLibrary;
 using Microsoft.VisualBasic;
 
 namespace FredUltraFileSearch
@@ -723,7 +723,7 @@ namespace FredUltraFileSearch
       checkBoxSkipImageFiles.Checked = Settings.Default.SkipImageFiles;
       checkBoxSkipAudioFiles.Checked = Settings.Default.SkipAudioFiles;
       checkBoxSkipVideoFiles.Checked = Settings.Default.SkipVideoFiles;
-      
+
       checkBoxAppendResults.Checked = Settings.Default.checkBoxAppendResults;
       checkBoxScanInsubFolders.Checked = Settings.Default.checkBoxScanInsubFolders;
       checkBoxIncludeHiddenFolders.Checked = Settings.Default.checkBoxIncludeHiddenFolders;
@@ -1383,8 +1383,11 @@ namespace FredUltraFileSearch
 
     private ListViewItem CreateResultItem(FileSystemInfo fileInfo)
     {
-      var item = new ListViewItem((listViewResult.Items.Count + 1).ToString());
-      item.Tag = fileInfo.FullName;
+      var item = new ListViewItem((listViewResult.Items.Count + 1).ToString())
+      {
+        Tag = fileInfo.FullName
+      };
+
       item.SubItems.Add(fileInfo.Name);
       var file = fileInfo as FileInfo;
       var directory = fileInfo as DirectoryInfo;
@@ -1450,6 +1453,7 @@ namespace FredUltraFileSearch
           {
             return true;
           }
+
           return size < startSize || size > endSize;
         case "Larger than":
           // Ignorer le filtre si la valeur est à 0
@@ -1457,6 +1461,7 @@ namespace FredUltraFileSearch
           {
             return true;
           }
+
           return size >= startSize;
         case "Smaller than":
           // Ne pas ignorer le filtre : si startSize est 0, aucun fichier ne peut être plus petit que 0
@@ -1464,6 +1469,7 @@ namespace FredUltraFileSearch
           {
             return false;
           }
+
           return size <= startSize;
         case "Between":
         default:
@@ -1472,6 +1478,7 @@ namespace FredUltraFileSearch
           {
             return true;
           }
+
           return size >= startSize && size <= endSize;
       }
     }
@@ -1559,8 +1566,7 @@ namespace FredUltraFileSearch
         return false;
       }
 
-      var file = fileInfo as FileInfo;
-      string extension = file == null ? string.Empty : file.Extension.ToLowerInvariant();
+      string extension = !(fileInfo is FileInfo file) ? string.Empty : file.Extension.ToLowerInvariant();
       if (checkBoxSkipImageFiles.Checked &&
           new[] { ".bmp", ".gif", ".ico", ".jpeg", ".jpg", ".png", ".tif", ".tiff", ".webp" }.Contains(extension))
       {
@@ -1744,10 +1750,10 @@ namespace FredUltraFileSearch
           }
         }
       }
-      catch (Exception ex)
+      catch (Exception exception)
       {
         // Ignorer les erreurs lors du chargement de l'historique
-        Debug.WriteLine($"Error loading ComboBoxFileNameHistory: {ex.Message}");
+        Debug.WriteLine($"Error loading ComboBoxFileNameHistory: {exception.Message}");
       }
     }
 
@@ -1779,10 +1785,10 @@ namespace FredUltraFileSearch
         Settings.Default.ComboBoxFileNameHistory = history;
         Settings.Default.Save();
       }
-      catch (Exception ex)
+      catch (Exception exception)
       {
         // Ignorer les erreurs lors de la sauvegarde de l'historique
-        Debug.WriteLine($"Error saving ComboBoxFileNameHistory: {ex.Message}");
+        Debug.WriteLine($"Error saving ComboBoxFileNameHistory: {exception.Message}");
       }
     }
 
