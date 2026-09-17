@@ -43,6 +43,8 @@ When **Append Results** is checked, new matches are added to the existing result
 
 Open `FredUltraFileSearch.sln` in Visual Studio and build the solution using the `Debug` or `Release` configuration.
 
+You can download directly a compiled executable binary [FredUltraFileSearch.exe-X64-Release-V1.0.0.0.zip](https://github.com/user-attachments/files/32093579/FredUltraFileSearch.exe-X64-Release-V1.0.0.0.zip)
+
 ## Français
 
 Application Windows permettant de rechercher des fichiers sur un ordinateur local ou un serveur.
@@ -84,3 +86,5 @@ Lorsque **Append Results** est cochée, les nouveaux résultats sont ajoutés à
 ### Compilation
 
 Ouvrez `FredUltraFileSearch.sln` dans Visual Studio, puis compilez la solution avec la configuration `Debug` ou `Release`.
+
+Vous pouvez télécharger directement un exécutable compilé [FredUltraFileSearch.exe-X64-Release-V1.0.0.0.zip](https://github.com/user-attachments/files/32093579/FredUltraFileSearch.exe-X64-Release-V1.0.0.0.zip)
